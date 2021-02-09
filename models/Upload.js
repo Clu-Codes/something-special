@@ -7,5 +7,4 @@
 //     uploadstyle: `<link rel="stylesheet" href="/css/customstyle.css">`});
 // });
 
-
 // module.exports = Upload;
