@@ -18,13 +18,13 @@
   </form>
 </section>
 
-{{#if comments.length}}
+{{#if messages.length}}
 <section>
-    <h2>Your Comments</h2>
+    <h2>Your Messages</h2>
     <ol>
-    {{#each comments as |comment|}}
+    {{#each messages as |message|}}
     <li>
-      {{> comments comment}}
+      {{> messages message}}
     </li>
     {{/each}}
   </ol>
