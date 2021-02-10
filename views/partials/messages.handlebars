@@ -1,0 +1,12 @@
+<div class="messages">
+  {{#each this}}
+  <section class="message">
+    <div class="meta">
+      {{user.username}} on {{format_date created_at}}
+    </div>
+    <div class="text">
+      {{message_text}}
+    </div>
+  </section>
+  {{/each}}
+</div>
