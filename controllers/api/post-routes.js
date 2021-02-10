@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Message } = require('../../models');
+const { Post, User, Message, Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req,res) => {
@@ -21,7 +21,11 @@ router.get('/', (req,res) => {
             },
             {
                 model:User,
-                attributes:['username']
+                attributes: ['username']
+            },
+            {
+                model: Category,
+                attributes: ['category_name']
             }
         ]
     })
@@ -55,12 +59,16 @@ router.get('/:id', (req,res) => {
             {
                 model: User,
                 attributes:['username']
+            },
+            {
+                model: Category,
+                attributes: ['category_name']
             }
         ]
     })
     .then(postData => {
         if(!postData) {
-            return res.status(404).json({message: 'No post foundt with this id'});
+            return res.status(404).json({message: 'No post found with this id'});
         }
         return res.json(postData);
     })
@@ -75,6 +83,7 @@ router.post('/', withAuth, (req,res) => {
         title: req.body.title,
         price: req.body.price,
         description: req.body.description,
+        category: req.body.category_name,
         user_id: req.session.user_id
     })
     .then(postData => res.json(postData))
@@ -89,6 +98,7 @@ router.put('/:id', withAuth, (req,res) => {
         {
            title: req.body.title,
            description: req.body.description,
+           category: req.body.category_name,
            price: req.body.price
         },
         {
