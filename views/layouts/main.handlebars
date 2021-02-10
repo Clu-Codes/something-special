@@ -11,15 +11,15 @@
 
 <body>
     <header>
+    {{#if loggedIn}}
         <nav>
             <a href="/">Home</a>
-            {{#if loggedIn}}
             <a href="/dashboard">Dashboard</a>
             <button id="logout" class="btn-no-style">Logout</button>
             {{else}}
-            <a href="/login">Login</a>
-            {{/if}}
+            {{!-- <a href="/login">Login</a> --}}
         </nav>
+    {{/if}}
           <h1 class="app-title"><a href="/">Something Special</a></h1>
     </header>
     <main>
