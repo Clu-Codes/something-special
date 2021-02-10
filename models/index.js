@@ -38,4 +38,4 @@ Message.belongsTo(User, {
 
 // NEED TO ADD ASSOCIATIONS FOR UPLOAD
 
-module.exports = { Category, Message, Post, Upload, User };
+module.exports = { Category, Message, Post, User };
