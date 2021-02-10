@@ -4,9 +4,6 @@ const withAuth = require('../utils/auth');
 
 
 router.get('/', withAuth, (req, res) => {
-    console.log(req.session);
-    console.log('===============');
-
     Post.findAll({
         where:{
             user_id: req.session.user_id
@@ -30,6 +27,10 @@ router.get('/', withAuth, (req, res) => {
             {
                 model: User,
                 attributes:['username']
+            },
+            {
+                model: Category,
+                attributes:['category_name']
             }
         ]
     })
