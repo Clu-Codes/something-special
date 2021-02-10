@@ -1,9 +1,9 @@
-// const Upload = require('./Upload');
+const Upload = require('./Upload');
 
-//create associations
-
-
+// create associations
 
 
 
-// module.exports = { Upload };
+
+
+module.exports = { Upload };
