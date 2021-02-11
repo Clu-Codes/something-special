@@ -1,3 +1,10 @@
+:root {
+    --primary: #a18cd1;
+    --secondary: #fbc2eb;
+    --light-grey: #818181;
+    --dark: #444;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,16 +19,22 @@
 .app-title a {
     text-decoration: none;
     font-family: 'hello-honey';
-    color: white;
-    font-size: 125px;
+    color: var(--primary);
+    font-size: 30px;
+    text-align: center;
 }
 
 html, body {
     min-height: 100%;
 }
 body {
-    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    background-image: linear-gradient(to top, var(--primary) 0%, var(--secondary) 100%);
     text-align: center;
+}
+
+nav {
+    border-bottom: 1px solid var(--light-grey);
+    height: 65px;
 }
 
 main {
@@ -67,4 +80,72 @@ main {
 .pretty-btn:hover{
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     margin: 8px 10px 12px;
+}
+
+/* The side-panel menu */
+.side-panel {
+    height: 100vh;
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; 
+    z-index: 1;
+    top: 65px;
+    left: 0;
+    overflow-x: hidden; 
+    padding-top: 60px;
+    transition: 0.5s; 
+    border-right: 1px solid var(--light-grey);
+}
+  
+  /* The side-panel links */
+  .side-panel a {
+    padding: 7px;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--light-grey);
+    display: block;
+    transition: 0.3s;
+}
+  
+  .side-panel a:hover {
+    color: var(--dark);
+}
+  
+  .side-panel .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+  
+  /* Style the button that is used to open the side-panel */
+  .open-btn {
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--light-grey);
+    padding: 10px;
+}
+  
+  .open-btn:hover {
+    background-color: var(--dark);
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card, .card-body {
+    border-radius: 15px;
+}
+
+.card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card-link, .card-link:hover {
+    color: var(--light-grey);
 }
