@@ -5,13 +5,15 @@ async function newFormHandler(event) {
     const description = document.querySelector('#post-text').value;
     const price = document.querySelector('#post-price').value;
     // const image = document.querySelector('#post-image').value;
-
+    const category_id =  document.querySelector('.post-category:checked').value;
+    
     const response = await fetch(`/api/posts`, {
         method: 'POST',
         body: JSON.stringify({
             title,
             price,
             description,
+            category_id
             // image
         }),
         headers: {
@@ -19,11 +21,12 @@ async function newFormHandler(event) {
         }
     });
 
-    if(response.ok) {
-        document.location.replace('/dashboard');
+    if(response.ok) {     
+        document.location.replace('/dashboard');     
     } else {
         alert(response.statusText);
     }
 }
 
 document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+

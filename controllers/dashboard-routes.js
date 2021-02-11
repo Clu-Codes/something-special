@@ -4,7 +4,17 @@ const withAuth = require('../utils/auth');
 
 
 router.get('/', withAuth, (req, res) => {
-    Post.findAll({
+    Category.findAll({
+            attributes: [
+                'id',
+                'category_name'
+            ]
+        })
+        .then(categoryData => {
+            const categories = categoryData.map(category => category.get({ plain: true}));
+            
+       
+        Post.findAll({
         where:{
             user_id: req.session.user_id
         },
@@ -30,18 +40,20 @@ router.get('/', withAuth, (req, res) => {
             },
             {
                 model: Category,
-                attributes:['category_name']
+                attributes:['id','category_name']
             }
         ]
     })
     .then(postData => {
         const posts = postData.map(post => post.get({ plain: true}));
-        res.render('dashboard', { posts, loggedIn: true});
+        
+        res.render('dashboard', { posts, categories, loggedIn: true});
     })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
-    });
+    })
+});
 });
 
 router.get('/edit/:id', withAuth, (req,res) => {
@@ -72,7 +84,7 @@ router.get('/edit/:id', withAuth, (req,res) => {
         
         if(userData) {
             const post = userData.get({ plain: true});
-
+            
             return res.render('edit-post', {
                 post,
                 loggedIn: true
