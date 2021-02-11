@@ -19,21 +19,28 @@
         </nav>
         
         <div id="side-panel" class="side-panel bg-light">
-        <div class="close-btn">&times;</div>
-            <a href="#">Links Here</a>
-            <a href="#">Links Here</a>
-            <a href="#">Links Here</a>
-            <a href="#">Links Here</a>
-            <a href="#">Links Here</a>
+            <div class="close-btn">&times;</div>
+            <div class="user-options">
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+                <button id="logout" class="btn-no-style">Logout</button>
+            </div>
+            <div class="category-list">
+                <a href="/Apparel">Apparel</a> 
+                <a href="/Centerpieces">Centerpieces</a>
+                <a href="/Decor">Decor</a>
+                <a href="/Furniture">Furniture</a>
+                <a href="/Lighting">Lighting</a>
+                <a href="/Linens">Linens</a>
+                <a href="/Serving%20Ware">Serving Ware</a>
+                <a href="/Table%20Settings">Table Settings</a>        
+            </div>
         </div>
     </header>
     {{/if}}
     <main>
         {{{ body }}}
     </main>
-    {{#if loggedIn}}
-    <script src="/javascript/logout.js"></script>
-    {{/if}}
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="/__/firebase/8.2.6/firebase-app.js"></script>
@@ -44,7 +51,10 @@
 
 <!-- Initialize Firebase -->
 <script src="/__/firebase/init.js"></script>
-<script src="/javascript/side-panel.js"></script>
 
+    {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    <script src="/javascript/side-panel.js"></script>
+    {{/if}}
 </body>
 </html>
