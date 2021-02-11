@@ -1,6 +1,9 @@
+// const firebase = require("firebase/app");
+
+
 // get elements
-var uploader = document.getElementById('uploader');
-var  fileButton = document.getElementById('fileButton');
+const uploader = document.getElementById('uploader');
+const  fileButton = document.getElementById('fileButton');
 
 // listen for file selection
 fileButton.addEventListener('change', function(e){
