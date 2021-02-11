@@ -1,7 +1,13 @@
-body {
-    display: flex;
-    min-height: 100vh;
-    width: 100%;
+#uploader {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.center {
+    display:flex;
+    width:100%;
     padding: 0;
     margin: 0;
     align-items: center;
@@ -9,9 +15,15 @@ body {
     flex-direction: column;
 }
 
-#uploader {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 50%;
-    margin-bottom: 10px;
+.row {
+    padding: 20px;
 }
+
+/* #fileButton {
+
+} */
+
+
+/* #fileButton:hover {
+
+} */
