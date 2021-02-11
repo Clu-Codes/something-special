@@ -161,6 +161,10 @@ main {
     margin-bottom: 15px;
     height: 200px;
 }
+
+.category-list {
+    top: 0;
+}
   
   /* Style the button that is used to open the side-panel */
 .open-btn {
