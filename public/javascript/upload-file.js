@@ -21,7 +21,7 @@ fileButton.addEventListener('change', function(e){
             uploader.value = percentage;
         },
         function error(err) {
-
+            if (err) throw err;
         },
         function complete() {
 
