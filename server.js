@@ -2,6 +2,7 @@ const express = require('express');
 const routes =  require('./controllers');
 const sequelize = require('./config/connection');
 const path = require('path');
+const stream = require('getstream');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -26,9 +27,12 @@ const sess = {
     })
 };
 
+const client = stream.connect(
+    process.env.STREAM_API_KEY,
+    process.env.STREAM_API_SECRET
+)
+
 app.use(session(sess));
-
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

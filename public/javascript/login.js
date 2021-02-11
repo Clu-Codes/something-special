@@ -1,3 +1,7 @@
+const { connect } = require('getstream');
+const client = connect(process.env.STREAM_API_KEY, process.env.STREAM_API_SECRET)
+
+
 async function loginFormHandler(event) {
     event.preventDefault();
 
@@ -14,6 +18,7 @@ async function loginFormHandler(event) {
             headers: { 'Content-Type' : 'application/json' }
         });
         if (response.ok) {
+            const userToken = client.createUserToken('the-user-id')
             document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
