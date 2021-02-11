@@ -102,13 +102,6 @@ main {
     margin: 8px 10px 12px;
 }
 
-.container {
-    width: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
 /* The side-panel menu */
 .side-panel {
     height: 100vh;
@@ -125,7 +118,7 @@ main {
     flex-wrap: wrap;
     justify-content: center;
 }
-  
+
   /* The side-panel links */
 .side-panel a {
     padding: 5px;
@@ -135,7 +128,7 @@ main {
     display: block;
     transition: 0.3s;
 }
-  
+
 .side-panel a:hover {
     color: var(--dark);
 }
@@ -152,7 +145,7 @@ main {
     font-size: 20px;
     outline: 0;
 }
-  
+
 .side-panel .close-btn {
     position: absolute;
     top: 0;
@@ -167,6 +160,10 @@ main {
     padding: 0;
     margin-bottom: 15px;
     height: 200px;
+}
+
+.category-list {
+    top: 0;
 }
 
   /* Style the button that is used to open the side-panel */
