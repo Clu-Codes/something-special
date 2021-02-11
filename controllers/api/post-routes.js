@@ -83,7 +83,7 @@ router.post('/', withAuth, (req,res) => {
         title: req.body.title,
         price: req.body.price,
         description: req.body.description,
-        category: req.body.category_name,
+        category_id: req.body.category_id,
         user_id: req.session.user_id
     })
     .then(postData => res.json(postData))

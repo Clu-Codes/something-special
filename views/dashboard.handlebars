@@ -3,22 +3,35 @@
 
   <form class="new-post-form">
     <div>
-      <label for="post-title">Title</label>
+      <label for="post-title" class="pretty-label">Title:</label>
       <input type="text" id="post-title" name="post-title" />
     </div>
-    <div>
-        <label for="post-image">Product Image</label>
+    {{!-- <div>
+        <label for="post-image">Product Image:</label>
         <input type="image" id="post-image" name="post-image" />
-    </div>
+    </div> --}}
     <div>
-        <label for="post-text">About the product:</label>
+        <label for="post-text" class="pretty-label">About the product:</label>
         <textarea id="post-text" name="post-text"></textarea>
     </div>
-    <button type="submit" class="btn">Create</button>
+    <div>
+        <label for="post-price" class="pretty-label">Product Price:</label>
+        <input type="number" id="post-price" name="post-price" />
+    </div>
+    <div>
+        <label for="post-category" class="pretty-label">Categories</label>
+        
+        {{#each categories as |category|}}
+        <input type="radio" id='post-category' class="post-category" name="post-category" value={{category.id}} >
+        <label for="category{{category.id}}">{{category.category_name}}</label>
+        {{/each}}
+        
+    </div>
+    <button type="submit" id="post-create" class="pretty-btn">Create</button>
   </form>
 </section>
 
-{{#if messages.length}}
+{{!-- {{#if messages.length}}
 <section>
     <h2>Your Messages</h2>
     <ol>
@@ -28,8 +41,7 @@
     </li>
     {{/each}}
   </ol>
-</section>
-{{/if}}
+</section> --}}
 
 {{#if posts.length}}
 <section>
@@ -43,4 +55,7 @@
     {{/each}}
   </ol>
 </section>
-{{/if}}
+{{/if}} 
+
+<script src="/javascript/add-post.js"></script>
+

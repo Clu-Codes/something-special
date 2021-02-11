@@ -16,12 +16,27 @@
     src: url(../fonts/hello-honey.otf) format('opentype');
 }
 
+.parent-div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 25px;
+}
+
 .app-title a {
     text-decoration: none;
+    padding-top: 100px;
     font-family: 'hello-honey';
     color: var(--primary);
     font-size: 30px;
     text-align: center;
+}
+
+.curved-background {
+    border-radius: 35px;
+    padding: 35px;
+    box-shadow: 15px 10px 30px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 html, body {
@@ -46,9 +61,9 @@ main {
     width: 100%;
 }
 
-.login-form, .signup-form {
+/* .login-form, .signup-form {
     justify-content: center;
-}
+} */
 
 .pretty-label {
     width: 100%;
