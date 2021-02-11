@@ -32,11 +32,12 @@
         <label for="post-category" class="pretty-label">Categories</label>
         
         {{#each categories as |category|}}
-        {{category.name}}
+        <input type="radio" id='post-category' class="post-category" name="post-category" value={{category.id}} >
+        <label for="category{{category.id}}">{{category.category_name}}</label>
         {{/each}}
         
     </div>
-    <button type="submit" class="pretty-btn">Create</button>
+    <button type="submit" id="post-create" class="pretty-btn">Create</button>
   </form>
 </section>
 
@@ -67,7 +68,6 @@
 {{/if}} 
 
 <script src="/javascript/add-post.js"></script>
-
 
 
 {{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}} >
