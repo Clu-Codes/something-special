@@ -1,8 +1,25 @@
-<article class="post">
-    <div class="title">
-        <h2>{{title}} by {{user.username}} on {{format_date created_at}}</h2>
-        <p>{{image}}</p>
-        <p>{{text_field}}</p>        
-        <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+        {{#each posts}}
+        <div class="col mb-4">
+            <a class="card-link" href="/post/{{id}}">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://via.placeholder.com/200x150" class="card-img-top">
+                    <div class="card-body bg-light">
+                        <h5 class="card-title">${{price}}</h5>
+                        <p class="card-text">
+                            {{title}} in {{category.category_name}}   
+                        </p>
+                        <div class="card-footer bg-light">
+                            <small class="text-muted">
+                                Posted by {{user.username}}
+                                <br>
+                                Created on {{format_date created_at}}</small>
+                        </div>
+                    </div>
+                </div>  
+            </a>
+        </div>
+        {{/each}}
     </div>
-</article>
+</div>
