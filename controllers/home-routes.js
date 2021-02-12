@@ -161,7 +161,7 @@ router.get('/category/:category', (req, res) => {
 
             // serialize the data and pass to template
             const posts = dbPostData.map(post => post.get({ plain: true }));
-
+            // delete before production
             console.log(posts)
             
             res.render('homepage', { 
