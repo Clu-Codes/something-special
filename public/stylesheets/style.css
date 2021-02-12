@@ -61,6 +61,20 @@ main {
     width: 100%;
 }
 
+.left-nav {
+    width: 50%;
+    display: flex;
+    justify-content: start;
+}
+
+#search-btn {
+    border: none;
+    background-color: var(--secondary);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
 /* .login-form, .signup-form {
     justify-content: center;
 } */
@@ -137,7 +151,7 @@ main {
 .side-panel .btn-no-style:focus {
     background: none;
     border: 0;
-    padding: 0;
+    padding: 5px;
     cursor: pointer;
     text-decoration: none;
     color: var(--light-grey);
@@ -154,19 +168,7 @@ main {
     margin-left: 50px;
 }
 
-.user-options {
-    width: 75%;
-    border-bottom: 1px solid var(--light-grey);
-    padding: 0;
-    margin-bottom: 15px;
-    height: 200px;
-}
-
-.category-list {
-    top: 0;
-}
-  
-  /* Style the button that is used to open the side-panel */
+/* Style the button that is used to open the side-panel */
 .open-btn {
     font-size: 20px;
     cursor: pointer;
@@ -191,16 +193,6 @@ main {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-}
-
-.card, .card-body {
-    border-radius: 15px;
-    margin: 20px auto;
-}
-
-.card-img-top {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
 }
 
 .card-body,
