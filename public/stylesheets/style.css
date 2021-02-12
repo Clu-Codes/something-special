@@ -132,7 +132,7 @@ main {
     flex-wrap: wrap;
     justify-content: center;
 }
-
+  
   /* The side-panel links */
 .side-panel a {
     padding: 5px;
@@ -142,7 +142,7 @@ main {
     display: block;
     transition: 0.3s;
 }
-
+  
 .side-panel a:hover {
     color: var(--dark);
 }
@@ -159,7 +159,7 @@ main {
     font-size: 20px;
     outline: 0;
 }
-
+  
 .side-panel .close-btn {
     position: absolute;
     top: 0;
@@ -175,7 +175,7 @@ main {
     color: var(--light-grey);
     padding: 10px;
 }
-
+  
 .open-btn:hover {
     background-color: var(--dark);
 }
