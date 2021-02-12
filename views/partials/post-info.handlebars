@@ -1,9 +1,10 @@
-<div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+{{#if posts}}
+<div class="card-container">
+    <div class="row card-row row-cols-1 row-cols-sm-2 row-cols-md-4">
         {{#each posts}}
-        <div class="col mb-4">
+        <div class="col">
             <a class="card-link" href="/post/{{id}}">
-                <div class="card" style="width: 18rem;">
+                <div class="card bg-light" style="width: 18rem;">
                     <img src="https://via.placeholder.com/200x150" class="card-img-top">
                     <div class="card-body bg-light">
                         <h5 class="card-title">${{price}}</h5>
@@ -23,3 +24,16 @@
         {{/each}}
     </div>
 </div>
+{{/if}}
+
+{{#unless posts}}
+<div class="card bg-light" style="width: 18rem;">
+    <img src="/images/oops.jpg" class="card-img-top">
+    <div class="card-body bg-light">
+        <h5 class="card-title">Oops!</h5>
+        <p class="card-text">
+            No listings found!
+        </p>
+    </div>
+</div>  
+{{/unless}}

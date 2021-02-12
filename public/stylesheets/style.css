@@ -49,7 +49,7 @@ body {
 
 main {
     width: 100%;
-    padding-top: 125px;
+    padding-top: 85px;
     margin: 0;
 }
 
@@ -179,19 +179,23 @@ main {
 }
 
 /* card styles */
-.container {
+.card-container {
     width: 100%;
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
+    justify-items: center;
 }
-.row {
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
 }
 
 .card, .card-body {
     border-radius: 15px;
+    margin: 20px auto;
 }
 
 .card-img-top {
@@ -199,6 +203,8 @@ main {
     border-top-right-radius: 15px;
 }
 
-.card-link, .card-link:hover {
+.card-body,
+.card-link, 
+.card-link:hover {
     color: var(--light-grey);
 }
