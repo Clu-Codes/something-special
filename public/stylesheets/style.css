@@ -90,3 +90,11 @@ main {
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.special-container {
+    width: 100%;
+    height: 100%;
+}
+.test-col {
+   overflow-wrap: normal;
+}

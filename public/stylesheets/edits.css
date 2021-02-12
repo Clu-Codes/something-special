@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+html, body { 
+    min-height: 100%;
+}
+
+body {
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 45px;
+    margin-bottom: 70px;
+}
+
+.pretty-label {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 5px;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
+}
+
+.test-col {
+    word-wrap: break-word;
+    hyphens: auto;
+    height: 100vh;
+    background-color: slategray;
+    padding: 25px;
+}
+
+textarea {
+    min-height: 10rem;
+}
+
+.img-input {
+    min-height: 2.5rem;
+    padding: 5px;
+}
+
+.bad-btn {
+    margin-left: 35%;
+    margin-top: 38px;
+    justify-self: center;
+    background-color: snow;
+}
+
+/* .mean-col {
+    display: flex;
+    align-items: center;
+} */
+
