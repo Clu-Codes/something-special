@@ -10,5 +10,10 @@ module.exports = {
       }
   
       return word;
+    },
+    location_grabber: (location, value) => {
+      if(location === value) {
+        return value;
+      }
     }
   };

@@ -1,0 +1,16 @@
+{{if this.activity}}
+<article class="pin">
+        <figure>
+            <div class="pin-image-holder">
+                    <img class="pin-image" src="{{this.avatar_url}}">
+            </div>
+            <figcaption class="follow-caption">
+                {{activity.actor.username}} followed {{this.username}}
+            </figcaption>
+        </figure>
+        <footer class="pin-attribution">
+            by <a href='/profile/{{activity.actor.username}}'>{{activity.actor.username}}</a>
+            <span class="timesince">{{ activity.time}}</span>
+        </footer>
+</article>
+{{/if}}

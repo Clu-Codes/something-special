@@ -1,0 +1,11 @@
+<div id = "wrapper">
+    <div class="container-pins">
+        {{#each activity}}
+        {{if Pin}}
+            {{> pin}}
+        {{else}}
+            {{> follow}}
+        {{/if}}   
+        {{/each}}
+    </div>
+</div>

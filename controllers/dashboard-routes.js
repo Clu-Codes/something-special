@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Post, User, Message, Category } = require('../models');
 const withAuth = require('../utils/auth');
 
-
 router.get('/', withAuth, (req, res) => {
     Category.findAll({
             attributes: [
@@ -97,5 +96,20 @@ router.get('/edit/:id', withAuth, (req,res) => {
         return res.status(500).json(err);
     });
 });
+
+router.get('/flat', withAuth, function(req, res, next){
+    
+    var flatFeed = FeedManager.getNewsFeeds(req.user.id)['timeline_flat'];
+
+    flatFeed.get({})
+    	.then(function (body) {
+        	var activities = body.results;
+        	return StreamBackend.enrichActivities(activities);
+        })
+        .then(function (enrichedActivities) {
+            return res.render('feed', {location: 'feed', user: req.user, activities: enrichedActivities, path: req.url});
+        })
+        .catch(next)
+    });
 
 module.exports = router;
