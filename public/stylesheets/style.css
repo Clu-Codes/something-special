@@ -90,7 +90,7 @@ main {
     flex-wrap: wrap;
     justify-content: space-around;
 }
-
+/* 
 .navbar-nav {
     margin: 7.5px -15px; }
 
@@ -148,4 +148,4 @@ main {
     height: 2px;
     border-radius: 1px; }
     .navbar-toggle .icon-bar + .icon-bar {
-    margin-top: 4px; }
+    margin-top: 4px; } */
