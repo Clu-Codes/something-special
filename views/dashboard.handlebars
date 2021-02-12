@@ -4,37 +4,37 @@
 
 <section>
   <h2>Create New Post</h2>
-    <form class="new-post-form">
-      <div>
-        <label for="post-title" class="pretty-label">Title:</label>
-        <input type="text" id="post-title" name="post-title" />
-      </div>
+  <form class="new-post-form">
+    <div>
+      <label for="post-title" class="pretty-label">Title:</label>
+      <input type="text" id="post-title" name="post-title" />
+    </div>
 
     {{!-- file uploader start --}}
     <div class='row center'>
-        <label for="post-image">Product Image:</label>
-        <img id='createImg'>
-        <progress value="0" max="100" id="uploader">0%</progress>
-        <input type="file" value="upload" id="fileButton" />
+      <label for="post-image">Product Image:</label>
+      <img id='createImg'>
+      <progress value="0" max="100" id="uploader">0%</progress>
+      <input type="file" value="upload" id="fileButton" />
     </div>
-    {{!-- file uploader end  --}}
+    {{!-- file uploader end --}}
 
     <div>
-        <label for="post-text" class="pretty-label">About the product:</label>
-        <textarea id="post-text" name="post-text"></textarea>
+      <label for="post-text" class="pretty-label">About the product:</label>
+      <textarea id="post-text" name="post-text"></textarea>
     </div>
     <div>
-        <label for="post-price" class="pretty-label">Product Price:</label>
-        <input type="number" id="post-price" name="post-price" />
+      <label for="post-price" class="pretty-label">Product Price:</label>
+      <input type="number" id="post-price" name="post-price" />
     </div>
     <div>
-        <label for="post-category" class="pretty-label">Categories</label>
-        
-        {{#each categories as |category|}}
-        <input type="radio" id='post-category' class="post-category" name="post-category" value={{category.id}} >
-        <label for="category{{category.id}}">{{category.category_name}}</label>
-        {{/each}}
-        
+      <label for="post-category" class="pretty-label">Categories</label>
+
+      {{#each categories as |category|}}
+      <input type="radio" id='post-category' class="post-category" name="post-category" value={{category.id}}>
+      <label for="category{{category.id}}">{{category.category_name}}</label>
+      {{/each}}
+
     </div>
     <button type="submit" id="post-create" class="pretty-btn">Create</button>
   </form>
@@ -42,8 +42,8 @@
 
 {{!-- {{#if messages.length}}
 <section>
-    <h2>Your Messages</h2>
-    <ol>
+  <h2>Your Messages</h2>
+  <ol>
     {{#each messages as |message|}}
     <li>
       {{> messages message}}
@@ -64,13 +64,13 @@
     {{/each}}
   </ol>
 </section>
-{{/if}} 
+{{/if}}
 
 <script src="/javascript/add-post.js"></script>
 
 
-{{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}} >
-        <label for="category{{category.id}}">{{category.name}}</label> --}}
+{{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}}>
+<label for="category{{category.id}}">{{category.name}}</label> --}}
 
 {{> firebase}}
 {{!-- upload logic must be defined under firebase initialization --}}
