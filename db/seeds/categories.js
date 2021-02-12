@@ -9,6 +9,9 @@ const categoryData = [
         category_name: 'Centerpieces'
     },
     {
+        category_name: 'Decor'
+    },
+    {
         category_name: 'Furniture'
     },
     {
@@ -16,9 +19,6 @@ const categoryData = [
     },
     {
         category_name: 'Linens'
-    },
-    {
-        category_name: 'Miscellaneous Decor'
     },
     {
         category_name: 'Serving Ware'

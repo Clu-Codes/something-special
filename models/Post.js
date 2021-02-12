@@ -27,6 +27,10 @@ Post.init(
             }
         },
         // NEED TO ADD IMAGE/UPLOAD CONFIG, REF UPLOAD MODEL
+        image_url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {
