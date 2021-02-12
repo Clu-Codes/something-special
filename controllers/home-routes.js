@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
             'title',
             'price',
             'description',
-            // add images/upload
+            'image_url',
             'created_at'
         ],
         include: [
@@ -44,6 +44,7 @@ router.get('/', (req, res) => {
         .then(dbPostData => {
 
             const posts = dbPostData.map(post => post.get({ plain: true }));
+            console.log(posts)
 
             res.render('homepage', {
                 posts,
@@ -66,7 +67,7 @@ router.get('/post/:id', (req, res) => {
             'title',
             'price',
             'description',
-            // add images/upload
+            'image_url',
             'created_at'
         ],
         include: [
@@ -124,7 +125,7 @@ router.get('/category/:category', (req, res) => {
             'title',
             'price',
             'description',
-            // add images/upload
+            'image_url',
             'created_at'
         ],
         include: [

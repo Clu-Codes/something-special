@@ -8,7 +8,8 @@ router.get('/', (req,res) => {
             'id',
             'title',
             'price',
-            'description'
+            'description',
+            'image_url'
         ],
         include: [
             {
@@ -29,7 +30,9 @@ router.get('/', (req,res) => {
             }
         ]
     })
-    .then(postData => res.json(postData))
+    .then(postData => 
+        {console.log(postData)
+        res.json(postData)})
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -45,7 +48,8 @@ router.get('/:id', (req,res) => {
             'id',
             'title',
             'price',
-            'description'
+            'description',
+            'image_url'
         ],
         include: [
             {
@@ -79,12 +83,14 @@ router.get('/:id', (req,res) => {
 });
 
 router.post('/', withAuth, (req,res) => {
+    console.log(req.body)
     Post.create({
         title: req.body.title,
         price: req.body.price,
         description: req.body.description,
         category_id: req.body.category_id,
-        user_id: req.session.user_id
+        user_id: req.session.user_id,
+        image_url: req.body.image
     })
     .then(postData => res.json(postData))
     .catch(err => {
@@ -100,6 +106,7 @@ router.put('/:id', withAuth, (req,res) => {
            description: req.body.description,
            category: req.body.category_name,
            price: req.body.price
+            //
         },
         {
             where:{

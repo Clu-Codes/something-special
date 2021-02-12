@@ -26,7 +26,7 @@ fileButton.addEventListener('change', function (e) {
                     // delete console.log before production
                     console.log(url)
                     // Or inserted into an <img> element
-                    var img = document.getElementById('createImg');
+                    var img = document.getElementById('createImage');
                     img.setAttribute('src', url);
                 })
         }
