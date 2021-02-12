@@ -2,7 +2,8 @@
     <div class="title">
         <h2>{{title}} by {{user.username}} on {{format_date created_at}}</h2>
         <p>{{image}}</p>
-        <p>{{text_field}}</p>        
-        <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+        <p>{{description}}</p>
+        <p>${{price}}</p>        
+        <a href="/post/{{id}}">{{messages.length}} {{format_plural "message" messages.length}}</a>
     </div>
 </article>
