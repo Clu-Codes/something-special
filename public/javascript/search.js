@@ -1,41 +1,28 @@
-const allPosts = [];
-
-async function handleSearch(event) {
+function handleSearch(event) {
     event.preventDefault();
 
     const searchTerm = document.querySelector('.search-input').value.toLowerCase().trim();
     
-    // tokenize search terms
-    // const tokens = searchTerm.split(' ').filter(token => token.trim() !== ' ');
-
-    // if (tokens.length) {
-    //     // RegEx of all the search terms
-    //     const searchTermRegex = new RegExp(tokens.join('|'), 'gim');
-    // };
-
     if (searchTerm) {
-        const getPosts = await fetch('/api/posts', {
+        const getPosts = fetch('/api/posts', {
             method: 'get',
             headers: { 'Content-Type' : 'application/json' }
         })
         .then(response => {
             if (response.ok) {
                 response.json()
-                .then(data => {
-                    data.forEach(post => allPosts.push(post))
-                })
-            }
-        })
-
-        const filteredPosts = allPosts.filter(post => {
-            return (
-                post.title.toLowerCase().includes(searchTerm) ||
-                post.description.toLowerCase().includes(searchTerm)
-            )
-        })
-
-        console.log(filteredPosts)
-        renderResults(filteredPosts)
+                .then(data => {                
+                    const filteredPosts = data.filter(post => {
+                        return (
+                            post.title.toLowerCase().includes(searchTerm) ||
+                            post.description.toLowerCase().includes(searchTerm)
+                        )
+                    })
+            
+                    renderResults(filteredPosts)
+                });
+            };
+        });
     };
 };
 
@@ -48,6 +35,8 @@ function renderResults(searchResults) {
     searchResultsEl.classList.remove('hide');
 
     searchResults.forEach(post => {
+        searchRowEl.innerHTML = '';
+
         const colEl = document.createElement('div');
         colEl.classList.add('col');
         searchRowEl.appendChild(colEl);
@@ -59,7 +48,7 @@ function renderResults(searchResults) {
 
         const cardEl = document.createElement('div');
         cardEl.classList.add('card', 'rounded', 'mt-2', 'mb-3', 'bg-light');
-        colEl.appendChild(cardEl);
+        anchorEl.appendChild(cardEl);
 
         const imgEl = document.createElement('img');
         imgEl.classList.add('rounded-top');

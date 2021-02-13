@@ -30,8 +30,8 @@ router.get('/', (req,res) => {
             }
         ]
     })
-    .then(postData => 
-        {console.log(postData)
+    .then(postData => {
+        // console.log(postData)
         res.json(postData)})
     .catch(err => {
         console.log(err);
