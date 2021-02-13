@@ -6,6 +6,18 @@
 
 html, body { 
     min-height: 100%;
+    max-width: 100%;
+}
+
+.card-header {
+    font-size: 25px;
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    color: white;
+}
+
+
+.app-title {
+    text-align: center;
 }
 
 body {
@@ -26,32 +38,25 @@ h2 {
     text-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
 }
 
-.test-col {
-    word-wrap: break-word;
-    hyphens: auto;
-    height: 100vh;
-    background-color: slategray;
-    padding: 25px;
-}
-
 textarea {
-    min-height: 10rem;
+    resize: none;
 }
 
 .img-input {
-    min-height: 2.5rem;
-    padding: 5px;
+    padding: 3px;
 }
 
 .bad-btn {
-    margin-left: 35%;
     margin-top: 38px;
-    justify-self: center;
-    background-color: snow;
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    color: white;
+    padding: 12px;
+    width: 8rem;
+    border-radius: 8px;
 }
 
-/* .mean-col {
-    display: flex;
-    align-items: center;
-} */
+.bad-btn:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
 
