@@ -56,14 +56,15 @@
 {{#if posts.length}}
 <section>
   <h2>Your Posts</h2>
-  <ol>
-    {{#each posts as |post|}}
+  {{> post-info}}
+  {{!-- <ol>
+    {{#each posts }}
     <li>
-      {{> post-info post}}
+      {{> post-info}}
       <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
     </li>
     {{/each}}
-  </ol>
+  </ol> --}}
 </section>
 {{/if}} 
 
