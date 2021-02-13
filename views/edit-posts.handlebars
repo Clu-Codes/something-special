@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="/stylesheets/edit-posts.css" />
+<div class="container-fluid ">
+   <div class="card text-center">
+      <div class="card-header">
+         Edit Post
+      </div>
+      <div class="card-body">
+         <form id="nice-form">
+            <div class="row">
+               <div class="col-md-4">
+               <div class="card post-card" style="height: 12rem;">
+                  <div class="card-body">
+                     <h5 class="card-title">Edit Title:</h5>
+                     <input type="text" class="form-control" id="title-edit">
+                     <p class="card-text"><small class="text-muted">Hint: Provide details about the brand, style, or other identification details about your product.</small></p>
+                  </div>
+               </div>
+               </div>
+               <div class="col-md-4">
+               <div class="card post-card" style="height: 12rem;">
+                  <div class="card-body">
+                     <h5 class="card-title">Edit Description:</h5>
+                     <textarea class="form-control" id="desc-edit"></textarea>
+                     <p class="card-text"><small class="text-muted">Hint: Describe the condition, year, age, and type of your product. </small></p>
+                  </div>
+               </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card post-card" style="height: 12rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">Add New Image:</h5>
+                        <input type="file" onchange="previewFile()" class="img-input form-control" id="inputGroupFile04"
+                        aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <p class="card-text"><small class="text-muted">Hint: Choose a high-quality image with good lighting for more interest in your product! </small></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <button class="bad-btn btn btn-outline-secondary" type="button"
+            id="inputGroupFileAddon04">Submit</button>
+         </form>
+      </div>
+      <div class="card-header">
+      Preview Post Changes:
+   </div>
+   <div class="row align-self-center">
+      <div class="col-md align-self-center">
+         <div class="card  mb-3">
+            <img src="https://via.placeholder.com/600x300.png?text=Visit+Ihatemylife.com" class="card-img-top" height="600" width="300"
+           alt="Image preview">
+            <div class="card-body">
+               <h5 class="card-title" id="preview-title">Post Title Example</h5>
+               <p class="card-text" id="preview-desc">This is the description for your product's post. As you write information in the text area above, it will fill in here.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script src='/javascript/edit-post.js'></script>
+

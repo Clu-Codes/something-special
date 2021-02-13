@@ -88,7 +88,7 @@ router.get('/edit/:id', withAuth, (req,res) => {
         if(userData) {
             const post = userData.get({ plain: true});
             
-            return res.render('edit-post', {
+            return res.render('edit-posts', {
                 post,
                 loggedIn: true
             });
