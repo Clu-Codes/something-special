@@ -45,6 +45,7 @@ html, body {
 body {
     background-image: linear-gradient(to top, var(--primary) 0%, var(--secondary) 100%);
     text-align: center;
+    overflow-x: hidden;
 }
 
 main {
@@ -111,9 +112,15 @@ main {
     border-radius: 25px;
     background-image: linear-gradient(to right, #7474BF 0%, #348AC7 51%, #7474BF 100%) !important;
 }
-.pretty-btn:hover{
+
+.pretty-btn:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     margin: 8px 10px 12px;
+}
+
+.pretty-btn:active, 
+.pretty-btn:focus { 
+    outline: none;
 }
 
 /* The side-panel menu */
