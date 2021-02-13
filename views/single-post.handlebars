@@ -1,0 +1,19 @@
+{{> post-info posts}}
+
+{{#if loggedIn}}
+<form class="message-form">
+    <div>
+        <textarea name="message-body"></textarea>
+    </div>
+
+    <div>
+        <button type="submit">Add Message</button>
+    </div>
+</form>
+{{/if}}
+
+{{> messages post.message}}
+
+{{#if loggedIn}}
+<script src="/javascript/message.js"></script>
+{{/if}}
