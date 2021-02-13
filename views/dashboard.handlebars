@@ -1,73 +1,113 @@
 <head>
-  <link rel="stylesheet" href="/stylesheets/upload.css" />
+    <link rel="stylesheet" href="/stylesheets/upload.css" />
 </head>
 
-<section>
-  <h2>Create New Post</h2>
-    <form class="new-post-form">
-      <div>
-        <label for="post-title" class="pretty-label">Title:</label>
-        <input type="text" id="post-title" name="post-title" />
-      </div>
+<div class="row m-0">
+    <div class="container-fluid col-sm-12 col-md-6">
+        <div class="row">
+            <div class="card text-center">
+                <div class="card-header">
+                    Create New Post
+                </div>
+                <div class="card-body center">
+                    <form class="new-post-form">
+                        {{!-- title --}}
+                        <div class="row center">
+                            <label for="post-title" class="pretty-label form-label">Title:</label>
+                            <input type="text" id="post-title" name="post-title" class="form-control"/>
+                        </div>
 
-    {{!-- file uploader start --}}
-    <div class='row center'>
-        <label for="post-image">Product Image:</label>
-        <img id='createImage'>
-        <progress value="0" max="100" id="uploader">0%</progress>
-        <input type="file" value="upload" id="fileButton" />
-    </div>
-    {{!-- file uploader end  --}}
+                        {{!-- file upload --}}
+                        <div class="row center">
+                            <label for="fileButton" class="pretty-label">Product Image:</label>
+                            <img id="createImage">
+                            <progress value="0" max="100" id="uploader">0%</progress>
+                            <input type="file" value="upload" class="p-1 form-control" id="fileButton" />
+                        </div>
 
-    <div>
-        <label for="post-text" class="pretty-label">About the product:</label>
-        <textarea id="post-text" name="post-text"></textarea>
+                        {{!-- description --}}
+                        <div class="row center">
+                            <label for="post-text" class="pretty-label">Product Description:</label>
+                            <textarea class="form-control" id="post-text" name="post-text"></textarea>
+                        </div>
+
+                        {{!-- price --}}
+                        <div class="row center">
+                            <label for="post-price" class="pretty-label">Product Price:</label>
+                            <input type="number" class="form-control" id="post-price" name="post-price" min="0" value="0.00" step="01"/>
+                        </div>
+
+                        {{!-- category --}}
+                        <div class="row center">
+                            <label for="post-category" class="pretty-label">Category:</label>
+                        </div>
+                        <div class="row justify-content-start">
+                            {{#each categories as |category|}}
+                            <div class="col-4">
+
+                            <input type="radio" id="category-{{category.id}}" class="post-category" name="post-category" value={{category.id}} >
+                            <label for="category-{{category.id}}">{{category.category_name}}</label>
+                            </div>
+                            {{/each}}
+
+                        </div>
+
+                        <button type="submit" id="post-create" class="pretty-btn">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="post-price" class="pretty-label">Product Price:</label>
-        <input type="number" id="post-price" name="post-price" min="0" value="0.00" step="01"/>
+
+    <div class="container-fluid col-sm-12 col-md-6">
+        <div class="row">
+            <div class="card text-center">
+                <div class="card-header">
+                    Your Posts
+                </div>
+                <div class="card-container all-posts">
+                    <div class="row card-row row-cols-1 row-cols-sm-2 d-flex justify-content-center">
+                    {{#each posts}}
+                    <div class="col">
+                        <a class="card-link" href="/dashboard/edit/{{id}}">
+                        {{>post-info}}
+                        </a>
+                    </div>
+                    {{/each}}
+                    </div>
+
+                    {{#unless posts}}
+                        You haven't made any posts!
+                    {{/unless}}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {{!-- {{#if messages.length}} --}}
+            <div class="card text-center w-100">
+                <div class="card-header">
+                    Your Messages
+                </div>
+                <div class="card-container">
+                    <div class="row card-row">
+                        <ol>
+                            {{#each messages as |message|}}
+                            <li> {{> messages message}}</li>
+                            {{/each}}
+                        </ol>
+
+                        {{#unless messages}}
+                        You haven't posted any messages!
+                        {{/unless}}
+                    </div>
+                </div>
+                {{!-- {{/if}} --}}
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="post-category" class="pretty-label">Categories</label>
+</div>
         
-        {{#each categories as |category|}}
-        <input type="radio" id='post-category' class="post-category" name="post-category" value={{category.id}} >
-        <label for="category{{category.id}}">{{category.category_name}}</label>
-        {{/each}}
-        
-    </div>
-    <button type="submit" id="post-create" class="pretty-btn">Create</button>
-  </form>
-</section>
-
-{{#if messages.length}}
-<section>
-    <h2>Your Messages</h2>
-    <ol>
-    {{#each messages as |message|}}
-    <li>
-      {{> messages message}}
-    </li>
-    {{/each}}
-  </ol>
-</section>
-{{/if}}
-
-{{#if posts.length}}
-<section>
-  <h2>Your Posts</h2>
-  {{> post-info}}
-  {{!-- <ol>
-    {{#each posts }}
-    <li>
-      {{> post-info}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-    </li>
-    {{/each}}
-  </ol> --}}
-</section>
-{{/if}} 
-
 <script src="/javascript/add-post.js"></script>
 
 

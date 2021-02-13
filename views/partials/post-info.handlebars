@@ -1,19 +1,15 @@
-<div class="col">
-    <a class="card-link" href="/post/{{id}}">
-        <div class="card rounded mt-2 mb-3 bg-light">
-            <img src="{{image_url}}" class="rounded-top">
-            <div class="card-body rounded bg-light">
-                <h5 class="card-title">${{price}}</h5>
-                <p class="card-text">
-                    {{title}} in {{category.category_name}}   
-                </p>
-                <div class="card-footer bg-light">
-                    <small class="text-muted">
-                        Posted by {{user.username}}
-                        <br>
-                        Created on {{format_date created_at}}</small>
-                </div>
-            </div>
-        </div>  
-    </a>
-</div>
+<div class="card rounded mt-2 mb-3 bg-light">
+    <img src="{{image_url}}" class="rounded-top">
+    <div class="card-body rounded bg-light">
+        <h5 class="card-title">${{price}}</h5>
+        <p class="card-text">
+            {{title}} in {{category.category_name}}   
+        </p>
+        <div class="card-footer bg-light">
+            <small class="text-muted">
+                Posted by {{user.username}}
+                <br>
+                Created on {{format_date created_at}}</small>
+        </div>
+    </div>
+</div>  
