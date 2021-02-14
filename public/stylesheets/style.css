@@ -45,6 +45,7 @@ html, body {
 body {
     background-image: linear-gradient(to top, var(--primary) 0%, var(--secondary) 100%);
     text-align: center;
+    overflow-x: hidden;
 }
 
 main {
@@ -74,10 +75,6 @@ main {
     text-align: center;
     text-decoration: none;
 }
-
-/* .login-form, .signup-form {
-    justify-content: center;
-} */
 
 .pretty-label {
     width: 100%;
@@ -111,9 +108,15 @@ main {
     border-radius: 25px;
     background-image: linear-gradient(to right, #7474BF 0%, #348AC7 51%, #7474BF 100%) !important;
 }
-.pretty-btn:hover{
+
+.pretty-btn:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     margin: 8px 10px 12px;
+}
+
+.pretty-btn:active, 
+.pretty-btn:focus { 
+    outline: none;
 }
 
 /* The side-panel menu */
@@ -132,7 +135,7 @@ main {
     flex-wrap: wrap;
     justify-content: center;
 }
-
+  
   /* The side-panel links */
 .side-panel a {
     padding: 5px;
@@ -142,7 +145,7 @@ main {
     display: block;
     transition: 0.3s;
 }
-
+  
 .side-panel a:hover {
     color: var(--dark);
 }
@@ -159,7 +162,7 @@ main {
     font-size: 20px;
     outline: 0;
 }
-
+  
 .side-panel .close-btn {
     position: absolute;
     top: 0;
@@ -168,30 +171,14 @@ main {
     margin-left: 50px;
 }
 
-<<<<<<< HEAD
 /* Style the button that is used to open the side-panel */
-=======
-.user-options {
-    width: 75%;
-    border-bottom: 1px solid var(--light-grey);
-    padding: 0;
-    margin-bottom: 15px;
-    height: 200px;
-}
-
-.category-list {
-    top: 0;
-}
-
-  /* Style the button that is used to open the side-panel */
->>>>>>> 9c03e362bf893415058d89b736c588ab200af91b
 .open-btn {
     font-size: 20px;
     cursor: pointer;
     color: var(--light-grey);
     padding: 10px;
 }
-
+  
 .open-btn:hover {
     background-color: var(--dark);
 }
@@ -215,4 +202,8 @@ main {
 .card-link, 
 .card-link:hover {
     color: var(--light-grey);
+}
+
+.hide {
+    display: none;
 }

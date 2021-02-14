@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Category, Message, Post, User } = require('../models');
+const { Op } = require('sequelize');
 
 router.get('/', (req, res) => {
     if (!req.session.loggedIn) {
@@ -13,7 +14,7 @@ router.get('/', (req, res) => {
             'title',
             'price',
             'description',
-            // add images/upload
+            'image_url',
             'created_at'
         ],
         include: [
@@ -66,7 +67,7 @@ router.get('/post/:id', (req, res) => {
             'title',
             'price',
             'description',
-            // add images/upload
+            'image_url',
             'created_at'
         ],
         include: [
@@ -124,7 +125,7 @@ router.get('/category/:category', (req, res) => {
             'title',
             'price',
             'description',
-            // add images/upload
+            'image_url',
             'created_at'
         ],
         include: [
@@ -161,8 +162,6 @@ router.get('/category/:category', (req, res) => {
             // serialize the data and pass to template
             const posts = dbPostData.map(post => post.get({ plain: true }));
 
-            console.log(posts)
-            
             res.render('homepage', { 
                 posts,
                 loggedIn: req.session.loggedIn

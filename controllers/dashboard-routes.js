@@ -13,7 +13,7 @@ router.get('/', withAuth, (req, res) => {
         .then(categoryData => {
             const categories = categoryData.map(category => category.get({ plain: true}));
             
-       
+
         Post.findAll({
         where:{
             user_id: req.session.user_id
@@ -23,7 +23,8 @@ router.get('/', withAuth, (req, res) => {
             'title',
             'description',
             'price',
-            'created_at'
+            'created_at',
+            'image_url'
         ],
         include: [
             {
@@ -46,7 +47,7 @@ router.get('/', withAuth, (req, res) => {
     })
     .then(postData => {
         const posts = postData.map(post => post.get({ plain: true}));
-        
+
         res.render('dashboard', { posts, categories, loggedIn: true});
     })
     .catch(err => {
@@ -63,7 +64,8 @@ router.get('/edit/:id', withAuth, (req,res) => {
             'title',
             'description',
             'price',
-            'created_at'
+            'created_at',
+            'image_url'
         ],
         include: [
             {
@@ -85,7 +87,7 @@ router.get('/edit/:id', withAuth, (req,res) => {
         if(userData) {
             const post = userData.get({ plain: true});
             
-            return res.render('edit-post', {
+            return res.render('edit-posts', {
                 post,
                 loggedIn: true
             });
