@@ -14,32 +14,29 @@
 <body>
     {{#if loggedIn}}
     <header>
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-light bg-light fixed-top">
             <div class="left-nav">
                 <div class="open-btn bg-light">&#9776;</div>
-                <form class="ml-3" id="search-form">
+                <span class="navbar-brand app-title ml-3"><a href="/">Something Special</a></span>
+            </div>
+             <form id="search-form">
                     <input type="text" name="search-input" class="form-control search-input" placeholder="Search for items!"> 
                     <button type="submit" name="search-btn" class="rounded fs-6 ml-1 pt-1 pb-2 pl-2 pr-2" id="search-btn" ><i class="bi bi-search"></i></button>
-                </form> 
-            </div>
-            <span class="navbar-brand app-title"><a href="/">Something Special</a></span>
+            </form> 
         </nav>
         
         <div id="side-panel" class="side-panel bg-light">
             <div class="close-btn">&times;</div> 
             <div>
+                <span class="greeting-msg">Hello, {{this.username}}!</span>
                 <a href="/">Home</a>
                 <a href="/dashboard">Dashboard</a>
                 <button id="logout" class="btn-no-style">Logout</button>
                 <hr>
-                <a href="/category/Apparel">Apparel</a> 
-                <a href="/category/Centerpieces">Centerpieces</a>
-                <a href="/category/Decor">Decor</a>
-                <a href="/category/Furniture">Furniture</a>
-                <a href="/category/Lighting">Lighting</a>
-                <a href="/category/Linens">Linens</a>
-                <a href="/category/Serving%20Ware">Serving Ware</a>
-                <a href="/category/Table%20Settings">Table Settings</a>        
+                {{#each categories}}
+                <a href="/category/{{category_name}}">{{category_name}}</a>
+                {{/each}}
+       
             </div>
         </div>
     </header>
