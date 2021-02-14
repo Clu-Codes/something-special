@@ -55,17 +55,17 @@ main {
 }
 
 .navbar {
-    position: fixed;
+    /* position: fixed; */
     z-index: 100;
     border-bottom: 1px solid var(--light-grey);
-    height: 65px;
     width: 100%;
 }
 
 .left-nav {
-    width: 50%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: start;
+    align-items: center;
 }
 
 #search-btn {
@@ -75,10 +75,6 @@ main {
     text-align: center;
     text-decoration: none;
 }
-
-/* .login-form, .signup-form {
-    justify-content: center;
-} */
 
 .pretty-label {
     width: 100%;
@@ -138,6 +134,11 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.greeting-msg {
+    color: var(--light-grey);
+    font-size: 20px;
 }
   
   /* The side-panel links */
@@ -210,4 +211,9 @@ main {
 
 .hide {
     display: none;
+}
+
+.card-image {
+    height: 35vh;
+    object-fit: cover;
 }

@@ -34,8 +34,10 @@ function renderResults(searchResults) {
     allPostsEl.classList.add('hide');
     searchResultsEl.classList.remove('hide');
 
+    searchRowEl.innerHTML = '';
+
     searchResults.forEach(post => {
-        searchRowEl.innerHTML = '';
+
 
         const colEl = document.createElement('div');
         colEl.classList.add('col');
@@ -51,7 +53,7 @@ function renderResults(searchResults) {
         anchorEl.appendChild(cardEl);
 
         const imgEl = document.createElement('img');
-        imgEl.classList.add('rounded-top');
+        imgEl.classList.add('rounded-top', 'card-image');
         imgEl.setAttribute('src', `${post.image_url}`);
         cardEl.appendChild(imgEl);
 
