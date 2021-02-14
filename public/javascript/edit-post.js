@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 async function editFormHandler(event) {
     event.preventDefault();
 
@@ -40,7 +42,6 @@ function previewFile() {
 function titlePreviewHandler(e) {
     e.preventDefault();
 
-
     const title = document.getElementById('title-edit').value.trim();
     const preview_title = document.getElementById('preview-title');
     
@@ -56,12 +57,49 @@ function descPreviewHandler(e) {
     const preview_desc = document.getElementById('preview-desc');
 
     preview_desc.innerHTML = description;
+};
+
+function pricePreviewHandler(e) {
+    e.preventDefault();
+
+    const price = document.getElementById('post-price').value;
+    const preview_desc = document.getElementById('preview-price');
+
+    preview_desc.innerHTML = `$${price}`;
+};
+
+async function categoryPreviewHandler(e) {
+    e.preventDefault();
+
+    const category =  document.querySelector('.post-category:checked').value;
+
+    const cat_name = await fetch(`api/category/${category}`, {
+        method: 'GET',
+        body: JSON.stringify({
+            category_name
+        }),
+        headers: {'Content-Type' : 'application/json'}
+    });
+    if (cat_name.ok) {
+        return cat_name;
+    } else {
+        alert(cat_name.statusText);
+    };
+
+    const preview_category = document.getElementById('preview-category');
+
+    preview_category.innerHTML = category;
+
+    console.log('teeeessssttttt');
 }
 
 
 
 
-console.log(document);
+
+
 document.getElementById('title-edit').addEventListener('keyup', titlePreviewHandler);
 document.getElementById('desc-edit').addEventListener('keyup', descPreviewHandler);
-document.querySelector('#nice-form').addEventListener('submit', editFormHandler);
+document.getElementById('post-price').addEventListener('keyup', pricePreviewHandler);
+document.querySelector('.post-category').addEventListener('click', categoryPreviewHandler); 
+document.querySelector('#edit-post').addEventListener('submit', editFormHandler);

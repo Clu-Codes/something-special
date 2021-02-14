@@ -61,34 +61,33 @@
       </div>
    </div> --}}
 
-{{!-- <link rel="stylesheet" href="/stylesheets/edit-posts.css" /> --}}
    <div class="row m-0">
-      <div class="container-fluid col-sm-12 col-md-6">
+      <div class="container-fluid col-sm-12 col-lg-6">
          <div class="row">
-            <div class="card text-center">
+            <div class="card w-100 text-center">
                <div class="card-header">
                   <h2>Edit Post</h2>
                </div>
                <div class="card-body center">
-                  <form class="new-post-form">
+                  <form id="edit-post">
                      {{!-- title --}}
                      <div class="row center">
                         <label for="post-title" class="pretty-label form-label">Title:</label>
-                        <input type="text" id="post-title" name="post-title" class="form-control w-100" />
+                        <input type="text" id="title-edit" name="post-title" class="form-control w-100" />
                      </div>
 
                      {{!-- file upload --}}
                      <div class="row center">
                         <label for="file-button" class="pretty-label">Product Image:</label>
-                        <img class="w-100 mb-3" id="create-image">
+                        {{!-- img class was here --}}
                         <progress value="0" max="100" class="w-100" id="uploader">0%</progress>
-                        <input type="file" value="upload" class="p-1 form-control w-100" id="file-button" />
+                        <input type="file" onchange="previewFile()" value="upload" class="p-1 form-control w-100" id="file-button" />
                      </div>
 
                      {{!-- description --}}
                      <div class="row center">
                         <label for="post-text" class="pretty-label">Product Description:</label>
-                        <textarea class="form-control w-100" id="post-text" name="post-text"></textarea>
+                        <textarea class="form-control w-100" id="desc-edit" name="post-text"></textarea>
                      </div>
 
                      {{!-- price --}}
@@ -121,21 +120,33 @@
          </div>
       </div>
 
-      <div class="container-fluid col-sm-12 col-md-6">
+      <div class="container-fluid col-sm-12 col-lg-6">
          <div class="row">
-            <div class="card text-center">
+            <div class="card w-100 text-center">
                <div class="card-header">
-                 <h2>Preview Post</h2>
+                  <h2>Preview Post</h2>
                </div>
-               <div class="card  mb-3">
-                  <img src="https://via.placeholder.com/600x300.png?text=Visit+testURL.com" class="card-img-top" height="525" width="500" alt="Image preview">
-                  <div class="card-body">
-                     <h5 class="card-title" id="preview-title">Post Title Example</h5>
-                     <p class="card-text" id="preview-desc">This is the description for your product's post. As you
-                        write information in the text area above, it will fill in here.</p>
+               <div class="card-body rounded bg-light">
+                  {{!-- <img class="w-100 mb-3" id="create-image"> --}}
+                  <img src="https://via.placeholder.com/600x300.png?text=Visit+testURL.com" class="card-img-top w-100 mb-3" alt="Image preview">
+                  <h5 class="card-title" id="preview-title">Post Title Example</h5>
+                  <p class="card-text" id="preview-desc">
+                     This is the description for your product's post. As you
+                     write information in the text area above, it will fill in here.
+                  </p>
+                  <h5 class="card-price" id="preview-price">$Test1000</h5>
+                  <div class="card-footer bg-light">
+                     <small class="text-muted">
+                        <span class="edit-post-category" id="preview-category">Test Category</span>
+                        <br>
+                        Posted by {{user.username}}
+                        <br>
+                        Created on {{format_date created_at}}</small>
                   </div>
                </div>
             </div>
          </div>
       </div>
    </div>
+<script src="/javascript/edit-post.js"></script>
+

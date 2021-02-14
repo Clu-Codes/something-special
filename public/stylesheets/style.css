@@ -217,3 +217,7 @@ main {
     height: 35vh;
     object-fit: cover;
 }
+
+.row {
+    padding: 20px;
+}
