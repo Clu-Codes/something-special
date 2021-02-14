@@ -84,25 +84,21 @@
         </div>
 
         <div class="row">
-            {{!-- {{#if messages.length}} --}}
             <div class="card text-center w-100">
                 <div class="card-header">
                     Your Messages
                 </div>
                 <div class="card-container">
                     <div class="row card-row">
-                        <ol>
-                            {{#each messages as |message|}}
-                            <li> {{> messages message}}</li>
-                            {{/each}}
-                        </ol>
-
+                        {{#each messages}}
+                        {{>messages}}
+                        {{/each}}
+                        
                         {{#unless messages}}
                         You haven't posted any messages!
                         {{/unless}}
                     </div>
                 </div>
-                {{!-- {{/if}} --}}
             </div>
         </div>
     </div>
@@ -110,9 +106,6 @@
         
 <script src="/javascript/add-post.js"></script>
 
-
-{{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}} >
-        <label for="category{{category.id}}">{{category.name}}</label> --}}
 
 {{> firebase}}
 {{!-- upload logic must be defined under firebase initialization --}}

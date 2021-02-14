@@ -29,7 +29,7 @@ router.get('/', withAuth, (req, res) => {
                 {
                     model: Message,
                     attributes: ['id', 'message_text', 'post_id', 'user_id', 'created_at'],
-                    include:{
+                    include: {
                         model: User,
                         attributes:['username']    
                     }
@@ -47,17 +47,44 @@ router.get('/', withAuth, (req, res) => {
         .then(postData => {
             const posts = postData.map(post => post.get({ plain: true}));
 
-            res.render('dashboard', { 
-                posts, 
-                categories, 
-                username: req.session.username,
-                loggedIn: true
+            Message.findAll({
+                where: {
+                    user_id: req.session.user_id
+                },
+                attributes: [
+                    'id',
+                    'message_text', 
+                    'user_id',
+                    'post_id',
+                    'created_at'
+                ],
+                include: {
+                    model: Post,
+                    attributes: ['id', 'title', 'description'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
+                }
+            })
+            .then(messageData =>{
+                const messages = messageData.map(message => message.get({ plain: true }));
+
+                console.log(messages)
+
+                res.render('dashboard', { 
+                    categories,
+                    posts,
+                    messages,
+                    username: req.session.username,
+                    loggedIn: true
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
             });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        })
+        });
     });
 });
 

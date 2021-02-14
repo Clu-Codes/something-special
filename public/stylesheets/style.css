@@ -217,3 +217,13 @@ main {
     height: 35vh;
     object-fit: cover;
 }
+
+/* messages styles */
+/* .message-card {
+    background-color: rgba(251, 194, 235, .5);
+} */
+
+.message-card a {
+    text-decoration: none;
+    color: var(--light-grey)
+}
