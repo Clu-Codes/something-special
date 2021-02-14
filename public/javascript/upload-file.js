@@ -1,6 +1,6 @@
 // get elements
 const uploader = document.getElementById('uploader');
-const fileButton = document.getElementById('fileButton');
+const fileButton = document.getElementById('file-button');
 
 // listen for file selection
 fileButton.addEventListener('change', function (e) {
@@ -26,7 +26,7 @@ fileButton.addEventListener('change', function (e) {
                     // delete console.log before production
                     console.log(url)
                     // inserted into an <img> element
-                    var img = document.getElementById('createImage');
+                    var img = document.getElementById('create-image');
                     img.setAttribute('src', url);
                 })
         }
