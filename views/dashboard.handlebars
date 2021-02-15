@@ -3,18 +3,18 @@
 </head>
 
 <div class="row m-0">
-    <div class="container-fluid col-sm-12 col-md-6">
+    <div class="container-fluid col-sm-12 col-lg-6">
         <div class="row">
-            <div class="card text-center">
+            <div class="card text-center w-100">
                 <div class="card-header">
                     Create New Post
                 </div>
                 <div class="card-body center">
-                    <form class="new-post-form">
+                    <form class="new-post-form w-100">
                         {{!-- title --}}
                         <div class="row center">
                             <label for="post-title" class="pretty-label form-label">Title:</label>
-                            <input type="text" id="post-title" name="post-title" class="form-control w-100"/>
+                            <input type="text" id="post-title" name="post-title" class="form-control w-100" />
                         </div>
 
                         {{!-- file upload --}}
@@ -34,50 +34,46 @@
                         {{!-- price --}}
                         <div class="row center">
                             <label for="post-price" class="pretty-label">Product Price:</label>
-                            <input type="number" class="form-control w-100" id="post-price" name="post-price" min="0" value="0.00" step="01"/>
+                            <input type="number" class="form-control w-100" id="post-price" name="post-price" min="0"
+                                value="0.00" step="01" />
                         </div>
 
                         {{!-- category --}}
-                        <div class="row center pb-0">
+                        <div class="row center">
                             <label for="post-category" class="pretty-label">Category:</label>
-                        </div>
-                        <div class="row pt-0">
-                            {{#each categories as |category|}}
-                            <div class="col-sm-1 col-md-4">
-
-                            <input type="radio" id="category-{{category.id}}" class="post-category" name="post-category" value={{category.id}} >
-                            <label for="category-{{category.id}}">{{category.category_name}}</label>
-                            </div>
-                            {{/each}}
-
+                                <select class="form-control w-100" id="edit-post-category">
+                                    {{#each categories as |category|}}
+                                    <option class="w-100" id="post-category" value="{{category.id}}">{{category.category_name}}</option>
+                                    {{/each}}
+                                </select>
                         </div>
 
-                        <button type="submit" id="post-create" class="pretty-btn mb-4">Create</button>
+                        <button type="submit" id="post-create" class="styled-btn mb-4">Create</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid col-sm-12 col-md-6">
+    <div class="container-fluid col-sm-12 col-lg-6">
         <div class="row">
-            <div class="card text-center">
+            <div class="card text-center w-100">
                 <div class="card-header">
                     Your Posts
                 </div>
                 <div class="card-container all-posts">
                     <div class="row card-row row-cols-1 row-cols-sm-2 d-flex justify-content-center">
-                    {{#each posts}}
-                    <div class="col">
-                        <a class="card-link" href="/dashboard/edit/{{id}}">
-                        {{>post-info}}
-                        </a>
-                    </div>
-                    {{/each}}
+                        {{#each posts}}
+                        <div class="col">
+                            <a class="card-link" href="/dashboard/edit/{{id}}">
+                                {{>post-info}}
+                            </a>
+                        </div>
+                        {{/each}}
                     </div>
 
                     {{#unless posts}}
-                        You haven't made any posts!
+                    You haven't made any posts!
                     {{/unless}}
                 </div>
             </div>
@@ -107,12 +103,13 @@
         </div>
     </div>
 </div>
-        
+
 <script src="/javascript/add-post.js"></script>
-
-
-{{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}} >
-        <label for="category{{category.id}}">{{category.name}}</label> --}}
+{{#if posts}}
+<script src="/javascript/delete-post.js"></script>
+{{/if}}
+{{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}}>
+<label for="category{{category.id}}">{{category.name}}</label> --}}
 
 {{> firebase}}
 {{!-- upload logic must be defined under firebase initialization --}}
