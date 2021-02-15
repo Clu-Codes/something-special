@@ -17,13 +17,13 @@
                 if (filteredTag.length > 0)
                     addTag(filteredTag);
             });
-            // need to clear tag after enter or , (currently only on ,)
+            // clears input field 
             mainInput.value = '';
         }
     });
 
     // pressing enter adds tag
-    mainInput.addEventListener('keydown', function (e) {
+    mainInput.addEventListener('keyup', function (e) {
         let keyCode = e.which || e.keyCode;
         let enteredTags = mainInput.value.split();
         if (keyCode === 13 && mainInput.value.length === 0) {
@@ -32,8 +32,16 @@
                 if (filteredTag.length > 0)
                     addTag(filteredTag);
             });
-            // need to clear tag after enter
+            // clears input field
             mainInput.value = '';
+        }
+    });
+
+    // pressing backspace deletes last tag
+    mainInput.addEventListener('keydown', function (e) {
+        let keyCode = e.which || e.keyCode;
+        if (keyCode === 8 && mainInput.value.length === 0 && tags.length > 0) {
+            removeTag(tags.length - 1);
         }
     });
 

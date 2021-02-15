@@ -16,19 +16,22 @@
     padding: 10px;
 }
 
-input#file-button {
-    background-image: linear-gradient(to right, #7474BF 0%, #348AC7 51%, #7474BF 100%) !important;
+input#file-button { 
     text-transform: uppercase;
-    margin: 10px;
     font-weight: bolder;
     /* text align center does not do anything */
     text-align: center !important;
-    background-size: 200% auto;
-    color: #FFF;
-    box-shadow: 10px 10px 5px rgba(0,0,0,0.12), 0 1px 5px rgba(0,0,0,0.24) !important;
     display: inline-block;
-    border-radius: 25px;
-}
+    border-radius: 15px;
+    background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    padding: 8px;
+    width: 8rem;
+    border-style: none;
+    color: white;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.12), 1px 2px 5px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border-color: var(--light-grey);
+} 
 
 input#file-button:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -36,31 +39,37 @@ input#file-button:hover {
 }
 
 input[type=file]::-webkit-file-upload-button {
-    border: 2px solid #6c5ce7;
+    border: 2px solid #ff9a9e;
+    /* #6c5ce7 */
     border-radius: .2em;
-    background-color: #a29bfe;
+    background-color: #fbc2eb;
+    /* #a29bfe */
     transition: 1s;
     border-radius: 25px;
-    /* text align center does not do anything */
+    /* text align/align items center does not do anything */
+    align-items: center;
     text-align: center;
     text-transform: uppercase;
     color: #FFF;
 }
 
 input[type=file]::-webkit-file-upload-button:hover {
-    background-color: #81ecec;
-    border: 2px solid #00cec9;
+    background-color: #a29bfe;
+    border: 2px solid #6c5ce7;
 }
 
-/* Default style for progress bar seems to match theme better */
-/* must find proper selector for progress element */
-
-/* #uploader {
+/* progress bar styles */
+#uploader {
     -webkit-appearance: none;
     appearance: none;
-    text-align: center;
-    color:white;
-} */
+    padding: 5px;
+    margin: 10px;
+}
+
+::-webkit-progress-value {
+    background-color: #a29bfe;
+    border: 2px solid #6c5ce7;
+}
 
 /* tags style */
 .tags-input {
@@ -93,7 +102,7 @@ input[type=file]::-webkit-file-upload-button:hover {
 }
 
 .tags-input .tag .close:hover::after {
-color: red;
+color: tomato;
 }
 
 .tags-input .main-input {
