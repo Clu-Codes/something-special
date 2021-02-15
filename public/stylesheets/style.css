@@ -221,3 +221,7 @@ main {
 .row {
     padding: 20px;
 }
+
+.edit-post-category {
+    font-size: 16px;
+}

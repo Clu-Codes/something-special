@@ -81,6 +81,7 @@
                         <label for="file-button" class="pretty-label">Product Image:</label>
                         {{!-- img class was here --}}
                         <progress value="0" max="100" class="w-100" id="uploader">0%</progress>
+                        {{!-- preview file to load img for preview section below --}}
                         <input type="file" onchange="previewFile()" value="upload" class="p-1 form-control w-100" id="file-button" />
                      </div>
 
@@ -102,17 +103,12 @@
                         <label for="post-category" class="pretty-label">Category:</label>
                      </div>
                      <div class="row pt-0">
-                        {{#each categories as |category|}}
-                        <div class="col-sm-1 col-md-4">
-
-                           <input type="radio" id="category-{{category.id}}" class="post-category" name="post-category"
-                              value={{category.id}}>
-                           <label for="category-{{category.id}}">{{category.category_name}}</label>
-                        </div>
-                        {{/each}}
-
+                        <select class="form-control w-100" id="edit-post-category">
+                           {{#each categories as |category|}}
+                           <option class="w-100">{{category.category_name}}</option>
+                           {{/each}}
+                        </select>
                      </div>
-
                      <button type="submit" id="post-create" class="pretty-btn mb-4">Create</button>
                   </form>
                </div>
@@ -127,21 +123,19 @@
                   <h2>Preview Post</h2>
                </div>
                <div class="card-body rounded bg-light">
-                  {{!-- <img class="w-100 mb-3" id="create-image"> --}}
-                  <img src="https://via.placeholder.com/600x300.png?text=Visit+testURL.com" class="card-img-top w-100 mb-3" alt="Image preview">
-                  <h5 class="card-title" id="preview-title">Post Title Example</h5>
+                  <img src="{{post.image_url}}" class="card-img-top w-100 mb-3" alt="Image preview">
+                  <h5 class="card-title" id="preview-title">{{post.title}}</h5>
                   <p class="card-text" id="preview-desc">
-                     This is the description for your product's post. As you
-                     write information in the text area above, it will fill in here.
+                     {{post.description}}
                   </p>
-                  <h5 class="card-price" id="preview-price">$Test1000</h5>
+                  <h5 class="card-price" id="preview-price">${{post.price}}</h5>
                   <div class="card-footer bg-light">
                      <small class="text-muted">
-                        <span class="edit-post-category" id="preview-category">Test Category</span>
+                        <span class="edit-post-category" id="preview-category">{{post.category.category_name}}</span>
                         <br>
-                        Posted by {{user.username}}
+                        Posted by {{post.user.username}}
                         <br>
-                        Created on {{format_date created_at}}</small>
+                        Created on {{format_date post.created_at}}</small>
                   </div>
                </div>
             </div>
