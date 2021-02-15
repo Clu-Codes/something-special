@@ -9,6 +9,7 @@
     mainInput.setAttribute('type', 'text');
     mainInput.classList.add('main-input', 'form-control', 'w-100');
     mainInput.addEventListener('input', function () {
+        // need to figure a way to add the enter key, currently split on , only
         let enteredTags = mainInput.value.split(',');
         if (enteredTags.length > 1) {
             enteredTags.forEach(function (t) {
@@ -16,7 +17,7 @@
                 if (filteredTag.length > 0)
                     addTag(filteredTag);
             });
-            // need to clear tag after enter or ,
+            // need to clear tag after enter or , (currently only on ,)
             mainInput.value ='';
         }
     });
@@ -32,7 +33,8 @@
     el.appendChild(mainInput);
     el.appendChild(hiddenInput);
 
-    addTag('hello!');
+    //test tag
+    // addTag('hello!');
 
     function addTag(text) {
         let tag = {
