@@ -1,0 +1,9 @@
+<div>
+    <p>text</p>
+    {{#if loggedIn}}
+    <p>text2</p>
+    {{#each chat}}
+    <p>{{user.id}} said {{chat_text}} on {{post.title}}</p>
+    {{/each}}
+    {{/if}}
+</div>

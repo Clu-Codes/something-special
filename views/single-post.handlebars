@@ -1,7 +1,15 @@
 {{> post-info post}}
 
+
+
 {{#if loggedIn}}
+    
+    <div>
+        <button id="chat" type="submit">Message Author</button>
+    </div>
+
 <form class="message-form">
+    
     <div>
         <textarea name="message-body"></textarea>
     </div>

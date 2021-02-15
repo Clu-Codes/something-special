@@ -1,0 +1,22 @@
+{{#if loggedIn}}
+<form class="chat-form">
+
+    <div>
+        {{post.title}}
+    </div>    
+    <div id="recipient">
+        {{post.user.username}}
+    </div>
+    <div>
+        <textarea name="chat-body" id="chat-text"></textarea>
+    </div>
+
+    <div>
+        <button type="submit" class="pretty-btn">Direct Message</button>
+    </div>
+</form>
+{{/if}}
+
+{{#unless loggedIn}}
+<p>You must be logged in to direct message.</p>
+{{/unless}}

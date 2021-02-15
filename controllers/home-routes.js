@@ -42,7 +42,7 @@ router.get('/', (req, res) => {
                 },
                 {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['id','username']
                 },
                 {
                     model: Category,
@@ -57,6 +57,7 @@ router.get('/', (req, res) => {
                 res.render('homepage', {
                     posts,
                     categories,
+                    user_id: req.session.user_id,
                     username: req.session.username,
                     loggedIn: req.session.loggedIn
                 });

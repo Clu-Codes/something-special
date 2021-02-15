@@ -26,4 +26,16 @@ async function commentFormHandler(event) {
     }
 }
 
+async function chatButtonHandler(event) {
+    event.preventDefault();
+
+    const post_id = window.location.toString().split('/')[
+        window.location.toString().split('/').length-1
+    ];
+
+    document.location.replace('/chats/direct-message/' + post_id );
+    
+}
+
 document.querySelector('.message-form').addEventListener('submit', commentFormHandler);
+document.querySelector('#chat').addEventListener('click', chatButtonHandler);
