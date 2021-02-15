@@ -1,7 +1,7 @@
 [].forEach.call(document.getElementsByClassName('tags-input'), function (el) {
     let hiddenInput = document.createElement('input'),
         mainInput = document.createElement('input');
-        tags = [];
+    tags = [];
 
     hiddenInput.setAttribute('type', 'hidden');
     hiddenInput.setAttribute('name', el.getAttribute('data-name'));
@@ -18,15 +18,22 @@
                     addTag(filteredTag);
             });
             // need to clear tag after enter or , (currently only on ,)
-            mainInput.value ='';
+            mainInput.value = '';
         }
     });
 
-    // pressing backspace deletes last tag
+    // pressing enter adds tag
     mainInput.addEventListener('keydown', function (e) {
         let keyCode = e.which || e.keyCode;
-        if (keyCode === 8 && mainInput.value.length === 0 && tags.length > 0) {
-            removeTag(tags.length - 1);
+        let enteredTags = mainInput.value.split();
+        if (keyCode === 13 && mainInput.value.length === 0) {
+            enteredTags.forEach(function (t) {
+                let filteredTag = filterTag(t);
+                if (filteredTag.length > 0)
+                    addTag(filteredTag);
+            });
+            // need to clear tag after enter
+            mainInput.value = '';
         }
     });
 
@@ -34,7 +41,7 @@
     el.appendChild(hiddenInput);
 
     //test tag
-    // addTag('hello!');
+    addTag('hello!');
 
     function addTag(text) {
         let tag = {
@@ -58,14 +65,14 @@
         refreshTag();
     }
 
-    function removeTag (index) {
+    function removeTag(index) {
         let tag = tags[index];
-        tags.splice(index, 1); 
+        tags.splice(index, 1);
         el.removeChild(tag.element);
         refreshTag();
     }
 
-    function refreshTag () {
+    function refreshTag() {
         let tagsList = [];
         tags.forEach(function (t) {
             tagsList.push(t.text);
@@ -73,7 +80,7 @@
         hiddenInput.value = tagsList.join(',');
     }
 
-    function filterTag (tag) {
+    function filterTag(tag) {
         //current filter removes all puncutation besides - and _ and leave spaces, trim all white space of edges and replace all remaining white spaces w/ -
         return tag.replace(/[^\w -]/g, '').trim().replace(/\W+/g, '-');
     }
