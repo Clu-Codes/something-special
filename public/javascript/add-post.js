@@ -5,7 +5,7 @@ async function newFormHandler(event) {
     const description = document.querySelector('#post-text').value;
     const price = document.querySelector('#post-price').value;
     const image = document.querySelector('#create-image').src;
-    const category_id =  document.querySelector('.post-category:checked').value;
+    const category_id = document.getElementById('post-category').value;
     
     // delete console.log before production
     console.log(image)

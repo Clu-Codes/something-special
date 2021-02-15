@@ -5,12 +5,12 @@
 <div class="row m-0">
     <div class="container-fluid col-sm-12 col-lg-6">
         <div class="row">
-            <div class="card text-center">
+            <div class="card text-center w-100">
                 <div class="card-header">
                     Create New Post
                 </div>
                 <div class="card-body center">
-                    <form class="new-post-form">
+                    <form class="new-post-form w-100">
                         {{!-- title --}}
                         <div class="row center">
                             <label for="post-title" class="pretty-label form-label">Title:</label>
@@ -47,22 +47,16 @@
                         </div>
 
                         {{!-- category --}}
-                        <div class="row center pb-0">
+                        <div class="row center">
                             <label for="post-category" class="pretty-label">Category:</label>
-                        </div>
-                        <div class="row pt-0">
-                            {{#each categories as |category|}}
-                            <div class="col-sm-1 col-md-4">
-
-                                <input type="radio" id="category-{{category.id}}" class="post-category"
-                                    name="post-category" value={{category.id}}>
-                                <label for="category-{{category.id}}">{{category.category_name}}</label>
-                            </div>
-                            {{/each}}
-
+                                <select class="form-control w-100" id="edit-post-category">
+                                    {{#each categories as |category|}}
+                                    <option class="w-100" id="post-category" value="{{category.id}}">{{category.category_name}}</option>
+                                    {{/each}}
+                                </select>
                         </div>
 
-                        <button type="submit" id="post-create" class="pretty-btn mb-4">Create</button>
+                        <button type="submit" id="post-create" class="styled-btn mb-4">Create</button>
                     </form>
                 </div>
             </div>
@@ -71,7 +65,7 @@
 
     <div class="container-fluid col-sm-12 col-lg-6">
         <div class="row">
-            <div class="card text-center">
+            <div class="card text-center w-100">
                 <div class="card-header">
                     Your Posts
                 </div>
@@ -119,9 +113,21 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 <script src="/javascript/add-post.js"></script>
 <script src="/javascript/tags.js"></script>
+=======
+<<<<<<< HEAD
+=======
+<script src="/javascript/add-post.js"></script>
+{{#if posts}}
+<script src="/javascript/delete-post.js"></script>
+{{/if}}
+{{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}}>
+<label for="category{{category.id}}">{{category.name}}</label> --}}
+>>>>>>> 95bd86a4aeb64cdb97d913e6b4fa15f7a7538f6f
 
+>>>>>>> feature/delete-post
 {{> firebase}}
 {{!-- upload logic must be defined under firebase initialization --}}
 <script src="/javascript/upload-file.js"></script>
