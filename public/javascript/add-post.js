@@ -4,9 +4,10 @@ async function newFormHandler(event) {
     const title = document.querySelector('input[name="post-title"]').value;
     const description = document.querySelector('#post-text').value;
     const price = document.querySelector('#post-price').value;
-    const image = document.querySelector('#createImage').src;
+    const image = document.querySelector('#create-image').src;
     const category_id =  document.querySelector('.post-category:checked').value;
     
+    // delete console.lof before production
     console.log(image)
     const response = await fetch(`/api/posts`, {
         method: 'POST',
