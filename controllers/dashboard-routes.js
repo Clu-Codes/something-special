@@ -122,6 +122,10 @@ router.get('/edit/:id', withAuth, (req,res) => {
                 {
                     model: User,
                     attributes: ['username']
+                },
+                {
+                    model: Category,
+                    attributes: ['category_name']
                 }
             ]
         })
