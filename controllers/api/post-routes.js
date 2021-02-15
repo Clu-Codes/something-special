@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, User, Message, Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', (req,res) => {
+router.get('/', (req, res) => {
     Post.findAll({
         attributes:[
             'id',
@@ -39,7 +39,7 @@ router.get('/', (req,res) => {
     });
 });
 
-router.get('/:id', (req,res) => {
+router.get('/:id', (req, res) => {
     Post.findOne({
         where: {
             id:req.params.id
@@ -82,8 +82,7 @@ router.get('/:id', (req,res) => {
     });
 });
 
-router.post('/', withAuth, (req,res) => {
-    console.log(req.body)
+router.post('/', withAuth, (req, res) => {
     Post.create({
         title: req.body.title,
         price: req.body.price,
@@ -99,14 +98,13 @@ router.post('/', withAuth, (req,res) => {
     });
 });
 
-router.put('/:id', withAuth, (req,res) => {
+router.put('/:id', withAuth, (req, res) => {
     Post.update(
         {
            title: req.body.title,
            description: req.body.description,
            category: req.body.category_name,
            price: req.body.price
-            //
         },
         {
             where:{
