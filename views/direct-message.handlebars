@@ -4,7 +4,7 @@
     <div>
         {{post.title}}
     </div>    
-    <div id="recipient">
+    <div id="recipient" value={{post.user.id}}>
         {{post.user.username}}
     </div>
     <div>
@@ -15,6 +15,11 @@
         <button type="submit" class="pretty-btn">Direct Message</button>
     </div>
 </form>
+
+    <div>
+        {{chat.chat_text}}
+    </div>
+
 {{/if}}
 
 {{#unless loggedIn}}

@@ -31,13 +31,14 @@ router.get('/:id', withAuth, (req, res) =>{
         },
         {
             model:Post,
-            attributes:['title']
+            attributes:['id','title']
         }
     ] 
     })
     .then(chatData => {
+        console.log(chatData);
         const chats = chatData.map(chat => chat.get({ plain: true}));
-        console.log(req.session);
+        
         res.render('feed', { 
             chats,
             categories,
@@ -56,6 +57,16 @@ router.get('/:id', withAuth, (req, res) =>{
 
 
 router.get('/direct-message/:id', (req,res) => {
+    Category.findAll({
+        attributes: [
+            'id',
+            'category_name'
+        ]
+    })
+    .then(categoryData => {
+        const categories = categoryData.map(category => category.get({ plain: true}));
+        
+
     Post.findOne({
         where: {
             id:req.params.id
@@ -78,11 +89,23 @@ router.get('/direct-message/:id', (req,res) => {
             },
             {
                 model: User,
-                attributes:['username']
+                attributes:['id','username']
             },
             {
                 model: Category,
                 attributes: ['category_name']
+            },
+            {
+                model:Chat,
+                attributes:['id','post_id','user_id','chat_text', 'recipient'],
+                include: [{
+                    model: User,
+                    attributes:['username']
+                },
+                {
+                    model: Post,
+                    attributes:['title']
+                }]
             }
         ]
     })
@@ -94,7 +117,8 @@ router.get('/direct-message/:id', (req,res) => {
                 // serialize the data and pass to template
                 const post = postData.get({ plain: true });
                 
-                res.render('direct-message', { 
+                res.render('direct-message', {
+                    categories, 
                     post,
                     username: req.session.username,
                     loggedIn: req.session.loggedIn
@@ -105,5 +129,7 @@ router.get('/direct-message/:id', (req,res) => {
                 res.status(500).json(err);
             });
     });
+});
+
 
 module.exports = router;

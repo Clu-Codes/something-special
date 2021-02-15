@@ -28,7 +28,7 @@
         <div id="side-panel" class="side-panel bg-light">
             <div class="close-btn">&times;</div> 
             <div>
-                <span class="greeting-msg">Hello, {{this.username}}!</span>
+                <span class="greeting-msg" >Hello, {{this.username}}!</span>
                 <a href="/">Home</a>
                 <a href="/dashboard">Dashboard</a>
                 <button id="logout" class="btn-no-style">Logout</button>
@@ -36,8 +36,6 @@
                 {{#each categories}}
                 <a href="/category/{{category_name}}">{{category_name}}</a>
                 {{/each}}
-                <hr>
-                <a href="/chats/{{this.user_id}}">Direct Messages</a>
             </div>
         </div>
     </header>

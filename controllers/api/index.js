@@ -8,7 +8,7 @@ const chatRoutes = require('./chat-routes');
 router.use('/users', userRoutes);
 router.use('/messages', messageRoutes);
 router.use('/posts', postRoutes);
-router.use('/chat', chatRoutes);
+router.use('/chats', chatRoutes);
 
 
 module.exports = router;

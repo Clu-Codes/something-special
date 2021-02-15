@@ -2,8 +2,6 @@ const router = require('express').Router();
 const { Message } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-<<<<<<< HEAD
-=======
 // get all comments
 router.get('/', (req, res) => {
     Message.findAll({
@@ -79,5 +77,4 @@ router.delete('/:id', withAuth, (req, res) => {
 });
 
 
->>>>>>> 6dd0d0f101953b0546c07c5895259270abee9242
 module.exports = router;

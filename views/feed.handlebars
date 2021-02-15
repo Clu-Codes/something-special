@@ -1,1 +1,10 @@
-{{>chat chat}}
+<div>
+    <p>text</p>
+    {{#if loggedIn}}
+    <p>text2</p>
+    {{chats}}
+    {{#each chats}}
+    <p>{{user.id}} said {{chat_text}} on {{post.title}}</p>
+    {{/each}}
+    {{/if}}
+</div>
