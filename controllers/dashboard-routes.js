@@ -42,6 +42,10 @@ router.get('/', withAuth, (req, res) => {
         })
         .then(postData => {
             const posts = postData.map(post => post.get({ plain: true}));
+            
+            posts.forEach(post => {
+                    post.myPost = true;
+            });
 
             // gets all messages created by logged in user
             Message.findAll({
