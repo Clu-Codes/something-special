@@ -52,8 +52,8 @@ input[type=file]::-webkit-file-upload-button:hover {
     border: 2px solid #00cec9;
 }
 
-
 /* Default style for progress bar seems to match theme better */
+/* must find proper selector for progress element */
 
 /* #uploader {
     -webkit-appearance: none;
@@ -61,3 +61,42 @@ input[type=file]::-webkit-file-upload-button:hover {
     text-align: center;
     color:white;
 } */
+
+/* tags style */
+.tags-input {
+    display: inline-block;
+}
+
+.tags-input .tag {
+    padding:.5em .75em;
+    display:inline-block;
+    margin: .25em .1em;
+    font-size: 20px;
+    background-color:#ddd;
+    transition: all .1 linear;
+    cursor: pointer;
+    font-weight:bold;
+    border-radius: 25px;
+}
+
+.tags-input .tag:hover {
+    background-color: #a29bfe;
+    color: white;
+}
+
+.tags-input .tag .close::after {
+    content:'x';
+    font-weight:bold;
+    display: inline-block;
+    transform: scale(1.4);
+    margin-left: .75em;
+}
+
+.tags-input .tag .close:hover::after {
+color: red;
+}
+
+.tags-input .main-input {
+    outline: 0;
+    padding: .5em .1em;
+}

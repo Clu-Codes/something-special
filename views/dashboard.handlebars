@@ -25,6 +25,14 @@
                             <input type="file" value="upload" class="p-1 form-control w-100" id="file-button" />
                         </div>
 
+                        {{!-- tags --}}
+                        <div class="row center tags-input" data-name="tags-input">
+                            <label for="post-tags" class="pretty-label">Tags:</label>
+                            {{!-- <span class="tag">Sample<span class="close"></span></span> --}}
+                            {{!-- <input type="hidden" name="tags-input"/>
+                            <input class="main-input form-control w-100" id="post-tags" name="post-tags" type="text"/> --}}
+                        </div>
+
                         {{!-- description --}}
                         <div class="row center">
                             <label for="post-text" class="pretty-label">Product Description:</label>
@@ -112,6 +120,7 @@
 </div>
 
 <script src="/javascript/add-post.js"></script>
+<script src="/javascript/tags.js"></script>
 
 {{> firebase}}
 {{!-- upload logic must be defined under firebase initialization --}}
