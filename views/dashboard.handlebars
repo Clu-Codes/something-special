@@ -1,7 +1,3 @@
-<head>
-    <link rel="stylesheet" href="/stylesheets/upload.css" />
-</head>
-
 <div class="row m-0">
     <div class="container-fluid col-sm-12 col-lg-6">
         <div class="row">
@@ -28,9 +24,6 @@
                         {{!-- tags --}}
                         <div class="row center tags-input" data-name="tags-input">
                             <label for="post-tags" class="pretty-label">Tags:</label>
-                            {{!-- <span class="tag">Sample<span class="close"></span></span> --}}
-                            {{!-- <input type="hidden" name="tags-input"/>
-                            <input class="main-input form-control w-100" id="post-tags" name="post-tags" type="text"/> --}}
                         </div>
 
                         {{!-- description --}}
@@ -113,21 +106,14 @@
     </div>
 </div>
 
-<<<<<<< HEAD
 <script src="/javascript/add-post.js"></script>
 <script src="/javascript/tags.js"></script>
-=======
-<<<<<<< HEAD
-=======
-<script src="/javascript/add-post.js"></script>
 {{#if posts}}
 <script src="/javascript/delete-post.js"></script>
 {{/if}}
 {{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}}>
 <label for="category{{category.id}}">{{category.name}}</label> --}}
->>>>>>> 95bd86a4aeb64cdb97d913e6b4fa15f7a7538f6f
 
->>>>>>> feature/delete-post
 {{> firebase}}
 {{!-- upload logic must be defined under firebase initialization --}}
 <script src="/javascript/upload-file.js"></script>

@@ -9,7 +9,6 @@
     mainInput.setAttribute('type', 'text');
     mainInput.classList.add('main-input', 'form-control', 'w-100');
     mainInput.addEventListener('input', function () {
-        // need to figure a way to add the enter key, currently split on , only
         let enteredTags = mainInput.value.split(',');
         if (enteredTags.length > 1) {
             enteredTags.forEach(function (t) {
@@ -21,7 +20,6 @@
             mainInput.value = '';
         }
     });
-// mainInput.value.length > 0
 
     // pressing enter adds tag
     mainInput.addEventListener('keyup', function (e) {
