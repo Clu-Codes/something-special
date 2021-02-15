@@ -232,7 +232,6 @@ main {
     font-size: 16px;
 }
 
-<<<<<<< HEAD
 .fake-btn,
 .fake-btn:hover,
 .fake-btn:visited {
@@ -241,7 +240,6 @@ main {
     text-decoration: none;
     display: block
 }
-=======
 .styled-btn {
     border-radius: 15px;
     background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
@@ -273,4 +271,3 @@ main {
 .edit-delete-btn:hover {
     background-color: tomato;
 }
->>>>>>> feature/delete-post
