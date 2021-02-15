@@ -21,17 +21,26 @@
             mainInput.value = '';
         }
     });
+// mainInput.value.length > 0
 
     // pressing enter adds tag
     mainInput.addEventListener('keyup', function (e) {
+        e.preventDefault();
         let keyCode = e.which || e.keyCode;
-        let enteredTags = mainInput.value
-        if (keyCode === 13 && mainInput.value.length > 0) {
-            enteredTags.forEach(function (t) {
+        let enteredTags = mainInput.value.split();
+        console.log("in listener")
+
+        console.log("Key", keyCode);
+        console.log("Length", mainInput.value.length);
+        if (keyCode === 13 && enteredTags.length > 0) {
+            console.log('if triggered')
+            console.log(enteredTags)
+            enteredTags.forEach (function (t) {
                 let filteredTag = filterTag(t);
                 if (filteredTag.length > 0)
                     addTag(filteredTag);
-            });
+            }
+            );
             // clears input field
             mainInput.value = '';
         }
@@ -40,6 +49,10 @@
     // pressing backspace deletes last tag
     mainInput.addEventListener('keydown', function (e) {
         let keyCode = e.which || e.keyCode;
+        if (keyCode === 13) {
+            e.preventDefault()
+            return false
+        }
         if (keyCode === 8 && mainInput.value.length === 0 && tags.length > 0) {
             removeTag(tags.length - 1);
         }
@@ -49,7 +62,7 @@
     el.appendChild(hiddenInput);
 
     //test tag
-    addTag('hello!');
+    // addTag('hello!');
 
     function addTag(text) {
         let tag = {
