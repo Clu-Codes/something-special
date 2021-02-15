@@ -68,7 +68,7 @@ main {
     align-items: center;
 }
 
-#search-btn {
+.pink-btn {
     border: none;
     background-color: var(--secondary);
     color: white;
@@ -141,7 +141,7 @@ main {
     font-size: 20px;
 }
   
-  /* The side-panel links */
+/* The side-panel links */
 .side-panel a {
     padding: 5px;
     text-decoration: none;
@@ -219,10 +219,6 @@ main {
 }
 
 /* messages styles */
-/* .message-card {
-    background-color: rgba(251, 194, 235, .5);
-} */
-
 .message-card a {
     text-decoration: none;
     color: var(--light-grey)

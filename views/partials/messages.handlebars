@@ -1,6 +1,6 @@
 <div class="card w-100">
   <div class="card-body message-card bg-light">
     <p class="card-text mb-1">{{message_text}}</p>
-    <small class="text-muted">Posted on <a href="/post/{{post.id}}">{{post.title}}</a> by {{post.user.username}}.</small>
+    <small class="text-muted">Posted by {{user.username}} on {{format_date created_at}}.</small>
   </div>
 </div>

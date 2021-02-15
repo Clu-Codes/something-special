@@ -91,7 +91,12 @@
                 <div class="card-container">
                     <div class="row card-row">
                         {{#each messages}}
-                        {{>messages}}
+                        <div class="card w-100">
+                            <div class="card-body message-card bg-light">
+                                <p class="card-text mb-1">{{message_text}}</p>
+                                <small class="text-muted">Posted on <a href="/post/{{post.id}}">{{post.title}}</a> by {{post.user.username}}.</small>
+                            </div>
+                        </div>
                         {{/each}}
                         
                         {{#unless messages}}
