@@ -139,8 +139,6 @@ router.get('/post/:id', (req, res) => {
                             message.myMessage = true;
                         }
                     })
-
-                    console.log(post)
                     
                     res.render('single-post', { 
                         post,
