@@ -134,12 +134,20 @@ router.get('/edit/:id', withAuth, (req,res) => {
             if(userData) {
                 const post = userData.get({ plain: true});
                 
-                return res.render('edit-posts', {
-                    post,
-                    categories,
-                    username: req.session.username,
-                    loggedIn: true
-                });
+                if (req.session.username === post.user.username) {
+                    return res.render('edit-posts', {
+                        post,
+                        categories,
+                        username: req.session.username,
+                        loggedIn: true
+                    });
+                } else {
+                    res.render('error', {
+                        username: req.session.username,
+                        loggedIn: true
+                    });
+                }
+                
             } else {
                 return res.status(404).end();
             }
