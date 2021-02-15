@@ -3,7 +3,7 @@
       <div class="row">
          <div class="card w-100 text-center" id="edit-page-border">
             <div class="card-header">
-               <h2>Edit Post</h2>
+               Edit Post
             </div>
             <div class="card-body center">
                <form id="edit-post">
@@ -16,11 +16,14 @@
                   {{!-- file upload --}}
                   <div class="row center">
                      <label for="file-button" class="pretty-label">Product Image:</label>
-                     {{!-- img class was here --}}
+                     <img class="w-100 mb-3" id="create-image">
                      <progress value="0" max="100" class="w-100" id="uploader">0%</progress>
-                     {{!-- preview file to load img for preview section below --}}
-                     <input type="file" onchange="previewFile()" value="upload" class="p-1 form-control w-100"
-                        id="file-button" />
+                     <input type="file" value="upload" class="p-1 form-control w-100" id="file-button" />
+                  </div>
+
+                  {{!-- tags --}}
+                  <div class="row center tags-input" data-name="tags-input">
+                     <label for="post-tags" class="pretty-label">Tags:</label>
                   </div>
 
                   {{!-- description --}}
@@ -50,7 +53,8 @@
                   <button type="submit" id="post-create" class="styled-btn mb-4">Update Post</button>
                </form>
             </div>
-               <button type="button" id="delete-post-btn" data-id="{{post.id}}" class="w-100 btn btn-dark edit-delete-btn">Delete Post</button>
+            <button type="button" id="delete-post-btn" data-id="{{post.id}}"
+               class="w-100 btn btn-dark edit-delete-btn">Delete Post</button>
          </div>
       </div>
    </div>
@@ -59,7 +63,7 @@
       <div class="row">
          <div class="card w-100 text-center">
             <div class="card-header">
-               <h2>Preview Post</h2>
+               Preview Post
             </div>
             <div class="card-body rounded bg-light">
                <img src="{{post.image_url}}" class="card-img-top w-100 mb-3" alt="Image preview">
@@ -83,3 +87,8 @@
 </div>
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>
+<script src="/javascript/tags.js"></script>
+
+{{> firebase}}
+{{!-- upload logic must be defined under firebase initialization --}}
+<script src="/javascript/upload-file.js"></script>

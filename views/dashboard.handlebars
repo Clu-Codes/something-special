@@ -1,7 +1,3 @@
-<head>
-    <link rel="stylesheet" href="/stylesheets/upload.css" />
-</head>
-
 <div class="row m-0">
     <div class="container-fluid col-sm-12 col-lg-6">
         <div class="row">
@@ -23,6 +19,11 @@
                             <img class="w-100 mb-3" id="create-image">
                             <progress value="0" max="100" class="w-100" id="uploader">0%</progress>
                             <input type="file" value="upload" class="p-1 form-control w-100" id="file-button" />
+                        </div>
+
+                        {{!-- tags --}}
+                        <div class="row center tags-input" data-name="tags-input">
+                            <label for="post-tags" class="pretty-label">Tags:</label>
                         </div>
 
                         {{!-- description --}}
@@ -105,16 +106,14 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-=======
 <script src="/javascript/add-post.js"></script>
+<script src="/javascript/tags.js"></script>
 {{#if posts}}
 <script src="/javascript/delete-post.js"></script>
 {{/if}}
 {{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}}>
 <label for="category{{category.id}}">{{category.name}}</label> --}}
 
->>>>>>> feature/delete-post
 {{> firebase}}
 {{!-- upload logic must be defined under firebase initialization --}}
 <script src="/javascript/upload-file.js"></script>

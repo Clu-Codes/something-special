@@ -7,8 +7,6 @@ async function newFormHandler(event) {
     const image = document.querySelector('#create-image').src;
     const category_id = document.getElementById('post-category').value;
     
-    // delete console.lof before production
-    console.log(image)
     const response = await fetch(`/api/posts`, {
         method: 'POST',
         body: JSON.stringify({

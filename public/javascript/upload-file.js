@@ -20,7 +20,7 @@ fileButton.addEventListener('change', function (e) {
         function error(err) {
             if (err) throw err;
         },
-        function complete (){
+        function complete() {
             firebase.storage().ref('somethingSpecial_pics/' + file.name).getDownloadURL()
                 .then((url) => {
                     // delete console.log before production
