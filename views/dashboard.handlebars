@@ -14,7 +14,7 @@
                         {{!-- title --}}
                         <div class="row center">
                             <label for="post-title" class="pretty-label form-label">Title:</label>
-                            <input type="text" id="post-title" name="post-title" class="form-control w-100"/>
+                            <input type="text" id="post-title" name="post-title" class="form-control w-100" />
                         </div>
 
                         {{!-- file upload --}}
@@ -34,7 +34,8 @@
                         {{!-- price --}}
                         <div class="row center">
                             <label for="post-price" class="pretty-label">Product Price:</label>
-                            <input type="number" class="form-control w-100" id="post-price" name="post-price" min="0" value="0.00" step="01"/>
+                            <input type="number" class="form-control w-100" id="post-price" name="post-price" min="0"
+                                value="0.00" step="01" />
                         </div>
 
                         {{!-- category --}}
@@ -45,8 +46,9 @@
                             {{#each categories as |category|}}
                             <div class="col-sm-1 col-md-4">
 
-                            <input type="radio" id="category-{{category.id}}" class="post-category" name="post-category" value={{category.id}} >
-                            <label for="category-{{category.id}}">{{category.category_name}}</label>
+                                <input type="radio" id="category-{{category.id}}" class="post-category"
+                                    name="post-category" value={{category.id}}>
+                                <label for="category-{{category.id}}">{{category.category_name}}</label>
                             </div>
                             {{/each}}
 
@@ -67,17 +69,17 @@
                 </div>
                 <div class="card-container all-posts">
                     <div class="row card-row row-cols-1 row-cols-sm-2 d-flex justify-content-center">
-                    {{#each posts}}
-                    <div class="col">
-                        <a class="card-link" href="/dashboard/edit/{{id}}">
-                        {{>post-info}}
-                        </a>
-                    </div>
-                    {{/each}}
+                        {{#each posts}}
+                        <div class="col">
+                            <a class="card-link" href="/dashboard/edit/{{id}}">
+                                {{>post-info}}
+                            </a>
+                        </div>
+                        {{/each}}
                     </div>
 
                     {{#unless posts}}
-                        You haven't made any posts!
+                    You haven't made any posts!
                     {{/unless}}
                 </div>
             </div>
@@ -107,12 +109,12 @@
         </div>
     </div>
 </div>
-        
+
 <script src="/javascript/add-post.js"></script>
 
 
-{{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}} >
-        <label for="category{{category.id}}">{{category.name}}</label> --}}
+{{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}}>
+<label for="category{{category.id}}">{{category.name}}</label> --}}
 
 {{> firebase}}
 {{!-- upload logic must be defined under firebase initialization --}}
