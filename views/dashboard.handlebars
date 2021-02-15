@@ -3,7 +3,7 @@
 </head>
 
 <div class="row m-0">
-    <div class="container-fluid col-sm-12 col-md-6">
+    <div class="container-fluid col-sm-12 col-lg-6">
         <div class="row">
             <div class="card text-center">
                 <div class="card-header">
@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <div class="container-fluid col-sm-12 col-md-6">
+    <div class="container-fluid col-sm-12 col-lg-6">
         <div class="row">
             <div class="card text-center">
                 <div class="card-header">
@@ -86,35 +86,32 @@
         </div>
 
         <div class="row">
-            {{!-- {{#if messages.length}} --}}
             <div class="card text-center w-100">
                 <div class="card-header">
                     Your Messages
                 </div>
                 <div class="card-container">
                     <div class="row card-row">
-                        <ol>
-                            {{#each messages as |message|}}
-                            <li> {{> messages message}}</li>
-                            {{/each}}
-                        </ol>
-
+                        {{#each messages}}
+                        <div class="card w-100">
+                            <div class="card-body message-card bg-light">
+                                <p class="card-text mb-1">{{message_text}}</p>
+                                <small class="text-muted">Posted on <a href="/post/{{post.id}}">{{post.title}}</a> by {{post.user.username}}.</small>
+                            </div>
+                        </div>
+                        {{/each}}
+                        
                         {{#unless messages}}
                         You haven't posted any messages!
                         {{/unless}}
                     </div>
                 </div>
-                {{!-- {{/if}} --}}
             </div>
         </div>
     </div>
 </div>
 
 <script src="/javascript/add-post.js"></script>
-
-
-{{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}}>
-<label for="category{{category.id}}">{{category.name}}</label> --}}
 
 {{> firebase}}
 {{!-- upload logic must be defined under firebase initialization --}}

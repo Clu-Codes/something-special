@@ -35,7 +35,6 @@ router.get('/', (req, res) => {
             ]
         })
         .then(postData => {
-            // console.log(postData)
             res.json(postData)
         })
         .catch(err => {
@@ -89,7 +88,6 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
-    console.log(req.body)
     Post.create({
             title: req.body.title,
             price: req.body.price,
@@ -111,7 +109,6 @@ router.put('/:id', withAuth, (req, res) => {
             description: req.body.description,
             category: req.body.category_name,
             price: req.body.price
-            //
         }, {
             where: {
                 id: req.params.id
