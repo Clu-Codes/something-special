@@ -25,8 +25,9 @@
     // pressing enter adds tag
     mainInput.addEventListener('keyup', function (e) {
         let keyCode = e.which || e.keyCode;
+        let enteredTags = mainInput.value
         if (keyCode === 13 && mainInput.value.length > 0) {
-            mainInput.forEach(function (t) {
+            enteredTags.forEach(function (t) {
                 let filteredTag = filterTag(t);
                 if (filteredTag.length > 0)
                     addTag(filteredTag);
