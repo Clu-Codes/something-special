@@ -7,6 +7,7 @@ async function newFormHandler(event) {
     const image = document.querySelector('#create-image').src;
     const category_id =  document.querySelector('.post-category:checked').value;
     
+    // delete console.lof before production
     console.log(image)
     const response = await fetch(`/api/posts`, {
         method: 'POST',
