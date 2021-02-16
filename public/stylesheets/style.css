@@ -247,10 +247,6 @@ main {
     color: var(--light-grey);
 }
 
-.hide {
-    display: none;
-}
-
 .card-image {
     height: 35vh;
     object-fit: cover;
