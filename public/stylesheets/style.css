@@ -192,6 +192,10 @@ main {
     font-size: 20px;
     outline: 0;
 }
+
+.btn-no-style:hover {
+    color: var(--dark);
+}
   
 .side-panel .close-btn {
     position: absolute;
