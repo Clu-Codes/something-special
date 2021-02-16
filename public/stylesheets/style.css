@@ -192,6 +192,10 @@ main {
     font-size: 20px;
     outline: 0;
 }
+
+.btn-no-style:hover {
+    color: var(--dark);
+}
   
 .side-panel .close-btn {
     position: absolute;
@@ -199,6 +203,15 @@ main {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+
+/* side panel 'x' pointer and animation */
+.close-btn:hover {
+    cursor: pointer;
+    animation-name: spin;
+    animation-duration: 500ms;
+    animation-iteration-count: .25;
+    animation-timing-function: linear; 
 }
 
 /* Style the button that is used to open the side-panel */
@@ -418,4 +431,19 @@ color: tomato;
 
 .row {
     padding: 20px;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 540px) {
+    #side-panel {
+        margin-top: 35px;
+    }
 }
