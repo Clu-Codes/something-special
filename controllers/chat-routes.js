@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Chat, User, Post, Message, Category } = require('../models');
 const withAuth = require('../utils/auth');
+const {Op} = require('sequelize');
 
 router.get('/:id', withAuth, (req, res) =>{
     Category.findAll({
@@ -15,7 +16,7 @@ router.get('/:id', withAuth, (req, res) =>{
 
     Chat.findAll({
         where:{
-        recipient: req.session.user_id
+        [Op.or]: [{recipient: req.session.user_id}, {user_id:req.session.user_id}]
     },
     attributes: [
         'id',
@@ -121,7 +122,8 @@ router.get('/direct-message/:id', (req,res) => {
                     categories, 
                     post,
                     username: req.session.username,
-                    loggedIn: req.session.loggedIn
+                    loggedIn: req.session.loggedIn,
+                    user_id: req.session.user_id
                 });
             })
             .catch(err => {

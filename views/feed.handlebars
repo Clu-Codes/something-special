@@ -1,10 +1,14 @@
 <div>
-    <p>text</p>
+    <p>Direct Messages</p>
     {{#if loggedIn}}
-    <p>text2</p>
-    {{chats}}
     {{#each chats}}
-    <p>{{user.id}} said {{chat_text}} on {{post.title}}</p>
+    <p>{{user.username}} said {{chat_text}} on {{post.title}}</p>
     {{/each}}
+    
+    {{>dm}} 
+
+    
     {{/if}}
+</form>
+
 </div>

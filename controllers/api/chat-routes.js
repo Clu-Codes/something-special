@@ -24,24 +24,19 @@ router.get('/:id', (req, res) => {
         ]
     })
     .then(chatData => {
-        // console.log(postData)
-        res.json(chatData)})
+        return res.json(chatData)})
     .catch(err => {
         console.log(err);
-        res.status(500).json(err);
+        return res.status(500).json(err);
     });
 });
 
-
-
-
-
 router.post('/', withAuth, (req,res) => {
     Chat.create({
-        user_id: req.session.user_id,
-        chat_text: req.chat_text,
-        recipient: req.post.user_id,
-        post_id: req.post_id
+        user_id: req.body.user_id,
+        chat_text: req.body.chat_text,
+        recipient: req.body.recipient,
+        post_id: req.body.post_id
     })
     .then(chatData => res.json(chatData))
     .catch(err => {

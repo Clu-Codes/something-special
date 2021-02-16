@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Message, Category } = require('../models');
+const { Post, User, Message, Category, Chat } = require('../models');
 const withAuth = require('../utils/auth');
 
 
@@ -48,12 +48,12 @@ router.get('/', withAuth, (req, res) => {
             });
 
             // gets all chats user is invovled in
-            Chat.findAll({
+            Chat.findAll(
+                {
                 where:{
-                recipient: req.session.user_id,
-                $or: {
-                    user_id: req.session.user_id
-                }
+                // $or: [{user_id: req.session.user_id}, 
+                    recipient: req.session.user_id
+                // ]
             },
             attributes: [
                 'id',
@@ -74,7 +74,7 @@ router.get('/', withAuth, (req, res) => {
             ] 
             })
             .then(chatData => {
-                console.log(chatData);
+                
                 const chats = chatData.map(chat => chat.get({ plain: true}));
 
             // gets all messages created by logged in user

@@ -9,7 +9,7 @@ router.use('/api', apiRoutes);
 
 router.use('/', homeRoutes);
 router.use('/dashboard', dashboardRoutes);
-router.use('/chats', chatRoutes);
+router.use('/chat', chatRoutes);
 router.use('/search', searchRoute);
 
 router.use((req, res) => {

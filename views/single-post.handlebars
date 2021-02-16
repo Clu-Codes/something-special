@@ -13,15 +13,15 @@
                     Price: ${{post.price}}
                     <br>
                     Description: {{post.description}}
+                    <br>
+                    {{#if loggedIn}}
+                    <div>
+                        <button id="chat" class="styled-btn p-2 mb-2 rounded w-100" type="submit">Message Author</button>
+                    </div>
+                    {{/if}}
 
 
 
-{{#if loggedIn}}
-    
-    <div>
-        <button id="chat" type="submit">Message Author</button>
-    </div>
-{{/if}}
 <form class="message-form">
     
     <div>

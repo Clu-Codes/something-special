@@ -52,7 +52,6 @@ async function msgFormHandler(event) {
     }
 }
 
-<<<<<<< HEAD
 async function chatButtonHandler(event) {
     event.preventDefault();
 
@@ -64,9 +63,8 @@ async function chatButtonHandler(event) {
     
 }
 
-document.querySelector('.message-form').addEventListener('submit', commentFormHandler);
+// document.querySelector('.message-form').addEventListener('submit', commentFormHandler);
 document.querySelector('#chat').addEventListener('click', chatButtonHandler);
-=======
 
 function editMessage() {
 
@@ -104,4 +102,11 @@ const delMsgBtns = document.querySelectorAll('.del-msg-btn');
 delMsgBtns.forEach(button => {
     button.addEventListener('click', deleteMessage)
 });
->>>>>>> 4efe6b8f6ca00f42c6d14bd5aa8c718d88bb5638
+
+async function DMHandler(event) {
+    event.preventDefault();
+    document.location.replace('/chats/direct-message/' + post_id )
+}
+
+
+document.querySelector('#chat').addEventListener('click', DMHandler);
