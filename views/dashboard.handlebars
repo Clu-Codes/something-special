@@ -1,7 +1,7 @@
 <div class="row m-0">
     <div class="container-fluid col-sm-12 col-lg-6">
         <div class="row">
-            <div class="card text-center w-100">
+            <div class="card w-100">
                 <div class="card-header">
                     Create New Post
                 </div>
@@ -58,7 +58,7 @@
 
     <div class="container-fluid col-sm-12 col-lg-6">
         <div class="row">
-            <div class="card text-center w-100">
+            <div class="card w-100">
                 <div class="card-header">
                     Your Posts
                 </div>
@@ -82,14 +82,21 @@
         </div>
 
         <div class="row">
-            <div class="card text-center w-100">
+            <div class="card w-100">
                 <div class="card-header">
                     Your Messages
                 </div>
                 <div class="card-container">
                     <div class="row card-row">
                         {{#each messages}}
-                        {{>messages}}
+                        <div class="card w-100">
+                            <div class="card-body message-card bg-light d-flex flex-wrap justify-content-center">
+                                <small class="text-muted w-100">Posted on <a href="/post/{{post.id}}">{{post.title}}</a> by {{post.user.username}}.</small>
+                                <hr>
+                                <p class="card-text mb-1 w-100">{{message_text}}</p>
+                                <a href="/post/{{post.id}}" class="fake-btn w-25 mt-2">Go To Post</a>
+                            </div>
+                        </div>
                         {{/each}}
                         
                         {{#unless messages}}
@@ -107,7 +114,6 @@
 {{#if posts}}
 <script src="/javascript/delete-post.js"></script>
 {{/if}}
-<script src="/javascript/edit-message.js"></script>
 {{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}}>
 <label for="category{{category.id}}">{{category.name}}</label> --}}
 

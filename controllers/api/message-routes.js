@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Message } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all comments
+// get all messages
 router.get('/', (req, res) => {
     Message.findAll({
         attributes: [
@@ -21,6 +21,7 @@ router.get('/', (req, res) => {
         });
 });
 
+// get single message
 router.get('/:id', (req, res) => {
     Message.findOne({
         attributes: [
@@ -38,9 +39,8 @@ router.get('/:id', (req, res) => {
         });
 });
 
-// create comment
+// create messages
 router.post('/', withAuth, (req, res) => {
-    console.log(req.session);
     if (req.session.loggedIn) {
         Message.create({
             message_text: req.body.message,
@@ -55,7 +55,30 @@ router.post('/', withAuth, (req, res) => {
     }
 });
 
-// delete comment
+// edit message
+router.put('/:id', withAuth, (req, res) => {
+    Message.update({
+            message_text: req.body.message
+        }, {
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(messageData => {
+            if (!messageData) {
+                return res.status(404).json({
+                    message: 'No post found with that id'
+                });
+            }
+            res.json(messageData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+// delete message
 router.delete('/:id', withAuth, (req, res) => {
     Message.destroy({ 
         where: {
