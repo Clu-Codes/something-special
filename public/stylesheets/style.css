@@ -16,6 +16,30 @@
     src: url(../fonts/hello-honey.otf) format('opentype');
 }
 
+.login-img {
+    background-image: url('../images/Login_Img.jpg');
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.site-title {
+    font-family: 'hello-honey';
+    font-size: 9rem;
+    color: white;
+}
+
+.login-page-text {
+    color: whitesmoke;
+}
+
+.focus-word {
+    font-family: 'hello-honey';
+    font-style: italic;
+    font-size: 2rem;
+}
+
 .parent-div {
     width: 100%;
     display: flex;
@@ -34,6 +58,7 @@
 }
 
 .curved-background {
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 35px;
     padding: 35px;
     box-shadow: 15px 10px 30px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
