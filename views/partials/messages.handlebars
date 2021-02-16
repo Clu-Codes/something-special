@@ -1,12 +1,6 @@
-<div class="messages">
-  {{#each this}}
-  <section class="message">
-    <div class="meta">
-      {{user.username}} on {{format_date created_at}}
-    </div>
-    <div class="text">
-      {{message_text}}
-    </div>
-  </section>
-  {{/each}}
+<div class="card w-100 mb-2">
+  <div class="card-body message-card bg-light">
+    <p class="card-text mb-1">{{message_text}}</p>
+    <small class="text-muted">Posted by {{user.username}} on {{format_date created_at}}.</small>
+  </div>
 </div>

@@ -1,60 +1,95 @@
-<link rel="stylesheet" href="/stylesheets/edit-posts.css" />
-<div class="container-fluid ">
-   <div class="card text-center">
-      <div class="card-header">
-         Edit Post
-      </div>
-      <div class="card-body">
-         <form id="nice-form">
-            <div class="row">
-               <div class="col-md-4">
-               <div class="card post-card" style="height: 12rem;">
-                  <div class="card-body">
-                     <h5 class="card-title">Edit Title:</h5>
-                     <input type="text" class="form-control" id="title-edit">
-                     <p class="card-text"><small class="text-muted">Hint: Provide details about the brand, style, or other identification details about your product.</small></p>
-                  </div>
-               </div>
-               </div>
-               <div class="col-md-4">
-               <div class="card post-card" style="height: 12rem;">
-                  <div class="card-body">
-                     <h5 class="card-title">Edit Description:</h5>
-                     <textarea class="form-control" id="desc-edit"></textarea>
-                     <p class="card-text"><small class="text-muted">Hint: Describe the condition, year, age, and type of your product. </small></p>
-                  </div>
-               </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="card post-card" style="height: 12rem;">
-                     <div class="card-body">
-                        <h5 class="card-title">Add New Image:</h5>
-                        <input type="file" onchange="previewFile()" class="img-input form-control" id="inputGroupFile04"
-                        aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                        <p class="card-text"><small class="text-muted">Hint: Choose a high-quality image with good lighting for more interest in your product! </small></p>
-                     </div>
-                  </div>
-               </div>
+<div class="row m-0">
+   <div class="container-fluid col-sm-12 col-lg-6">
+      <div class="row">
+         <div class="card w-100 text-center" id="edit-page-border">
+            <div class="card-header">
+               Edit Post
             </div>
-            <button class="bad-btn btn btn-outline-secondary" type="button"
-            id="inputGroupFileAddon04">Submit</button>
-         </form>
+            <div class="card-body center">
+               <form id="edit-post">
+                  {{!-- title --}}
+                  <div class="row center">
+                     <label for="post-title" class="pretty-label form-label">Title:</label>
+                     <input type="text" id="title-edit" name="post-title" class="form-control w-100" value="{{post.title}}"/>
+                  </div>
+
+                  {{!-- file upload --}}
+                  <div class="row center">
+                     <label for="file-button" class="pretty-label">Product Image:</label>
+                     <img class="w-100 mb-3" id="create-image" src="{{post.image_url}}">
+                     <progress value="0" max="100" class="w-100" id="uploader">0%</progress>
+                     <input type="file" value="upload" class="p-1 form-control w-100" id="file-button" />
+                  </div>
+
+                  {{!-- tags --}}
+                  <div class="row center tags-input" data-name="tags-input">
+                     <label for="post-tags" class="pretty-label">Tags:</label>
+                  </div>
+
+                  {{!-- description --}}
+                  <div class="row center">
+                     <label for="post-text" class="pretty-label">Product Description:</label>
+                     <textarea class="form-control w-100" id="desc-edit" name="post-text">{{post.description}}</textarea>
+                  </div>
+
+                  {{!-- price --}}
+                  <div class="row center">
+                     <label for="post-price" class="pretty-label">Product Price:</label>
+                     <input type="number" class="form-control w-100" id="post-price" name="post-price" min="0"
+                        value="{{post.price}}" step="01" />
+                  </div>
+
+                  {{!-- category --}}
+                  <div class="row center pb-0">
+                     <label for="post-category" class="pretty-label">Category:</label>
+                  </div>
+                  <div class="row pt-0">
+                     <select class="form-control w-100" id="edit-post-category">
+                        <option value="" selected disabled hidden>Select a Category</option>
+                        {{#each categories as |category|}}
+                        <option class="w-100">{{category.category_name}}</option>
+                        {{/each}}
+                     </select>
+                  </div>
+                  <button type="submit" id="post-create" class="styled-btn mb-4">Update Post</button>
+               </form>
+            </div>
+            <button type="button" id="delete-post-btn" data-id="{{post.id}}"
+               class="w-100 btn btn-dark edit-delete-btn">Delete Post</button>
+         </div>
       </div>
-      <div class="card-header">
-      Preview Post Changes:
    </div>
-   <div class="row align-self-center">
-      <div class="col-md align-self-center">
-         <div class="card  mb-3">
-            <img src="https://via.placeholder.com/600x300.png?text=Visit+Ihatemylife.com" class="card-img-top" height="600" width="300"
-           alt="Image preview">
-            <div class="card-body">
-               <h5 class="card-title" id="preview-title">Post Title Example</h5>
-               <p class="card-text" id="preview-desc">This is the description for your product's post. As you write information in the text area above, it will fill in here.</p>
+
+   <div class="container-fluid col-sm-12 col-lg-6">
+      <div class="row">
+         <div class="card w-100 text-center">
+            <div class="card-header">
+               Preview Post
+            </div>
+            <div class="card-body rounded bg-light">
+               <img src="{{post.image_url}}" class="card-img-top w-100 mb-3" alt="Image preview">
+               <h5 class="card-title" id="preview-title">{{post.title}}</h5>
+               <p class="card-text" id="preview-desc">
+                  {{post.description}}
+               </p>
+               <h5 class="card-price" id="preview-price">${{post.price}}</h5>
+               <div class="card-footer bg-light">
+                  <small class="text-muted">
+                     <span class="edit-post-category" id="preview-category">{{post.category.category_name}}</span>
+                     <br>
+                     Posted by {{post.user.username}}
+                     <br>
+                     Created on {{format_date post.created_at}}</small>
+               </div>
             </div>
          </div>
       </div>
    </div>
 </div>
-<script src='/javascript/edit-post.js'></script>
+<script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script>
+<script src="/javascript/tags.js"></script>
 
+{{> firebase}}
+{{!-- upload logic must be defined under firebase initialization --}}
+<script src="/javascript/upload-file.js"></script>

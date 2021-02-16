@@ -3,13 +3,19 @@
     <div class="card-body rounded bg-light">
         <h5 class="card-title">${{price}}</h5>
         <p class="card-text">
-            {{title}} in {{category.category_name}}   
+            {{title}}
         </p>
         <div class="card-footer bg-light">
             <small class="text-muted">
+                {{category.category_name}}
+                <br>
                 Posted by {{user.username}}
                 <br>
-                Created on {{format_date created_at}}</small>
+                Created on {{format_date created_at}}
+            </small>
         </div>
     </div>
+    {{#if myPost}}
+    <button type="button" id="delete-post-btn" class="edit-delete-btn btn btn-dark" data-id="{{id}}">Delete Post</button>
+    {{/if}}
 </div>  
