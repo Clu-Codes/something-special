@@ -1,20 +1,16 @@
-<head>
-    <link rel="stylesheet" href="/stylesheets/upload.css" />
-</head>
-
 <div class="row m-0">
     <div class="container-fluid col-sm-12 col-lg-6">
         <div class="row">
-            <div class="card text-center">
+            <div class="card w-100">
                 <div class="card-header">
                     Create New Post
                 </div>
                 <div class="card-body center">
-                    <form class="new-post-form">
+                    <form class="new-post-form w-100">
                         {{!-- title --}}
                         <div class="row center">
                             <label for="post-title" class="pretty-label form-label">Title:</label>
-                            <input type="text" id="post-title" name="post-title" class="form-control w-100"/>
+                            <input type="text" id="post-title" name="post-title" class="form-control w-100" />
                         </div>
 
                         {{!-- file upload --}}
@@ -23,6 +19,11 @@
                             <img class="w-100 mb-3" id="create-image">
                             <progress value="0" max="100" class="w-100" id="uploader">0%</progress>
                             <input type="file" value="upload" class="p-1 form-control w-100" id="file-button" />
+                        </div>
+
+                        {{!-- tags --}}
+                        <div class="row center tags-input" data-name="tags-input">
+                            <label for="post-tags" class="pretty-label">Tags:</label>
                         </div>
 
                         {{!-- description --}}
@@ -34,25 +35,22 @@
                         {{!-- price --}}
                         <div class="row center">
                             <label for="post-price" class="pretty-label">Product Price:</label>
-                            <input type="number" class="form-control w-100" id="post-price" name="post-price" min="0" value="0.00" step="01"/>
+                            <input type="number" class="form-control w-100" id="post-price" name="post-price" min="0"
+                                value="0.00" step="01" />
                         </div>
 
                         {{!-- category --}}
-                        <div class="row center pb-0">
+                        <div class="row center">
                             <label for="post-category" class="pretty-label">Category:</label>
-                        </div>
-                        <div class="row pt-0">
-                            {{#each categories as |category|}}
-                            <div class="col-sm-1 col-md-4">
-
-                            <input type="radio" id="category-{{category.id}}" class="post-category" name="post-category" value={{category.id}} >
-                            <label for="category-{{category.id}}">{{category.category_name}}</label>
-                            </div>
-                            {{/each}}
-
+                                <select class="form-control w-100" id="edit-post-category">
+                                    <option value="" selected disabled hidden>Select a Category</option>
+                                    {{#each categories as |category|}}
+                                    <option class="w-100" id="post-category" value="{{category.id}}">{{category.category_name}}</option>
+                                    {{/each}}
+                                </select>
                         </div>
 
-                        <button type="submit" id="post-create" class="pretty-btn mb-4">Create</button>
+                        <button type="submit" id="post-create" class="styled-btn mb-4">Create</button>
                     </form>
                 </div>
             </div>
@@ -61,30 +59,28 @@
 
     <div class="container-fluid col-sm-12 col-lg-6">
         <div class="row">
-            <div class="card text-center">
+            <div class="card w-100">
                 <div class="card-header">
                     Your Posts
                 </div>
                 <div class="card-container all-posts">
                     <div class="row card-row row-cols-1 row-cols-sm-2 d-flex justify-content-center">
-                    {{#each posts}}
-                    <div class="col">
-                        <a class="card-link" href="/dashboard/edit/{{id}}">
-                        {{>post-info}}
-                        </a>
-                    </div>
-                    {{/each}}
+                        {{#each posts}}
+                        <div class="col">
+                            {{>post-info}}
+                        </div>
+                        {{/each}}
                     </div>
 
                     {{#unless posts}}
-                        You haven't made any posts!
+                    You haven't made any posts!
                     {{/unless}}
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="card text-center w-100">
+            <div class="card w-100">
                 <div class="card-header">
                     Your Messages
                 </div>
@@ -92,9 +88,11 @@
                     <div class="row card-row">
                         {{#each messages}}
                         <div class="card w-100">
-                            <div class="card-body message-card bg-light">
-                                <p class="card-text mb-1">{{message_text}}</p>
-                                <small class="text-muted">Posted on <a href="/post/{{post.id}}">{{post.title}}</a> by {{post.user.username}}.</small>
+                            <div class="card-body message-card bg-light d-flex flex-wrap justify-content-center">
+                                <small class="text-muted w-100">Posted on <a href="/post/{{post.id}}">{{post.title}}</a> by {{post.user.username}}.</small>
+                                <hr>
+                                <p class="card-text mb-1 w-100">{{message_text}}</p>
+                                <a href="/post/{{post.id}}" class="fake-btn w-25 mt-2">Go To Post</a>
                             </div>
                         </div>
                         {{/each}}
@@ -110,13 +108,41 @@
 </div>
 
 
-<div>
-    
+<div class="row">
+            <div class="card w-100">
+                <div class="card-header">
+                    Your Direct Messages
+                </div>
+                <div class="card-container">
+                    <div class="row card-row">
+                        {{#each chats}}
+                        <div class="card w-100">
+                            <div class="card-body message-card bg-light d-flex flex-wrap justify-content-center">
+                                <small class="text-muted w-100">Posted on <a href="/post/{{post.id}}">{{post.title}}</a> by {{post.user.username}}.</small>
+                                <hr>
+                                <p class="card-text mb-1 w-100">{{chat_text}}</p>
+                                <a href="/chat/{{chat.id}}" class="fake-btn w-25 mt-2">Go To direct message</a>
+                            </div>
+                        </div>
+                        {{/each}}
+                        
+                        {{#unless chats}}
+                        You have no direct messages!
+                        {{/unless}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-
 <script src="/javascript/add-post.js"></script>
-
+<script src="/javascript/tags.js"></script>
+{{#if posts}}
+<script src="/javascript/delete-post.js"></script>
+{{/if}}
+{{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}}>
+<label for="category{{category.id}}">{{category.name}}</label> --}}
 
 {{> firebase}}
 {{!-- upload logic must be defined under firebase initialization --}}

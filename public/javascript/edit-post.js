@@ -12,7 +12,6 @@ async function editFormHandler(event) {
     const price = document.getElementById('post-price').value;
     const category = document.getElementById('edit-post-category').value;
 
-
     const response = await fetch(`/api/posts/${id}`, {
         method: 'put',
         body: JSON.stringify({

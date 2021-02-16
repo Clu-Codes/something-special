@@ -4,8 +4,11 @@ const withAuth = require('../../utils/auth');
 
 
 
-router.get('/', (req, res) => {
-    Chat.findAll({
+router.get('/:id', (req, res) => {
+    Chat.findOne({
+        where: {
+            id: req.params.id
+        },
         attributes:[
             'id',
             'recipient',

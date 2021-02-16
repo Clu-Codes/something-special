@@ -42,6 +42,40 @@ router.get('/', withAuth, (req, res) => {
         })
         .then(postData => {
             const posts = postData.map(post => post.get({ plain: true}));
+            
+            posts.forEach(post => {
+                    post.myPost = true;
+            });
+
+            // gets all chats user is invovled in
+            Chat.findAll({
+                where:{
+                recipient: req.session.user_id,
+                $or: {
+                    user_id: req.session.user_id
+                }
+            },
+            attributes: [
+                'id',
+                'chat_text',
+                'post_id',
+                'user_id',
+                'recipient'
+            ],
+            include:[
+                {
+                    model:User,
+                    attributes:['id','username']
+                },
+                {
+                    model:Post,
+                    attributes:['id','title']
+                }
+            ] 
+            })
+            .then(chatData => {
+                console.log(chatData);
+                const chats = chatData.map(chat => chat.get({ plain: true}));
 
             // gets all messages created by logged in user
             Message.findAll({
@@ -74,11 +108,12 @@ router.get('/', withAuth, (req, res) => {
             })
             .then(messageData =>{
                 const messages = messageData.map(message => message.get({ plain: true }));
-
+                
                 res.render('dashboard', { 
                     categories,
                     posts,
                     messages,
+                    chats,
                     username: req.session.username,
                     loggedIn: true
                 });
@@ -89,6 +124,7 @@ router.get('/', withAuth, (req, res) => {
             });
         });
     });
+});
 });
 
 router.get('/edit/:id', withAuth, (req,res) => {
