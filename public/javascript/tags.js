@@ -26,13 +26,9 @@
         e.preventDefault();
         let keyCode = e.which || e.keyCode;
         let enteredTags = mainInput.value.split();
-        console.log("in listener")
 
-        console.log("Key", keyCode);
-        console.log("Length", mainInput.value.length);
         if (keyCode === 13 && enteredTags.length > 0) {
-            console.log('if triggered')
-            console.log(enteredTags)
+            debugger;
             enteredTags.forEach (function (t) {
                 let filteredTag = filterTag(t);
                 if (filteredTag.length > 0)
@@ -63,6 +59,9 @@
     // addTag('hello!');
 
     function addTag(text) {
+        // API fetch, put method for creating new tag on post
+        // tag_name = text
+        // post id
         let tag = {
             text: text,
             element: document.createElement('span'),

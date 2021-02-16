@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../config/connection') ;
 
-class Tags extends Model {}
+class PostTag extends Model {}
 
-Tags.init(
+PostTag.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -11,14 +11,18 @@ Tags.init(
             primaryKey: true,
             autoIncrement: true
         },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
         post_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'post',
+                key: 'id'
+            },
+            onDelete: 'CASCADE'
+        },
+        tag_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'tag',
                 key: 'id'
             }
         }
@@ -27,8 +31,8 @@ Tags.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'tags'
+        modelName: 'post_tag'
     }
 );
 
-module.exports = Tags
+module.exports = PostTag;

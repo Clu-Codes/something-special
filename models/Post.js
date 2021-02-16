@@ -46,13 +46,13 @@ Post.init(
             }
         },
         // tags go here 
-        tags_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'tags',
-                key:'id'
-            }
-        }
+        // tags_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'tags',
+        //         key:'id'
+        //     }
+        // }
     },
     {
         sequelize,
