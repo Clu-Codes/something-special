@@ -38,6 +38,7 @@ function renderResults(searchResults) {
 
     searchResults.forEach(post => {
 
+        console.log(post)
 
         const colEl = document.createElement('div');
         colEl.classList.add('col');
@@ -68,7 +69,7 @@ function renderResults(searchResults) {
 
         const cardText = document.createElement('p');
         cardText.classList.add('card-text');
-        cardText.textContent = `${post.title} in ${post.category.category_name}`;
+        cardText.textContent = `${post.title}`;
         cardBody.appendChild(cardText);
 
         const cardFooter = document.createElement('div');
@@ -77,7 +78,7 @@ function renderResults(searchResults) {
 
         const footerText = document.createElement('small');
         footerText.classList.add('text-muted');
-        footerText.textContent = `Posted by ${post.user.username}`;
+        footerText.innerHTML = ` ${post.category.category_name} <br> Posted by ${post.user.username}`;
         cardFooter.appendChild(footerText);
     });
 };
