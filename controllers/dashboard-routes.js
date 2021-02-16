@@ -78,7 +78,7 @@ router.get('/', withAuth, (req, res) => {
             })
             .then(messageData =>{
                 const messages = messageData.map(message => message.get({ plain: true }));
-
+                
                 res.render('dashboard', { 
                     categories,
                     posts,
