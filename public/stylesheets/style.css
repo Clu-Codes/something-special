@@ -193,13 +193,10 @@ main {
     outline: 0;
 }
 
-<<<<<<< HEAD
-=======
 .btn-no-style:hover {
     color: var(--dark);
 }
   
->>>>>>> 74768edc28213aa360f22fa42b68bac16600af92
 .side-panel .close-btn {
     position: absolute;
     top: 0;
