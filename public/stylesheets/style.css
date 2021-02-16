@@ -233,13 +233,22 @@ main {
 }
 
 .fake-btn,
-.fake-btn:hover,
 .fake-btn:visited {
-    background-color: var(--primary);
+    background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.12), 1px 2px 5px rgba(0,0,0,0.24);
     color: white;
-    text-decoration: none;
+    font-weight: bolder;
+    text-transform: uppercase;
     display: block
 }
+
+.fake-btn:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    color:var(--light-grey);
+    text-decoration: none;
+    transition: color 1s;
+}
+
 .styled-btn {
     border-radius: 15px;
     background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
@@ -255,7 +264,8 @@ main {
 }
 .styled-btn:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    color:var(--dark);
+    color:var(--light-grey);
+    transition: color 1s;
 }
 
 .styled-btn:active, 
