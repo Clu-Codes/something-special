@@ -3,6 +3,7 @@ const Message = require('./Message');
 const Post = require('./Post');
 // const Upload = require('./Upload');
 const User = require('./User');
+const Tags = require('./Tags');
 
 User.hasMany(Post, {
     foreignKey: 'user_id'
@@ -36,6 +37,13 @@ Message.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-// NEED TO ADD ASSOCIATIONS FOR UPLOAD
+// NEED TO ADD ASSOCIATIONS FOR TAGS
+Tags.belongsToMany(Post, {
+    foreignKey: 'post_id'
+});
 
-module.exports = { Category, Message, Post, User };
+Post.belongsToMany(Tags, {
+    foreignKey: 'tags_id'
+});
+
+module.exports = { Category, Message, Post, User, Tags };
