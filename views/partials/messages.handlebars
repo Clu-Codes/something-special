@@ -1,6 +1,19 @@
 <div class="card w-100 mb-2">
-  <div class="card-body message-card bg-light">
-    <p class="card-text mb-1">{{message_text}}</p>
-    <small class="text-muted">Posted by {{user.username}} on {{format_date created_at}}.</small>
-  </div>
+    <div class="card-body message-card bg-light p-2 d-flex flex-wrap">
+        <div class="message-head d-flex align-bottom align-text-bottom justify-content-between w-100 m-1">
+            <small class="text-muted align-bottom align-text-bottom ">Posted by {{user.username}} on {{format_date created_at}}.</small>
+            <div>
+                {{#if myMessage}}
+                <button type="button" class="edit-msg-btn rounded fs-5 pt-1 pl-2 pr-2 pb-2 pink-btn" data-id="{{id}}">
+                    <i class="bi bi-pencil"></i>
+                </button>
+                <button type="button" class="del-msg-btn rounded fs-5 ml-1 pt-1 pb-2 pl-2 pr-2 pink-btn" data-id="{{id}}">
+                    <i class="bi bi-x-circle"></i>
+                </button>
+                {{/if}}
+            </div>
+        </div>
+        <hr class="m-1 w-100">
+        <p class="card-text m-2 justify-self-start message-body">{{message_text}}</p>
+    </div>
 </div>

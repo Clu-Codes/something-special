@@ -89,12 +89,7 @@
                 <div class="card-container">
                     <div class="row card-row">
                         {{#each messages}}
-                        <div class="card w-100">
-                            <div class="card-body message-card bg-light">
-                                <p class="card-text mb-1">{{message_text}}</p>
-                                <small class="text-muted">Posted on <a href="/post/{{post.id}}">{{post.title}}</a> by {{post.user.username}}.</small>
-                            </div>
-                        </div>
+                        {{>messages}}
                         {{/each}}
                         
                         {{#unless messages}}
@@ -112,6 +107,7 @@
 {{#if posts}}
 <script src="/javascript/delete-post.js"></script>
 {{/if}}
+<script src="/javascript/edit-message.js"></script>
 {{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}}>
 <label for="category{{category.id}}">{{category.name}}</label> --}}
 

@@ -78,6 +78,11 @@ router.get('/', withAuth, (req, res) => {
             })
             .then(messageData =>{
                 const messages = messageData.map(message => message.get({ plain: true }));
+                
+                // allows edit/delete message button to render
+                messages.forEach(message => {
+                    message.myMessage = true
+                });
 
                 res.render('dashboard', { 
                     categories,
