@@ -6,6 +6,8 @@ async function newFormHandler(event) {
     const price = document.querySelector('#post-price').value;
     const image = document.querySelector('#create-image').src;
     const category_id = document.getElementById('post-category').value;
+    //
+    const tags = document.getElementsByClassName('tags-input').value;
     
     const response = await fetch(`/api/posts`, {
         method: 'POST',
@@ -14,7 +16,9 @@ async function newFormHandler(event) {
             price,
             description,
             category_id,
-            image
+            image,
+            //
+            tags
         }),
         headers: {
             'Content-Type': 'application/json'  
