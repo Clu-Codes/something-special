@@ -201,6 +201,15 @@ main {
     margin-left: 50px;
 }
 
+/* side panel 'x' pointer and animation */
+.close-btn:hover {
+    cursor: pointer;
+    animation-name: spin;
+    animation-duration: 500ms;
+    animation-iteration-count: .25;
+    animation-timing-function: linear; 
+}
+
 /* Style the button that is used to open the side-panel */
 .open-btn {
     font-size: 20px;
@@ -418,4 +427,19 @@ color: tomato;
 
 .row {
     padding: 20px;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 540px) {
+    #side-panel {
+        margin-top: 35px;
+    }
 }
