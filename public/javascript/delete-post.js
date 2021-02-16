@@ -13,4 +13,8 @@ async function deletePostHandler(event) {
     };
 };
 
-document.getElementById('delete-post-btn').addEventListener('click', deletePostHandler);
+const delBtns = document.querySelectorAll('.delete-post-btn');
+
+delBtns.forEach(button => {
+    button.addEventListener('click', deletePostHandler)
+})

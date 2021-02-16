@@ -32,7 +32,8 @@ Message.init(
             references: {
                 model: 'post',
                 key: 'id'
-            }
+            },
+            onDelete: 'CASCADE'
         }
     },
     {

@@ -267,12 +267,12 @@ main {
     border: 0px;
 }
 
-.edit-delete-btn {
+.delete-post-btn {
     border: 0px;
     text-transform: uppercase;
     font-weight: bolder;
 }
-.edit-delete-btn:hover {
+.delete-post-btn:hover {
     background-color: tomato;
 }
 
