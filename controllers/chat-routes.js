@@ -37,7 +37,6 @@ router.get('/:id', withAuth, (req, res) =>{
     ] 
     })
     .then(chatData => {
-        console.log(chatData);
         const chats = chatData.map(chat => chat.get({ plain: true}));
         
         res.render('feed', { 

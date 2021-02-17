@@ -23,6 +23,7 @@ async function newDMHandler(event) {
         // document.location.replace('/chats/direct-message/' + post_id );     
         document.location.replace('/dashboard');
     } else {
+        document.location.replace('/')
         alert(response.statusText);
     }
 }

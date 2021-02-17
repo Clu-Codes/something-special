@@ -15,9 +15,7 @@
                     Description: {{post.description}}
                     <br>
                     {{#if loggedIn}}
-                    <div>
-                        <button id="chat" class="styled-btn p-2 mb-2 rounded w-100" type="submit">Message Author</button>
-                    </div>
+                    <a href="/chat/direct-message/{{post.id}}" class="styled-button">Message Author</a>
                     {{/if}}
 
 
