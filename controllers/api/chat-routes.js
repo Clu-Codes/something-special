@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Chat, User, Post, Message, Category } = require('../../models');
+const { Chat, User, Post, Message, Category, Text } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
@@ -34,7 +34,6 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req,res) => {
     Chat.create({
         user_id: req.body.user_id,
-        chat_text: req.body.chat_text,
         recipient: req.body.recipient,
         post_id: req.body.post_id
     })

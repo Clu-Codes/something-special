@@ -1,53 +1,53 @@
 const router = require('express').Router();
-const { Message } = require('../../models');
+const { Chat, User, Post, Message, Category, Text } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all messages
+// get all texts
 router.get('/', (req, res) => {
-    Message.findAll({
+    Text.findAll({
         attributes: [
             'id',
-            'message_text',
+            'chat_text',
             'user_id',
-            'post_id',
+            'chat_id',
             'created_at'
         ],
         order: [['created_at', 'DESC']]
     })
-    .then(dbMessageData => res.json(dbMessageData))
+    .then(dbTextData => res.json(dbTextData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
 });
 
-// get single message by message ID
+// get single text by text ID
 router.get('/:id', (req, res) => {
-    Message.findOne({
+    Text.findOne({
         attributes: [
             'id',
-            'message_text',
+            'chat_text',
             'user_id',
             'post_id',
             'created_at'
         ]
     })
-    .then(dbMessageData => res.json(dbMessageData))
+    .then(dbTextData => res.json(dbTextData))
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
 });
 
-// create messages
+// create texts
 router.post('/', withAuth, (req, res) => {
     if (req.session.loggedIn) {
-        Message.create({
-            message_text: req.body.message,
-            post_id: req.body.postId,
+        Text.create({
+            chat_text: req.body.chat_text,
+            chat_id: req.body.chat_id,
             user_id: req.session.user_id
         })
-        .then(dbMessageData => res.json(dbMessageData))
+        .then(dbTextData => res.json(dbTextData))
         .catch(err => {
             console.log(err);
             res.status(400).json(err);
@@ -55,22 +55,22 @@ router.post('/', withAuth, (req, res) => {
     };
 });
 
-// edit message
+// edit text
 router.put('/:id', withAuth, (req, res) => {
-    Message.update({
-        message_text: req.body.message
+    Text.update({
+        chat_text: req.body.chat_text
     }, {
         where: {
             id: req.params.id
         }
     })
-    .then(messageData => {
-        if (!messageData) {
+    .then(textData => {
+        if (!textData) {
             return res.status(404).json({
-                message: 'No post found with that id'
+                message: 'No chat text found with that id'
             });
         }
-        res.json(messageData);
+        res.json(textData);
     })
     .catch(err => {
         console.log(err);
@@ -78,20 +78,20 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
-// delete message
+// delete text
 router.delete('/:id', withAuth, (req, res) => {
-    Message.destroy({ 
+    Text.destroy({ 
         where: {
             id: req.params.id
         }
     })
-        .then(dbMessageData => {
-            if(!dbMessageData) {
+        .then(dbTextData => {
+            if(!dbTextData) {
                 res.status(404).json({ message: 'No post found with this ID.' })
                 return;
             };
 
-            res.json(dbMessageData);
+            res.json(dbTextData);
         })
         .catch(err => {
             console.log(err);

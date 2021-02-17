@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Chat, User, Post, Message, Category } = require('../models');
+const { Chat, User, Post, Message, Category, Text } = require('../models');
 const withAuth = require('../utils/auth');
 const {Op} = require('sequelize');
 

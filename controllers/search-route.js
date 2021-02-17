@@ -11,7 +11,7 @@ router.get('/:term', (req, res) => {
         ]
     })
         .then(categoryData => {
-            const categories = categoryData.map(category => category.get({ plain: true}));
+            const categories = categoryData.map(category => category.get({ plain: true }));
                 
             Post.findAll({
                 where: {

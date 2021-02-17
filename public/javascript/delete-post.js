@@ -6,6 +6,7 @@ async function deletePostHandler(event) {
     const response = await fetch(`/api/posts/${id}`, {
         method: 'DELETE',
     });
+
     if (response.ok) {
         document.location.replace('/dashboard');
     } else {
@@ -17,4 +18,4 @@ const delBtns = document.querySelectorAll('.delete-post-btn');
 
 delBtns.forEach(button => {
     button.addEventListener('click', deletePostHandler)
-})
+});

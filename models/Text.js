@@ -1,14 +1,28 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Chat extends Model {}
+class Text extends Model {}
 
-Chat.init({
+Text.init({
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
+    },
+    chat_text: {
+        type: DataTypes.STRING, 
+        allowNull: false,
+        validate: {
+            len: [4, 160]
+    },
+    chat_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'chat',
+            key: 'id'
+        }
     },
     user_id: {
         type: DataTypes.INTEGER,
@@ -18,22 +32,7 @@ Chat.init({
             key: 'id'
         }
     },
-    post_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'post',
-            key: 'id'
-        }
-    },
-    recipient: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references:{
-            model: 'user',
-            key:'id'
-        }
-    }
+}
 },
 {
     sequelize, 
@@ -43,5 +42,4 @@ Chat.init({
 }
 );
 
-module.exports = Chat;
-
+module.exports = Text;

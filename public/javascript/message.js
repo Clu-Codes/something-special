@@ -1,3 +1,4 @@
+// selects elements in the add/edit message form
 const msgForm = document.querySelector('.message-form');
 const msgTextareaHeader = document.querySelector('.message-textarea-header');
 const msgTextarea = document.querySelector('.message-textarea');
@@ -8,12 +9,12 @@ async function msgFormHandler(event) {
 
     const message = document.querySelector('textarea[name="message-body"]').value.trim();
     const postId = window.location.toString().split('/')[
-        window.location.toString().split('/').length-1
+        window.location.toString().split('/').length - 1
     ];
     const msgId = msgTextarea.getAttribute('data-message-id');
 
+    // if a message ID already exists, then we edit the existing message
     if (msgId) {
-        console.log('a message ID was passed through')
         const response = await fetch(`/api/messages/${msgId}`, {
             method: 'PUT',
             body: JSON.stringify({
@@ -30,9 +31,11 @@ async function msgFormHandler(event) {
             document.location.reload();
         } else {
             alert(response.statusText);
-        }
+        };
+
     } else if (message) {
-        console.log('a message id was not passed through')
+        // if a message ID doesn't exist, but there is a message in the text area, create a message
+
         const response = await fetch(`/api/messages`, {
             method: 'POST',
             body: JSON.stringify({
@@ -48,15 +51,21 @@ async function msgFormHandler(event) {
             document.location.reload();
         } else {
             alert(response.statusText);
+<<<<<<< HEAD
         }
     }
 }
+=======
+        };
+    };
+};
+>>>>>>> 48b9cc233e70d462d6340530556db0a5bf870768
 
 function editMessage() {
-
     const msgId = this.getAttribute('data-id');
     const oldText = this.closest('.message-card').querySelector('.message-body').textContent;
   
+    // turns "Add Message" form into "Edit Message" form
     msgTextareaHeader.textContent = 'Edit Message';
     msgTextarea.textContent = oldText;
     msgTextarea.setAttribute('data-message-id', msgId);
@@ -69,6 +78,7 @@ async function deleteMessage() {
     const response = await fetch(`/api/messages/${msgId}`, {
         method: 'DELETE',
     });
+    
     if (response.ok) {
         document.location.reload();
     } else {

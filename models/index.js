@@ -1,9 +1,9 @@
 const Category = require('./Category');
 const Message = require('./Message');
 const Post = require('./Post');
-// const Upload = require('./Upload');
 const User = require('./User');
 const Chat = require('./Chat');
+const Text = require('./Text');
 
 User.hasMany(Post, {
     foreignKey: 'user_id'
@@ -53,6 +53,20 @@ Post.hasMany(Chat, {
     foreignKey: 'post_id'
 });
 
-// NEED TO ADD ASSOCIATIONS FOR UPLOAD
+Text.belongsTo(Chat, {
+    foreignKey: 'chat_id'
+});
 
-module.exports = { Category, Message, Post, User, Chat };
+Chat.hasMany(Text, {
+    foreignKey: 'chat_id'
+});
+
+Text.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+User.hasMany(Text, {
+    foreignKey: 'user_id'
+});
+
+module.exports = { Category, Message, Post, User, Chat, Text };

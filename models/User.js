@@ -48,7 +48,6 @@ User.init(
                 return updatedUserData;
             }
         },
-        // pass in sequelize connection
         sequelize,
         timestamps: false,
         freezeTableName: true,
