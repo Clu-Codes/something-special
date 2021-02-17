@@ -103,11 +103,13 @@ router.post('/', withAuth, (req, res) => {
 
 // update post
 router.put('/:id', withAuth, (req, res) => {
+    console.log(req)
     Post.update({
         title: req.body.title,
         description: req.body.description,
-        category: req.body.category_name,
-        price: req.body.price
+        image_url: req.body.image,
+        price: req.body.price,
+        category_id: req.body.category,
     }, {
         where: {
             id: req.params.id

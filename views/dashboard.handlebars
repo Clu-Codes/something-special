@@ -42,10 +42,10 @@
                         {{!-- category --}}
                         <div class="row center">
                             <label for="post-category" class="pretty-label">Category:</label>
-                                <select class="form-control w-100" id="edit-post-category">
+                                <select class="form-control w-100" name="category-type" id="edit-post-category">
                                     <option value="" selected disabled hidden>Select a Category</option>
                                     {{#each categories as |category|}}
-                                    <option class="w-100" id="post-category" value="{{category.id}}">{{category.category_name}}</option>
+                                    <option class="w-100" value="{{category.id}}">{{category.category_name}}</option>
                                     {{/each}}
                                 </select>
                         </div>
