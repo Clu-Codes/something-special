@@ -51,15 +51,9 @@ async function msgFormHandler(event) {
             document.location.reload();
         } else {
             alert(response.statusText);
-<<<<<<< HEAD
-        }
-    }
-}
-=======
         };
     };
 };
->>>>>>> 48b9cc233e70d462d6340530556db0a5bf870768
 
 function editMessage() {
     const msgId = this.getAttribute('data-id');

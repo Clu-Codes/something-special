@@ -10,7 +10,7 @@ router.use('/users', userRoutes);
 router.use('/messages', messageRoutes);
 router.use('/posts', postRoutes);
 router.use('/chats', chatRoutes);
-router.user('/texts', textRoutes);
+router.use('/texts', textRoutes);
 
 
 module.exports = router;

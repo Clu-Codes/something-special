@@ -13,8 +13,7 @@ router.get('/:id', (req, res) => {
             'id',
             'recipient',
             'post_id',
-            'user_id',
-            'chat_text'
+            'user_id'
         ],
         include: [
                  {
@@ -23,8 +22,8 @@ router.get('/:id', (req, res) => {
             }
         ]
     })
-    .then(chatData => {
-        return res.json(chatData)})
+    .then(dbChatData => {
+        return res.json(dbChatData)})
     .catch(err => {
         console.log(err);
         return res.status(500).json(err);
@@ -37,7 +36,9 @@ router.post('/', withAuth, (req,res) => {
         recipient: req.body.recipient,
         post_id: req.body.post_id
     })
-    .then(chatData => res.json(chatData))
+    .then(dbChatData => { 
+        console.log(dbChatData);
+        res.json(dbChatData)})
     .catch(err => {
         console.log(err);
         return res.status(500).json(err);

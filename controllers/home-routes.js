@@ -113,7 +113,7 @@ router.get('/post/:id', (req, res) => {
                 },
                 {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['id','username']
                 },
                 {
                     model: Category,
@@ -146,6 +146,7 @@ router.get('/post/:id', (req, res) => {
                 post,
                 categories,
                 username: req.session.username,
+                user_id: req.session.user_id,
                 loggedIn: req.session.loggedIn
             });
         })
