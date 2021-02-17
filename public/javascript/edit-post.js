@@ -18,7 +18,6 @@ async function editFormHandler(event) {
             image,
             price,
             category,
-            //
             tags
         }),
         headers: { 'Content-Type' : 'application/json' }

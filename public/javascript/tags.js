@@ -28,7 +28,6 @@
         let enteredTags = mainInput.value.split();
 
         if (keyCode === 13 && enteredTags.length > 0) {
-            debugger;
             enteredTags.forEach (function (t) {
                 let filteredTag = filterTag(t);
                 if (filteredTag.length > 0)
