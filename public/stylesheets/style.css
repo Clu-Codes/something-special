@@ -221,7 +221,7 @@ main {
     color: var(--light-grey);
     padding: 10px;
 }
-  
+
 .open-btn:hover {
     background-color: var(--dark);
 }
@@ -287,7 +287,6 @@ main {
     border-radius: 15px;
     background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
     padding: 8px;
-    width: 8rem;
     border-style: none;
     color: white;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.12), 1px 2px 5px rgba(0,0,0,0.24);
@@ -296,6 +295,7 @@ main {
     text-transform: uppercase;
     font-weight: bolder;
 }
+
 .styled-btn:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     color:var(--light-grey);
@@ -305,6 +305,7 @@ main {
 .styled-btn:active, 
 .styled-btn:focus { 
     outline: none;
+    color:var(--light-grey);
 }
 
 #edit-page-border {
@@ -328,10 +329,7 @@ input#file-button {
     /* text align center does not do anything */
     text-align: center !important;
     display: inline-block;
-    border-radius: 15px;
     background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-    padding: 8px;
-    width: 8rem;
     border-style: none;
     color: white;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.12), 1px 2px 5px rgba(0,0,0,0.24);
@@ -346,12 +344,9 @@ input#file-button:hover {
 
 input[type=file]::-webkit-file-upload-button {
     border: 2px solid #ff9a9e;
-    /* #6c5ce7 */
-    border-radius: .2em;
     background-color: #fbc2eb;
-    /* #a29bfe */
     transition: 1s;
-    border-radius: 25px;
+    border-radius: 10px;
     /* text align/align items center does not do anything */
     align-items: center;
     text-align: center;

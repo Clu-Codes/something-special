@@ -2,6 +2,8 @@ const Category = require('./Category');
 const Message = require('./Message');
 const Post = require('./Post');
 const User = require('./User');
+const Tag = require('./Tag');
+const PostTag = require('./PostTag');
 
 User.hasMany(Post, {
     foreignKey: 'user_id'
@@ -35,4 +37,14 @@ Message.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-module.exports = { Category, Message, Post, User };
+Tag.belongsToMany(Post, {
+    through: PostTag,
+    foreignKey: 'tag_id'
+});
+
+Post.belongsToMany(Tag, {
+    through: PostTag,
+    foreignKey: 'post_id'
+});
+
+module.exports = { Category, Message, Post, User, Tag, PostTag };
