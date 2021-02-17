@@ -5,7 +5,7 @@ openNav = () => {
     sidepanel.style.width = "250px";
 };
   
-  /* Set the width of the sidebar to 0 (hide it) */
+/* Set the width of the sidebar to 0 (hide it) */
 closeNav = () => {
     sidepanel.style.width = "0";
 };

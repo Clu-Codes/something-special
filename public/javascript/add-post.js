@@ -26,7 +26,7 @@ async function newFormHandler(event) {
     } else {
         alert(response.statusText);
     }
-}
+};
 
 document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
 
