@@ -15,7 +15,7 @@
                     Description: {{post.description}}
                     <br>
                     {{#if loggedIn}}
-                    <a href="/chat/direct-message/{{post.id}}" class="styled-button">Message Author</a>
+                    <a href="/chat/direct-message/{{post.id}}" class="fake-btn">Message Author</a>
                     {{/if}}
 
 
@@ -23,7 +23,6 @@
 <form class="message-form">
     
     <div>
-        <textarea name="message-body"></textarea>
                     {{!-- will only render edit post link if the post belongs to user --}}
                     {{#if post.myPost}}
                     <br>
