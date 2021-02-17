@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Post, User, Message, Category } = require('../models');
 const withAuth = require('../utils/auth');
 
-
 router.get('/', withAuth, (req, res) => {
     // gets all categories to populate main.handlebars side panel
     Category.findAll({
