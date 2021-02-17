@@ -1,10 +1,10 @@
 async function newDMHandler(event) {
     event.preventDefault();
 
-    const recipient = document.querySelector('#recipient').value;
+    const recipient = document.querySelector('#recipient').getAttribute('data-chat-author');
     const chat_text = document.querySelector('#chat-text').value;
-    const post_id = document.querySelector('#post-id').value;
-    const user_id = document.querySelector('#user-id').value;
+    const post_id = document.querySelector('#post-id').getAttribute('data-chat-id');
+    const user_id = document.querySelector('#user-id').getAttribute('data-chat-user');
     
     const response = await fetch(`/api/chats`, {
         method: 'POST',
@@ -19,11 +19,10 @@ async function newDMHandler(event) {
         }
     });
 
-    if(response.ok) {  
-        // document.location.replace('/chats/direct-message/' + post_id );     
-        document.location.replace('/dashboard');
+    if(response.ok) {   
+        document.location.replace('/chat/' + post_id);
     } else {
-        document.location.replace('/')
+        
         alert(response.statusText);
     }
 }

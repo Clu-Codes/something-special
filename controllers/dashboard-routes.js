@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Message, Category, Chat } = require('../models');
 const withAuth = require('../utils/auth');
-
+const {Op} = require('sequelize');
 
 router.get('/', withAuth, (req, res) => {
     // gets all categories to populate main.handlebars side panel
@@ -52,9 +52,10 @@ router.get('/', withAuth, (req, res) => {
                 {
                 where:{
                 // $or: [{user_id: req.session.user_id}, 
-                    recipient: req.session.user_id
+                [Op.or]: [{recipient: req.session.user_id}, {user_id:req.session.user_id}]
                 // ]
             },
+            group: ['post_id'], 
             attributes: [
                 'id',
                 'chat_text',

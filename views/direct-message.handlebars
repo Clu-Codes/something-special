@@ -1,13 +1,9 @@
 {{#if loggedIn}}
 <form class="chat-form">
-
-    <label for="title">Title</label>
-        <input type ="integer" id="post-id" value={{post.id}} readonly>
-    <label for="author">Author</label>
-        <input type ="integer" id="recipient" value={{post.user.id}} readonly>
-    <label for="user">User</label>
-        <input type ="integer" id="user-id" value={{this.user_id}} readonly>     
-
+    <div class="chat-title" id="post-id" data-chat-id="{{post.id}}">{{post.title}}</div>
+    <div class="chat-author" id="recipient" data-chat-author="{{post.user.id}}">{{post.user.username}}</div>
+    <div class="chat-user" id="user-id" data-chat-user="{{this.user_id}}"></div>
+       
     <div>
         <textarea name="chat-body" id="chat-text"></textarea>
     </div>

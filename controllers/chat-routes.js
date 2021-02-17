@@ -16,7 +16,11 @@ router.get('/:id', withAuth, (req, res) =>{
 
     Chat.findAll({
         where:{
-        [Op.or]: [{recipient: req.session.user_id}, {user_id:req.session.user_id}]
+    [Op.or]:[
+        {[Op.and]: [{post_id: req.params.id}, {user_id:req.session.user_id}]},
+
+        {[Op.and]: [{post_id: req.params.id}, {recipient: req.session.user_id}]}
+        ]      
     },
     attributes: [
         'id',
@@ -38,7 +42,7 @@ router.get('/:id', withAuth, (req, res) =>{
     })
     .then(chatData => {
         const chats = chatData.map(chat => chat.get({ plain: true}));
-        
+        console.log(chats);
         res.render('feed', { 
             chats,
             categories,
