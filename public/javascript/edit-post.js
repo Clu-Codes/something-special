@@ -4,9 +4,11 @@ async function editFormHandler(event) {
     const id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
     const title = document.getElementById('title-edit').value.trim();
     const description = document.getElementById('desc-edit').value;
-    const image = document.getElementById('file-button').src;
+    const image = document.getElementById('create-image').src;
     const price = document.getElementById('post-price').value;
-    const category = document.getElementById('edit-post-category').value;
+    const category = document.getElementById('edit-post-category').value.split('-')[0];
+    // 
+    const tags = document.getElementsByClassName('tags-input').value;
 
     const response = await fetch(`/api/posts/${id}`, {
         method: 'put',
@@ -15,7 +17,9 @@ async function editFormHandler(event) {
             description,
             image,
             price,
-            category
+            category,
+            //
+            tags
         }),
         headers: { 'Content-Type' : 'application/json' }
     });
@@ -72,7 +76,7 @@ function pricePreviewHandler(e) {
 async function categoryPreviewHandler(e) {
     e.preventDefault();
 
-    const category = document.getElementById('edit-post-category').value;
+    const category = document.getElementById('edit-post-category').value.split('-')[1];
     const preview_category = document.getElementById('preview-category');
 
     preview_category.innerHTML = category;
