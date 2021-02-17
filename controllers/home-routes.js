@@ -15,58 +15,55 @@ router.get('/', (req, res) => {
             'category_name'
         ]
     })
-    .then(categoryData => {
-        const categories = categoryData.map(category => category.get({ plain: true}));
+        .then(categoryData => {
+            const categories = categoryData.map(category => category.get({ plain: true}));
 
-        // get all posts to populate main page
-        Post.findAll({
-            attributes: [
-                'id',
-                'title',
-                'price',
-                'description',
-                'image_url',
-                'created_at'
-            ],
-            include: [
-                {
-                    model: Message,
-                    attributes: [
-                        'id',
-                        'message_text',
-                        'user_id',
-                        'post_id',
-                        'created_at'
-                    ],
-                    include: {
+            // get all posts to populate main page
+            Post.findAll({
+                attributes: [
+                    'id',
+                    'title',
+                    'price',
+                    'description',
+                    'image_url',
+                    'created_at'
+                ],
+                include: [
+                    {
+                        model: Message,
+                        attributes: [
+                            'id',
+                            'message_text',
+                            'user_id',
+                            'post_id',
+                            'created_at'
+                        ],
+                        include: {
+                            model: User,
+                            attributes: ['username']
+                        }
+                    },             
+                    {
                         model: User,
-                        attributes: ['username']
+                        attributes: ['id','username']
+                    },
+                    {
+                        model: Category,
+                        attributes: ['category_name']
                     }
-                },
-                {
-                    model: User,
-                    attributes: ['username']
-                },
-                {
-                    model: Category,
-                    attributes: ['category_name']
-                }
             ]
         })
-        .then(dbPostData => {
+            .then(dbPostData => {
 
-            const posts = dbPostData.map(post => post.get({ plain: true }));
+                    const posts = dbPostData.map(post => post.get({ plain: true }));
 
-            res.render('homepage', {
-                posts,
-                categories,
-                username: req.session.username,
-                loggedIn: req.session.loggedIn
-            });
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
+                res.render('homepage', {
+                    posts,
+                    categories,
+                    user_id: req.session.user_id,
+                    username: req.session.username,
+                    loggedIn: req.session.loggedIn
+                });
         });
     });
 });
