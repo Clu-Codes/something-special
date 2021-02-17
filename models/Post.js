@@ -26,7 +26,6 @@ Post.init(
                 len: [4, 1000]
             }
         },
-        // NEED TO ADD IMAGE/UPLOAD CONFIG, REF UPLOAD MODEL
         image_url: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -45,14 +44,6 @@ Post.init(
                 key: 'id'
             }
         },
-        // tags go here 
-        // tags_id: {
-        //     type: DataTypes.INTEGER,
-        //     references: {
-        //         model: 'tags',
-        //         key:'id'
-        //     }
-        // }
     },
     {
         sequelize,

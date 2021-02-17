@@ -8,6 +8,6 @@ const tagRoutes = require('./tag-routes')
 router.use('/users', userRoutes);
 router.use('/messages', messageRoutes);
 router.use('/posts', postRoutes);
-router.use('/tags', tagRoutes)
+router.use('/tag', tagRoutes)
 
 module.exports = router;

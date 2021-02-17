@@ -8,7 +8,7 @@ async function editFormHandler(event) {
     const price = document.getElementById('post-price').value;
     const category = document.getElementById('edit-post-category').value;
     // 
-    const tags = document.getElementsByClassName('tags-input').value;
+    const tag = document.getElementsByClassName('tags-input').value;
 
     const response = await fetch(`/api/posts/${id}`, {
         method: 'put',
@@ -18,7 +18,7 @@ async function editFormHandler(event) {
             image,
             price,
             category,
-            tags
+            tag
         }),
         headers: { 'Content-Type' : 'application/json' }
     });
