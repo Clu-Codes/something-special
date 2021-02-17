@@ -1,0 +1,69 @@
+<div class="row m-0">
+    <div class="container-fluid col-sm-12 col-lg-6">
+        <div class="row">
+            <div class="card text-center w-100">
+                <div class="card-body center pt-3">
+                    <img src="{{post.image_url}}" alt="{{post.title}}" class="w-75">
+                    <h5 class="mt-2 card-title fw-bolder">{{post.title}}</h5>
+                    <small class="text-muted">
+                        {{post.category.category_name}}<br>
+                        Listed on {{format_date post.created_at}} by {{post.user.username}}.
+                    </small>
+                    <hr>
+                    Price: ${{post.price}}
+                    <br>
+                    Description: {{post.description}}
+
+                    {{!-- will only render edit post link if the post belongs to user --}}
+                    {{#if post.myPost}}
+                    <br>
+                    <a href="/dashboard/edit/{{post.id}}" class="fake-btn rounded p-2 m-2">Edit Post</a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid col-sm-12 col-lg-6">
+        <div class="row">
+            <div class="card text-center w-100">
+                <div class="card-header message-textarea-header">
+                    Add A Message
+                </div>
+                <div class="card-container all-posts">
+                    <div class="row card-row row-cols-sm-12 d-flex justify-content-center">
+                        {{#if loggedIn}}
+                        <form class="message-form mt-2 w-100">
+                            <textarea class="form-control w-100 message-textarea" name="message-body" placeholder="Add a message for this listing!"></textarea>
+                            <button class="styled-btn p-2 mb-2 rounded w-100 message-save-btn" type="submit">Add Message</button>
+                        </form>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card text-center w-100">
+                <div class="card-header">
+                    Messages
+                </div>
+                <div class="card-container">
+                    <div class="row card-row">
+                        {{#each post.messages}}
+                        {{>messages}}
+                        {{/each}}
+                        
+                        {{#unless post.messages}}
+                        There are no messages for this listing!
+                        {{/unless}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#if loggedIn}}
+<script src="/javascript/message.js"></script>
+{{/if}}

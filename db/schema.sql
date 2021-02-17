@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS special_db;
+
+CREATE DATABASE special_db;

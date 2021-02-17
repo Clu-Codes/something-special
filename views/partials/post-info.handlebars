@@ -1,0 +1,22 @@
+<div class="card rounded mt-2 mb-3 bg-light">
+    <img src="{{image_url}}" class="card-image rounded-top">
+    <div class="card-body rounded bg-light">
+        <h5 class="card-title">${{price}}</h5>
+        <p class="card-text">
+            {{title}}
+        </p>
+        <div class="card-footer bg-light">
+            <small class="text-muted">
+                {{category.category_name}}
+                <br>
+                Posted by {{user.username}}
+                <br>
+                Created on {{format_date created_at}}
+            </small>
+        </div>
+    </div>
+    {{#if myPost}}
+    <a href="/dashboard/edit/{{id}}" class="fake-btn p-1">Edit Post</a>
+    <button type="button" class="delete-post-btn btn btn-dark" data-id="{{id}}">Delete Post</button>
+    {{/if}}
+</div>  
