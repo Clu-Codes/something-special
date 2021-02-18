@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Chat, User, Post, Message, Category } = require('../../models');
+const { Chat, User, Post, Message, Category, Text } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
@@ -13,8 +13,7 @@ router.get('/:id', (req, res) => {
             'id',
             'recipient',
             'post_id',
-            'user_id',
-            'chat_text'
+            'user_id'
         ],
         include: [
                  {
@@ -23,8 +22,8 @@ router.get('/:id', (req, res) => {
             }
         ]
     })
-    .then(chatData => {
-        return res.json(chatData)})
+    .then(dbChatData => {
+        return res.json(dbChatData)})
     .catch(err => {
         console.log(err);
         return res.status(500).json(err);
@@ -32,17 +31,39 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req,res) => {
-    Chat.create({
-        user_id: req.body.user_id,
-        chat_text: req.body.chat_text,
-        recipient: req.body.recipient,
-        post_id: req.body.post_id
+    Chat.findOrCreate({
+        where:
+        {user_id: req.body.user_id,
+        post_id: req.body.post_id,
+        recipient: req.body.recipient}
     })
-    .then(chatData => res.json(chatData))
+    .then(dbChatData => res.json(dbChatData))
     .catch(err => {
         console.log(err);
         return res.status(500).json(err);
     });
 });
+
+// delete chat
+router.delete('/:id', withAuth, (req, res) => {
+    Chat.destroy({ 
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(dbChatData => {
+            if(!dbChatData) {
+                res.status(404).json({ message: 'No chat found with this ID.' })
+                return;
+            };
+
+            res.json(dbChatData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
 
 module.exports = router;
