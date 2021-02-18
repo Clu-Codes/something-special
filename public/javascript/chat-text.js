@@ -22,4 +22,21 @@ async function newDMHandler(event) {
     }
 }
 
+function idleTimer() {
+    var time;
+
+    window.onmousemove = resetTimer;
+    window.onmousedown = resetTimer;
+    window.onclick = resetTimer;
+    window.onscroll = resetTimer;
+    window.onkeypress = resetTimer;
+
+    function resetTimer() {
+        clearTimeout(time);
+        time = setTimeout(document.location.reload(),(1000 * 60)*5);
+    }
+}
+
+idleTimer();
+
 document.querySelector('#new-direct-message').addEventListener('click', newDMHandler);
