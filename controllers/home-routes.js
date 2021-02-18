@@ -72,7 +72,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/post/:id', (req, res) => {
-    // gets all cateogories to populate side panel menu
+    // gets all categories to populate side panel menu
     Category.findAll({
         attributes: [
             'id',

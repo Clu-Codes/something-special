@@ -16,18 +16,11 @@
                     <br>
                     {{#unless post.myPost}}
                     {{#if loggedIn}}
-                        <div class="chat-title" id="post-id" data-post-id="{{post.id}}"></div>
-                        <div class="chat-author" id="recipient" data-post-author="{{post.user.id}}"></div>
-                        <div class="chat-user" id="user-id" data-chat-user="{{this.user_id}}"></div>
-                        <button id="new-direct-message" class="styled-btn p-2 mb-2 rounded w-100 message-save-btn" type="submit">Message Author</button>
+                        <button id="new-direct-message" class="styled-btn p-2 mb-2 rounded w-100 message-save-btn" type="submit"
+                            data-post-id="{{post.id}}" data-post-author="{{post.user.id}}" data-chat-user="{{this.user_id}}">Message Author</button>
                     {{/if}}
                     {{/unless}}
 
-
-
-<form class="message-form">
-    
-    <div>
                     {{!-- will only render edit post link if the post belongs to user --}}
                     {{#if post.myPost}}
                     <br>

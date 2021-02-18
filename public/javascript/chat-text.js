@@ -37,6 +37,6 @@ function idleTimer() {
     }
 }
 
-idleTimer();
+// idleTimer();
 
 document.querySelector('#new-direct-message').addEventListener('click', newDMHandler);
