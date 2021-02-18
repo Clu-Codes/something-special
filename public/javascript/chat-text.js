@@ -24,7 +24,7 @@ async function newDMHandler(event) {
     }
 }
 
-setInterval(function(){document.location.reload()},(1000 * 60) * 5);
+// setInterval(function(){document.location.reload()},(1000 * 60) * 5);
 
 
 document.querySelector('#new-direct-message').addEventListener('click', newDMHandler);
