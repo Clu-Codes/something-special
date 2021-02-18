@@ -31,10 +31,11 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req,res) => {
-    Chat.create({
-        user_id: req.body.user_id,
+    Chat.findOrCreate({
+        where:
+        {user_id: req.body.user_id,
         post_id: req.body.post_id,
-        recipient: req.body.recipient
+        recipient: req.body.recipient}
     })
     .then(dbChatData => res.json(dbChatData))
     .catch(err => {

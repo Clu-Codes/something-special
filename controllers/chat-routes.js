@@ -141,16 +141,43 @@ router.get('/:id', withAuth, (req, res) =>{
 // });
 
 router.post('/', withAuth, (req,res) => {
-    Chat.create({
+    Category.findAll({
+        attributes: [
+            'id',
+            'category_name'
+        ]
+    })
+    .then(categoryData => {
+        const categories = categoryData.map(category => category.get({ plain: true}));
+
+    Chat.findOrCreate({
+        where: 
+        {
         user_id: req.body.user_id,
         post_id: req.body.post_id,
         recipient: req.body.recipient
+        }
     })
-    .then(dbChatData => res.json(dbChatData))
+    .then(dbChatData => {
+        chat = dbChatData.get({ plain: true})
+        console.log(chat)
+    });
+        
+        
+
+        res.render('feed', { 
+            chat,
+            categories,
+            user_id: req.session.user_id,
+            username: req.session.username,
+            loggedIn: true
+        });
+    })
     .catch(err => {
         console.log(err);
-        return res.status(500).json(err);
-    });
+        res.status(500).json(err);
+    })
 });
+
 
 module.exports = router;

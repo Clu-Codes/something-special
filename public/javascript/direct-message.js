@@ -4,8 +4,6 @@ async function newDMHandler(event) {
     const recipient = document.querySelector('#recipient').getAttribute('data-chat-author');
     const post_id = document.querySelector('#post-id').getAttribute('data-chat-id');
     const user_id = document.querySelector('#user-id').getAttribute('data-chat-user');
-    
-    console.log(recipient)
 
     const response = await fetch(`/api/chats`, {
         method: 'POST',
@@ -20,7 +18,7 @@ async function newDMHandler(event) {
     });
 
     if(response.ok) { 
-        document.location.replace('/chat/');
+        document.location.replace('/dashboard/');
     } else {
         alert(response.statusText);
     }
