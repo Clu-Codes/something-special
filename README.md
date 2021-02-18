@@ -47,10 +47,10 @@
   ## Questions
   Please feel free to reach out to us for additional questions at:
   <br>
-  
-  [DeckieDevs](deckiedevs@gmail.com)
-  
-  [Elysiayn](Wendy.Lemus.WL@gmail.com)
+  Email: Clu.Codes@gmail.com (Clu-Codes@gmail.com)
+  Email: Deckiedevs@gmail.com (DeckieDevs)
+  Email: @gmail.com (Nickhill2380)
+  Email: Elysiayn@gmail.com (Elysiayn)
 
   
   ### Contributions
