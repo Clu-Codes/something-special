@@ -4,7 +4,6 @@ const withAuth = require('../utils/auth');
 const {Op} = require('sequelize');
 
 router.get('/', withAuth, (req, res) => {
-    // gets all categories to populate main.handlebars side panel
     Category.findAll({
             attributes: [
                 'id',
