@@ -1,0 +1,15 @@
+<form class="chat-form">
+    <label for="title">Title</label>
+    <input type ="integer" id="post-id" value={{post.id}} readonly>
+    <label for="author">Author</label>
+    <input type ="integer" id="recipient" value={{post.user.id}} readonly>
+    <label for="user">User</label>
+    <input type ="integer" id="user-id" value={{this.user_id}} readonly>     
+
+    <div>
+        <textarea name="chat-body" id="chat-text"></textarea>
+    </div>
+    <button type="submit" id="new-direct-message"  class="styled-btn">Direct Message</button>
+    
+</form>
+

@@ -5,7 +5,7 @@
   
 
   ## Description
-  An application provides a service for users to be able to easily access a community forum for event-related decorations.  *In Progress*
+  A web based application that provides a service for users to be able to easily access a community forum for event-related decorations.  *In Progress*
 
 
   ## Table of Contents

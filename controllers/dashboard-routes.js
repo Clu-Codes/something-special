@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Post, User, Message, Category } = require('../models');
+const { Post, User, Message, Category, Chat, Text } = require('../models');
 const withAuth = require('../utils/auth');
+const {Op} = require('sequelize');
 
 router.get('/', withAuth, (req, res) => {
-    // gets all categories to populate main.handlebars side panel
     Category.findAll({
             attributes: [
                 'id',
@@ -46,6 +46,37 @@ router.get('/', withAuth, (req, res) => {
                     post.myPost = true;
             });
 
+            // gets all chats user is invovled in
+            Chat.findAll({
+                where:{
+                    [Op.or]: [{recipient: req.session.user_id}, {user_id:req.session.user_id}]
+            },
+            group: ['id'], 
+            attributes: [
+                'id',
+                'post_id',
+                'user_id',
+                'recipient'
+            ],
+            include:[
+                {
+                    model:User,
+                    attributes:['id','username']
+                },
+                {
+                    model:Post,
+                    attributes:['id','title']
+                },
+                {
+                    model:Text,
+                    attributes:['chat_text']
+                }    
+            ] 
+            })
+            .then(dbChatData => {
+                
+                const chats = dbChatData.map(chat => chat.get({ plain: true}));
+
             // gets all messages created by logged in user
             Message.findAll({
                 where: {
@@ -82,6 +113,7 @@ router.get('/', withAuth, (req, res) => {
                     categories,
                     posts,
                     messages,
+                    chats,
                     username: req.session.username,
                     loggedIn: true
                 });
@@ -92,6 +124,7 @@ router.get('/', withAuth, (req, res) => {
             });
         });
     });
+});
 });
 
 router.get('/edit/:id', withAuth, (req,res) => {
