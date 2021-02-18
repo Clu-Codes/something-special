@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
         ]
     })
     .then(categoryData => {
-        const categories = categoryData.map(category => category.get({ plain: true}));
+        const categories = categoryData.map(category => category.get({ plain: true }));
 
         // get all posts to populate main page
         Post.findAll({
@@ -72,7 +72,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/post/:id', (req, res) => {
-    // gets all cateogories to populate side panel menu
+    // gets all categories to populate side panel menu
     Category.findAll({
         attributes: [
             'id',
@@ -112,7 +112,7 @@ router.get('/post/:id', (req, res) => {
                 },
                 {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['id','username']
                 },
                 {
                     model: Category,
@@ -145,6 +145,7 @@ router.get('/post/:id', (req, res) => {
                 post,
                 categories,
                 username: req.session.username,
+                user_id: req.session.user_id,
                 loggedIn: req.session.loggedIn
             });
         })
