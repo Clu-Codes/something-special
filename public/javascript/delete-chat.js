@@ -8,7 +8,7 @@ async function deleteChatHandler(event) {
     });
 
     if (response.ok) {
-        document.location.replace('/chat/');
+        document.location.replace('/dashboard');
     } else {
         alert(response.statusText);
     };
