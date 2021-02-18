@@ -31,13 +31,12 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req,res) => {
-    console.log(req)
     Chat.create({
         user_id: req.body.user_id,
         post_id: req.body.post_id,
         recipient: req.body.recipient
     })
-    .then(chatData => res.json(chatData))
+    .then(dbChatData => res.json(dbChatData))
     .catch(err => {
         console.log(err);
         return res.status(500).json(err);

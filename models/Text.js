@@ -40,7 +40,7 @@ Text.init({
     sequelize, 
     freezeTableName: true,
     underscored: true,
-    modelName: 'chat'
+    modelName: 'text'
 }
 );
 

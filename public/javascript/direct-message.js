@@ -19,10 +19,9 @@ async function newDMHandler(event) {
         }
     });
 
-    if(response.ok) {   
-        document.location.replace('/dashboard');
+    if(response.ok) { 
+        document.location.replace('/chat/');
     } else {
-        document.location.replace('/');
         alert(response.statusText);
     }
 }

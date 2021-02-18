@@ -48,17 +48,13 @@ router.get('/', withAuth, (req, res) => {
             });
 
             // gets all chats user is invovled in
-            Chat.findAll(
-                {
+            Chat.findAll({
                 where:{
-                // $or: [{user_id: req.session.user_id}, 
-                [Op.or]: [{recipient: req.session.user_id}, {user_id:req.session.user_id}]
-                // ]
+                    [Op.or]: [{recipient: req.session.user_id}, {user_id:req.session.user_id}]
             },
-            group: ['post_id'], 
+            group: ['id'], 
             attributes: [
                 'id',
-                'chat_text',
                 'post_id',
                 'user_id',
                 'recipient'
@@ -71,12 +67,16 @@ router.get('/', withAuth, (req, res) => {
                 {
                     model:Post,
                     attributes:['id','title']
-                }
+                },
+                {
+                    model:Text,
+                    attributes:['chat_text']
+                }    
             ] 
             })
-            .then(chatData => {
+            .then(dbChatData => {
                 
-                const chats = chatData.map(chat => chat.get({ plain: true}));
+                const chats = dbChatData.map(chat => chat.get({ plain: true}));
 
             // gets all messages created by logged in user
             Message.findAll({

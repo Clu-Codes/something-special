@@ -29,6 +29,7 @@ router.get('/:id', (req, res) => {
             'chat_text',
             'user_id',
             'post_id',
+            'chat_id',
             'created_at'
         ]
     })
@@ -41,7 +42,6 @@ router.get('/:id', (req, res) => {
 
 // create texts
 router.post('/', withAuth, (req, res) => {
-    if (req.session.loggedIn) {
         Text.create({
             chat_text: req.body.chat_text,
             chat_id: req.body.chat_id,
@@ -52,7 +52,6 @@ router.post('/', withAuth, (req, res) => {
             console.log(err);
             res.status(400).json(err);
         });
-    };
 });
 
 // edit text
