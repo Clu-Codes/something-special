@@ -5,7 +5,7 @@ async function newFormHandler(event) {
     const description = document.querySelector('#post-text').value;
     const price = document.querySelector('#post-price').value;
     const image = document.querySelector('#create-image').src;
-    const category_id = document.getElementById('post-category').value;
+    const category_id = document.getElementById('edit-post-category').value;
     
     const response = await fetch(`/api/posts`, {
         method: 'POST',
@@ -26,7 +26,7 @@ async function newFormHandler(event) {
     } else {
         alert(response.statusText);
     }
-}
+};
 
 document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
 

@@ -14,14 +14,14 @@ router.get('/', (req, res) => {
         ],
         order: [['created_at', 'DESC']]
     })
-        .then(dbMessageData => res.json(dbMessageData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .then(dbMessageData => res.json(dbMessageData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
-// get single message
+// get single message by message ID
 router.get('/:id', (req, res) => {
     Message.findOne({
         attributes: [
@@ -32,11 +32,11 @@ router.get('/:id', (req, res) => {
             'created_at'
         ]
     })
-        .then(dbMessageData => res.json(dbMessageData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .then(dbMessageData => res.json(dbMessageData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 // create messages
@@ -47,35 +47,35 @@ router.post('/', withAuth, (req, res) => {
             post_id: req.body.postId,
             user_id: req.session.user_id
         })
-            .then(dbMessageData => res.json(dbMessageData))
-            .catch(err => {
-                console.log(err);
-                res.status(400).json(err);
-            });
-    }
+        .then(dbMessageData => res.json(dbMessageData))
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
+    };
 });
 
 // edit message
 router.put('/:id', withAuth, (req, res) => {
     Message.update({
-            message_text: req.body.message
-        }, {
-            where: {
-                id: req.params.id
-            }
-        })
-        .then(messageData => {
-            if (!messageData) {
-                return res.status(404).json({
-                    message: 'No post found with that id'
-                });
-            }
-            res.json(messageData);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+        message_text: req.body.message
+    }, {
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(messageData => {
+        if (!messageData) {
+            return res.status(404).json({
+                message: 'No post found with that id'
+            });
+        }
+        res.json(messageData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 // delete message
@@ -98,6 +98,5 @@ router.delete('/:id', withAuth, (req, res) => {
             res.status(500).json(err);
         });
 });
-
 
 module.exports = router;
