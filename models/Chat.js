@@ -16,7 +16,8 @@ Chat.init({
         references: {
             model: 'user',
             key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
     },
     post_id: {
         type: DataTypes.INTEGER,
@@ -24,7 +25,8 @@ Chat.init({
         references: {
             model: 'post',
             key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
     },
     recipient: {
         type: DataTypes.INTEGER,
