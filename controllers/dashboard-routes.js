@@ -5,16 +5,16 @@ const {Op} = require('sequelize');
 
 router.get('/', withAuth, (req, res) => {
     Category.findAll({
-            attributes: [
-                'id',
-                'category_name'
-            ]
-        })
-        .then(categoryData => {
-            const categories = categoryData.map(category => category.get({ plain: true}));
-            
-            // gets all posts created by logged in user
-            Post.findAll({
+        attributes: [
+            'id',
+            'category_name'
+        ]
+    })
+    .then(categoryData => {
+        const categories = categoryData.map(category => category.get({ plain: true }));
+        
+        // gets all posts created by logged in user
+        Post.findAll({
             where:{
                 user_id: req.session.user_id
             },
@@ -42,89 +42,87 @@ router.get('/', withAuth, (req, res) => {
         .then(postData => {
             const posts = postData.map(post => post.get({ plain: true}));
             
-            posts.forEach(post => {
-                    post.myPost = true;
-            });
+            posts.forEach(post => post.myPost = true);
 
             // gets all chats user is invovled in
             Chat.findAll({
                 where:{
                     [Op.or]: [{recipient: req.session.user_id}, {user_id:req.session.user_id}]
-            },
-            group: ['id'], 
-            attributes: [
-                'id',
-                'post_id',
-                'user_id',
-                'recipient'
-            ],
-            include:[
-                {
-                    model:User,
-                    attributes:['id','username']
                 },
-                {
-                    model:Post,
-                    attributes:['id','title']
-                },
-                {
-                    model:Text,
-                    attributes:['chat_text']
-                }    
-            ] 
-            })
-            .then(dbChatData => {
-                
-                const chats = dbChatData.map(chat => chat.get({ plain: true}));
-
-            // gets all messages created by logged in user
-            Message.findAll({
-                where: {
-                    user_id: req.session.user_id
-                },
+                group: ['id'], 
                 attributes: [
                     'id',
-                    'message_text', 
-                    'user_id',
                     'post_id',
-                    'created_at'
+                    'user_id',
+                    'recipient'
                 ],
                 include: [
                     {
-                        // includes the post that the message was created on
-                        model: Post,
-                        attributes: ['id', 'title', 'description'],
-                        include: {
+                        model:User,
+                        attributes:['id','username']
+                    },
+                    {
+                        model:Post,
+                        attributes:['id','title']
+                    },
+                    {
+                        model:Text,
+                        attributes:['chat_text']
+                    }    
+                ] 
+            })
+            .then(dbChatData => {
+                
+                const chats = dbChatData.map(chat => chat.get({ plain: true }));
+                
+                // gets all messages created by logged in user
+                Message.findAll({
+                    where: {
+                        user_id: req.session.user_id
+                    },
+                    attributes: [
+                        'id',
+                        'message_text', 
+                        'user_id',
+                        'post_id',
+                        'created_at'
+                    ],
+                    include: [
+                        {
+                            // includes the post that the message was created on
+                            model: Post,
+                            attributes: ['id', 'title', 'description'],
+                            include: {
+                                model: User,
+                                attributes: ['username']
+                            }
+                        },
+                        {   
+                            // includes the logged in user's username
                             model: User,
                             attributes: ['username']
                         }
-                    },
-                    {   
-                        // includes the logged in user's username
-                        model: User,
-                        attributes: ['username']
-                    }
-                ]
-            })
-            .then(messageData =>{
-                const messages = messageData.map(message => message.get({ plain: true }));
-                
-                res.render('dashboard', { 
-                    categories,
-                    posts,
-                    messages,
-                    chats,
-                    username: req.session.username,
-                    loggedIn: true
+                    ]
+                })
+                .then(messageData =>{
+                    const messages = messageData.map(message => message.get({ plain: true }));
+                    
+                    res.render('dashboard', { 
+                        categories,
+                        posts,
+                        messages,
+                        chats,
+                        username: req.session.username,
+                        loggedIn: true
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json(err);
                 });
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json(err);
             });
         });
     });
-});
 });
 
 router.get('/edit/:id', withAuth, (req,res) => {

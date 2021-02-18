@@ -1,7 +1,7 @@
 <div class="card w-100 mb-2">
     <div class="card-body message-card bg-light p-2 d-flex flex-wrap">
         <div class="message-head d-flex align-bottom align-text-bottom justify-content-between w-100 m-1">
-            <small class="text-muted align-bottom align-text-bottom ">Posted by {{user.username}} on {{format_date created_at}}.</small>
+            <small class="text-muted">Posted by {{user.username}} on {{format_date created_at}}.</small>
             <div>
                 {{#if myMessage}}
                 <button type="button" class="edit-msg-btn rounded fs-5 pt-1 pl-2 pr-2 pb-2 pink-btn" data-id="{{id}}">
