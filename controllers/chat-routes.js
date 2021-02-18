@@ -24,7 +24,6 @@ router.get('/:id', withAuth, (req, res) =>{
     },
     attributes: [
         'id',
-        'chat_text',
         'post_id',
         'user_id',
         'recipient'
@@ -101,7 +100,7 @@ router.get('/direct-message/:id', (req,res) => {
             },
             {
                 model:Chat,
-                attributes:['id','post_id','user_id','chat_text', 'recipient'],
+                attributes:['id','post_id','user_id', 'recipient'],
                 include: [{
                     model: User,
                     attributes:['username']

@@ -15,7 +15,7 @@
                     Description: {{post.description}}
                     <br>
                     {{#if loggedIn}}
-                        <div class="chat-title" id="post-id" data-chat-id="{{post.id}}">{{post.title}}</div>
+                        <div class="chat-title" id="post-id" data-chat-id="{{post.id}}"></div>
                         <div class="chat-author" id="recipient" data-chat-author="{{post.user.id}}"></div>
                         <div class="chat-user" id="user-id" data-chat-user="{{this.user_id}}"></div>
                         <button id="new-direct-message" class="styled-btn p-2 mb-2 rounded w-100 message-save-btn" type="submit">Message Author</button>

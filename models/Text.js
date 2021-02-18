@@ -22,7 +22,8 @@ Text.init({
         references: {
             model: 'chat',
             key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
     },
     user_id: {
         type: DataTypes.INTEGER,
@@ -30,7 +31,8 @@ Text.init({
         references: {
             model: 'user',
             key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
     },
 }
 },

@@ -5,6 +5,8 @@ async function newDMHandler(event) {
     const post_id = document.querySelector('#post-id').getAttribute('data-chat-id');
     const user_id = document.querySelector('#user-id').getAttribute('data-chat-user');
     
+    console.log(recipient)
+
     const response = await fetch(`/api/chats`, {
         method: 'POST',
         body: JSON.stringify({
