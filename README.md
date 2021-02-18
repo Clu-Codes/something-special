@@ -5,7 +5,7 @@
   
 
   ## Description
-  An application provides a service for users to be able to easily access a community forum for event-related decorations.  *STILL ADDING*
+  An application provides a service for users to be able to easily access a community forum for event-related decorations.  *In Progress*
 
 
   ## Table of Contents
@@ -21,19 +21,19 @@
 <br>
 
   ## Installation
-  * Clone down the application from GitHub.
+  * Clone down the application from GitHub. *In Progress*
 
   ## Usage
-  * Load site from domain. *STILL ADDING*
+  * Load site from domain. *In Progress*
 
   
   ## Features
-  * Smooth interface and very responsive. *STILL ADDING*
+  * Smooth interface and very responsive. *In Progress*
   
 
   
   ## Production
-  [Something-Special](https://Clu-Codes.github.io/Something-Special/)
+  [Something-Special](https://cmnw-something-special.herokuapp.com/)
   
   
   [![Something-Special](public/images/screenshot.png)](https://Clu-Codes.github.io/Something-Special/)
@@ -47,14 +47,14 @@
   ## Questions
   Please feel free to reach out to us for additional questions at:
   <br>
-    
-    [DeckieDevs](deckiedevs@gmail.com)
-    
-    [Elysiayn](Wendy.Lemus.WL@gmail.com)
+  
+  [DeckieDevs](deckiedevs@gmail.com)
+  
+  [Elysiayn](Wendy.Lemus.WL@gmail.com)
 
   
   ### Contributions
-    Visit our GitHub!
+  Visit our GitHub!
   * [Clu-Codes](https://github.com/Clu-Codes)
   * [DeckieDevs](https://github.com/DeckieDevs)
   * [Nickhill2380](https://github.com/Nickhill2380)
