@@ -14,7 +14,7 @@ Text.init({
         type: DataTypes.STRING, 
         allowNull: false,
         validate: {
-            len: [4, 160]
+            len: [1, 160]
     },
     chat_id: {
         type: DataTypes.INTEGER,
