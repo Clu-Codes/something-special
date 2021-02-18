@@ -19,7 +19,7 @@ router.get('/', withAuth, (req, res) =>{
         where:{
             [Op.or]: [{recipient: req.session.user_id}, {user_id:req.session.user_id}]
             },
-        group: ['id'], 
+        
         attributes: [
             'id',
             'post_id',
@@ -33,17 +33,23 @@ router.get('/', withAuth, (req, res) =>{
             },
             {
                 model:Post,
-                attributes:['id','title']
+                attributes:['id','title'],
+                include: {
+                    model: User,
+                    attributes:['username']
+                }
             },
             {
                 model:Text,
-                attributes:['chat_text']
+                attributes:['chat_text'],
+                group: ['chat_id'] 
             }    
         ] 
     })
         .then(dbChatData => {
-    
+            
             const chats = dbChatData.map(chat => chat.get({ plain: true}));
+            console.log(chats);
             res.render('feed', { 
                     chats,
                     categories,
@@ -58,12 +64,6 @@ router.get('/', withAuth, (req, res) =>{
         })
 });
 });
-
-
-
-
-
-
 
 router.get('/:id', withAuth, (req, res) =>{
     Category.findAll({
