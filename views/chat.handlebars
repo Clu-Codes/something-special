@@ -1,0 +1,19 @@
+<div>
+    <p>Direct Messages for {{chat.post.title}} {{recipient.user.username}} </p>
+        {{#if loggedIn}}
+            {{#each chat.texts as |text|}}
+                <p>{{text.user.username}} said {{text.chat_text}} on  {{format_date text.updated_at}}</p>   
+        {{/each}}
+        <form class="chat-form">  
+        <div class="chat-title" id="chat-id" data-chat-id="{{chat.id}}"></div>
+    <div>
+        <textarea name="chat-body" id="chat-text"></textarea>
+    </div>
+        <button type="submit" id="new-direct-message"  class="styled-btn">Direct Message</button>
+    
+    </form>
+        
+        <script src="/javascript/chat-text.js"></script>
+        {{/if}}
+
+</div>

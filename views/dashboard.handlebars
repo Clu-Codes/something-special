@@ -122,6 +122,8 @@
                                 <hr>
                                 <p class="card-text mb-1 w-100">{{text.chat_text}}</p>
                                 <a href="/chat/{{id}}" class="fake-btn w-25 mt-2">Go To direct message</a>
+                                <button type="button" data-id="{{id}}"
+                                        class="w-100 btn btn-dark delete-chat-btn">Delete Chat</button>
                             </div>
                         </div>
                         {{/each}}
@@ -140,6 +142,9 @@
 <script src="/javascript/tags.js"></script>
 {{#if posts}}
 <script src="/javascript/delete-post.js"></script>
+{{/if}}
+{{#if chats}}
+<script src="/javascript/delete-chat.js"></script>
 {{/if}}
 {{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}}>
 <label for="category{{category.id}}">{{category.name}}</label> --}}

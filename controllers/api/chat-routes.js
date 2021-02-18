@@ -44,4 +44,26 @@ router.post('/', withAuth, (req,res) => {
     });
 });
 
+// delete chat
+router.delete('/:id', withAuth, (req, res) => {
+    Chat.destroy({ 
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(dbChatData => {
+            if(!dbChatData) {
+                res.status(404).json({ message: 'No chat found with this ID.' })
+                return;
+            };
+
+            res.json(dbChatData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+
 module.exports = router;
