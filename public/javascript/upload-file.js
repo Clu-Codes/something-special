@@ -28,6 +28,8 @@ fileButton.addEventListener('change', function (e) {
                     // inserted into an <img> element
                     var img = document.getElementById('create-image');
                     img.setAttribute('src', url);
+                    const previewImg = document.querySelector('#preview-img');
+                    previewImg.setAttribute('src', url);
                 })
         }
     );
