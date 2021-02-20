@@ -8,13 +8,11 @@ async function newFormHandler(event) {
     const category_id = document.getElementById('edit-post-category').value;
     const tag = document.getElementsByClassName('tag');
     const arr =Array.from(tag); 
-
     const tags = arr.map(item =>item.textContent)
 
     console.log(tags);
     
     // fetch tag find or create
-
 
     const response = await fetch(`/api/posts`, {
         method: 'POST',

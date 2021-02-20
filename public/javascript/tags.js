@@ -79,8 +79,6 @@
         return tags;
     }
 
-    //to return tag array 
-
     function removeTag(index) {
         let tag = tags[index];
         tags.splice(index, 1);
