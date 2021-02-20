@@ -5,13 +5,10 @@
   
 
   ## Description
-  An application provides a service for users to be able to easily access a community forum for event-related decorations.  *In Progress*
+  A web based application that provides a service for users to be able to easily access an interactive community forum for event-related decorations. User's will be able to post listings with images of their event items, while also being able to browse other users listings as well. 
 
 
   ## Table of Contents
-  
-* [Description](#Description)
-* [Installation](#Installation)
 * [Usage](#Usage)
 * [Features](#Features)
 * [Production](#Production)
@@ -20,11 +17,16 @@
 
 <br>
 
-  ## Installation
-  * Clone down the application from GitHub. *In Progress*
-
   ## Usage
-  * Load site from domain. *In Progress*
+  * Load site from [domain](https://cmnw-something-special.herokuapp.com/).
+  * New users will need to create a [new account](https://cmnw-something-special.herokuapp.com/create-account).
+  * To register, a user will select a username for the account, an email to associate with the user and create a password with a minimun of 4 characters long.
+  * User will be presented with a gallery of posting of event-related item listings 
+  
+  
+  
+  
+   *In Progress*
 
   
   ## Features
@@ -47,10 +49,10 @@
   ## Questions
   Please feel free to reach out to us for additional questions at:
   <br>
-  
-  [DeckieDevs](deckiedevs@gmail.com)
-  
-  [Elysiayn](Wendy.Lemus.WL@gmail.com)
+  * Email: Clu.Codes@gmail.com (Clu-Codes@gmail.com)
+  * Email: Deckiedevs@gmail.com (DeckieDevs)
+  * Email: @gmail.com (Nickhill2380)
+  * Email: Elysiayn@gmail.com (Elysiayn)
 
   
   ### Contributions
