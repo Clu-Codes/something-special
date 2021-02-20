@@ -4,6 +4,8 @@ const Post = require('./Post');
 const User = require('./User');
 const Tag = require('./Tag');
 const PostTag = require('./PostTag');
+const Chat = require('./Chat');
+const Text = require('./Text');
 
 User.hasMany(Post, {
     foreignKey: 'user_id'
@@ -47,4 +49,36 @@ Post.belongsToMany(Tag, {
     foreignKey: 'post_id'
 });
 
-module.exports = { Category, Message, Post, User, Tag, PostTag };
+Chat.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+User.hasMany(Chat, {
+    foreignKey: 'user_id'
+});
+
+Chat.belongsTo(Post, {
+    foreignKey: 'post_id'
+});
+
+Post.hasMany(Chat, {
+    foreignKey: 'post_id'
+});
+
+Text.belongsTo(Chat, {
+    foreignKey: 'chat_id'
+});
+
+Chat.hasMany(Text, {
+    foreignKey: 'chat_id'
+});
+
+Text.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+User.hasMany(Text, {
+    foreignKey: 'user_id'
+});
+
+module.exports = { Category, Message, Post, User, Chat, Text, Tag, PostTag };

@@ -14,7 +14,7 @@ async function newFormHandler(event) {
     console.log(tags);
     
     // fetch tag find or create
-    
+
 
     const response = await fetch(`/api/posts`, {
         method: 'POST',
@@ -32,9 +32,10 @@ async function newFormHandler(event) {
     });
 
     if(response.ok) {  
-        // currently refreshes dash before I can note the console.logs   
-        // document.location.replace('/dashboard');     
+        //  reload stops console log print   
+        // document.location.replace('/');     
     } else {
+        console.log(response.statusText);
         alert(response.statusText);
     }
 };
