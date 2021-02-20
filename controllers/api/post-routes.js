@@ -86,6 +86,7 @@ router.get('/:id', (req, res) => {
 
 // create new post
 router.post('/', withAuth, (req, res) => {
+    console.log(req.body);
     Post.create({
         title: req.body.title,
         price: req.body.price,

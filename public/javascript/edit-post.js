@@ -7,7 +7,10 @@ async function editFormHandler(event) {
     const image = document.getElementById('create-image').src;
     const price = document.getElementById('post-price').value;
     const category = document.getElementById('edit-post-category').value.split('-')[0];
-    const tag = document.getElementsByClassName('tags-input').value;
+    const tag = document.getElementsByClassName('tag');
+    const arr =Array.from(tag); 
+
+    // const tags = arr.map(item =>item.textContent)
 
     const response = await fetch(`/api/posts/${id}`, {
         method: 'put',

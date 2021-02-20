@@ -58,9 +58,6 @@
     // addTag('hello!');
 
     function addTag(text) {
-        // API fetch, put method for creating new tag on post
-        // tag_name = text
-        // post id
         let tag = {
             text: text,
             element: document.createElement('span'),
@@ -78,9 +75,11 @@
         tags.push(tag);
 
         el.insertBefore(tag.element, mainInput);
-
         refreshTag();
+        return tags;
     }
+
+    //to return tag array 
 
     function removeTag(index) {
         let tag = tags[index];
