@@ -178,6 +178,7 @@ router.get('/edit/:id', withAuth, (req,res) => {
                 } else {
                     res.render('error', {
                         username: req.session.username,
+                        message: 'This post does not belong to you!',
                         loggedIn: true
                     });
                 }
