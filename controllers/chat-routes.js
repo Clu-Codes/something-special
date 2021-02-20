@@ -48,14 +48,22 @@ router.get('/:id', withAuth, (req, res) =>{
         })
         .then(dbChatData => {
             const chat = dbChatData.get({ plain: true });
-            
-            res.render('chat', { 
-                chat,
-                categories,
-                user_id: req.session.user_id,
-                username: req.session.username,
-                loggedIn: true
-            });
+
+            if (req.session.user_id === chat.user_id || req.session.user_id === chat.recipient) {
+                res.render('chat', { 
+                    chat,
+                    categories,
+                    user_id: req.session.user_id,
+                    username: req.session.username,
+                    loggedIn: true
+                });
+            } else {
+                res.render('error', { 
+                    loggedIn: true, 
+                    username: req.session.username,
+                    message: 'This is an A/B conversation, so C your way out!',
+                    categories })
+            };
         })
         .catch(err => {
             console.log(err);
