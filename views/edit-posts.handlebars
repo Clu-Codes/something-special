@@ -10,7 +10,8 @@
                   {{!-- title --}}
                   <div class="row center">
                      <label for="post-title" class="pretty-label form-label">Title:</label>
-                     <input type="text" id="title-edit" name="post-title" class="form-control w-100" value="{{post.title}}"/>
+                     <input type="text" id="title-edit" name="post-title" class="form-control w-100"
+                        value="{{post.title}}" />
                   </div>
 
                   {{!-- file upload --}}
@@ -30,7 +31,8 @@
                   {{!-- description --}}
                   <div class="row center">
                      <label for="post-text" class="pretty-label">Product Description:</label>
-                     <textarea class="form-control w-100" id="desc-edit" name="post-text">{{post.description}}</textarea>
+                     <textarea class="form-control w-100" id="desc-edit"
+                        name="post-text">{{post.description}}</textarea>
                   </div>
 
                   {{!-- price --}}
@@ -48,15 +50,15 @@
                      <select class="form-control w-100" id="edit-post-category">
                         <option value="" selected disabled hidden>Select a Category</option>
                         {{#each categories as |category|}}
-                        <option class="w-100" value="{{category.id}}-{{category.category_name}}">{{category.category_name}}</option>
+                        <option class="w-100" value="{{category.id}}-{{category.category_name}}">
+                           {{category.category_name}}</option>
                         {{/each}}
                      </select>
                   </div>
                   <button type="submit" id="post-create" class="styled-btn mb-4">Update Post</button>
                </form>
             </div>
-            <button type="button" data-id="{{post.id}}"
-               class="w-100 btn btn-dark delete-post-btn">Delete Post</button>
+            <button type="button" data-id="{{post.id}}" class="w-100 btn btn-dark delete-post-btn">Delete Post</button>
          </div>
       </div>
    </div>
