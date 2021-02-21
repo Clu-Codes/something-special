@@ -58,8 +58,10 @@ router.get('/:id', (req, res) => {
 
 // create new tag
 router.post('/', (req, res) => {
-    Tag.create({
-        tag_name: req.body.tag_name
+    Tag.findOrCreate({
+        where: {
+            tag_name: req.body.tag_name
+        }
     })
     .then(dbTagData => res.json(dbTagData))
     .catch(err => {
