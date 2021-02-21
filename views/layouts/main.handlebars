@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    {{{uploadstyle}}}
+    <link rel="shortcut icon" href="/images/favicon.svg" type="image/x-icon"/>
     <title>Something Special</title>
 </head>
 
@@ -33,7 +33,7 @@
         <div id="side-panel" class="side-panel bg-light">
             <div class="close-btn">&times;</div>
             <div>
-                <span class="greeting-msg">Hello, {{this.username}}!</span>
+                <span class="greeting-msg" >Hello, {{this.username}}!</span>
                 <a href="/">Home</a>
                 <a href="/dashboard">Dashboard</a>
                 <button id="logout" class="btn-no-style">Logout</button>
@@ -41,7 +41,6 @@
                 {{#each categories}}
                 <a href="/category/{{category_name}}">{{category_name}}</a>
                 {{/each}}
-
             </div>
         </div>
     </header>

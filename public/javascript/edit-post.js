@@ -7,19 +7,15 @@ async function editFormHandler(event) {
     const image = document.getElementById('create-image').src;
     const price = document.getElementById('post-price').value;
     const category = document.getElementById('edit-post-category').value.split('-')[0];
-    // 
-    const tags = document.getElementsByClassName('tags-input').value;
 
     const response = await fetch(`/api/posts/${id}`, {
         method: 'put',
         body: JSON.stringify({
-            title, 
             description,
             image,
             price,
             category,
-            //
-            tags
+            tag
         }),
         headers: { 'Content-Type' : 'application/json' }
     });
@@ -27,21 +23,6 @@ async function editFormHandler(event) {
         document.location.replace('/dashboard');
     } else {
         alert(response.statusText);
-    };
-};
-
-// script to populate an uploaded image - called in HTML
-function previewFile() {
-    const preview = document.querySelector('img');
-    const file = document.querySelector('input[type=file]').files[0];
-    const reader = new FileReader();
-
-    reader.addEventListener('load', function() {
-        preview.src = reader.result;
-    }, false);
-
-    if (file) {
-        reader.readAsDataURL(file);
     };
 };
 

@@ -28,7 +28,6 @@
         let enteredTags = mainInput.value.split();
 
         if (keyCode === 13 && enteredTags.length > 0) {
-            debugger;
             enteredTags.forEach (function (t) {
                 let filteredTag = filterTag(t);
                 if (filteredTag.length > 0)
@@ -59,9 +58,6 @@
     // addTag('hello!');
 
     function addTag(text) {
-        // API fetch, put method for creating new tag on post
-        // tag_name = text
-        // post id
         let tag = {
             text: text,
             element: document.createElement('span'),
@@ -79,8 +75,8 @@
         tags.push(tag);
 
         el.insertBefore(tag.element, mainInput);
-
         refreshTag();
+        return tags;
     }
 
     function removeTag(index) {
@@ -104,3 +100,24 @@
     }
 
 });
+
+async function createTagPost(event) {
+    event.preventDefault();
+
+    const tag = document.getElementsByClassName('tag');
+    const arr =Array.from(tag); 
+    const tags = arr.map(item =>item.textContent)
+
+    const response = await fetch(`/api/posts/${id}`, {
+        method: 'put',
+        body: JSON.stringify({
+            tag:tags
+        }),
+        headers: { 'Content-Type' : 'application/json' }
+    });
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert(response.statusText);
+    };
+};

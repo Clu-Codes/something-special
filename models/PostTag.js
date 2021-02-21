@@ -31,7 +31,7 @@ PostTag.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'post_tag'
+        modelName: 'posttag'
     }
 );
 

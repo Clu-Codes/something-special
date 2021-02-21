@@ -13,6 +13,13 @@
                     Price: ${{post.price}}
                     <br>
                     Description: {{post.description}}
+                    <br>
+                    {{#unless post.myPost}}
+                    {{#if loggedIn}}
+                        <button id="new-direct-message" class="styled-btn p-2 mb-2 rounded w-100 message-save-btn" type="submit"
+                            data-post-id="{{post.id}}" data-post-author="{{post.user.id}}" data-chat-user="{{this.user_id}}">Message Author</button>
+                    {{/if}}
+                    {{/unless}}
 
                     {{!-- will only render edit post link if the post belongs to user --}}
                     {{#if post.myPost}}
@@ -66,4 +73,5 @@
 
 {{#if loggedIn}}
 <script src="/javascript/message.js"></script>
+<script src="/javascript/direct-message.js"></script>
 {{/if}}
