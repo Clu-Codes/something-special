@@ -10,7 +10,7 @@ async function editFormHandler(event) {
     const tag = document.getElementsByClassName('tag');
     const arr =Array.from(tag); 
 
-    // const tags = arr.map(item =>item.textContent)
+    const tags = arr.map(item =>item.textContent)
 
     const response = await fetch(`/api/posts/${id}`, {
         method: 'put',

@@ -100,3 +100,24 @@
     }
 
 });
+
+async function createTagPost(event) {
+    event.preventDefault();
+
+    const tag = document.getElementsByClassName('tag');
+    const arr =Array.from(tag); 
+    const tags = arr.map(item =>item.textContent)
+
+    const response = await fetch(`/api/posts/${id}`, {
+        method: 'put',
+        body: JSON.stringify({
+            tag:tags
+        }),
+        headers: { 'Content-Type' : 'application/json' }
+    });
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert(response.statusText);
+    };
+};
