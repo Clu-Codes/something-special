@@ -13,8 +13,8 @@ async function newFormHandler(event) {
     console.log(tags);
     
     // fetch tag find or create
-
-    const response = await fetch(`/api/posts`, {
+  
+    const newPost = await fetch(`/api/posts`, {
         method: 'POST',
         body: JSON.stringify({
             title,
@@ -29,12 +29,17 @@ async function newFormHandler(event) {
         }
     });
 
-    if(response.ok) {  
+    const allTags = document.querySelectorAll('tag');
+    const tagIdsArr = allTags.forEach(tag => tag.getAttribute('data-tag-id'));
+
+    if(newPost.ok) {  
+        newPost.json().then(data => data)
+
         //  reload stops console log print   
-        // document.location.replace('/');     
+        document.location.replace('/dashboard');     
     } else {
-        console.log(response.statusText);
-        alert(response.statusText);
+        console.log(newPost.statusText);
+        alert(newPost.statusText);
     }
 };
 

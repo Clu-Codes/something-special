@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Message, Category } = require('../../models');
+const { Post, User, Message, Tag, Category, PostTag } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all posts
@@ -28,6 +28,14 @@ router.get('/', (req, res) => {
             {
                 model: Category,
                 attributes: ['category_name']
+            },
+            {
+                model: Tag, 
+                as: 'tags',
+                attributes: ['id', 'tag_name'],
+                through: {
+                    attributes: []
+                }
             }
         ]
     })

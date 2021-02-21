@@ -7,13 +7,17 @@ router.get('/',  (req, res) => {
         include: [
             {
                 model: Post,
+                as: 'posts',
                 attributes: [
                 'id',
                 'title',
                 'price',
                 'description',
                 'image_url'
-                ]
+                ],
+                through: {
+                    attributes: []
+                }
             }
         ]
     })
@@ -34,6 +38,7 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: Post,
+                as: 'posts',
                 attributes: [
                     'id',
                     'title',

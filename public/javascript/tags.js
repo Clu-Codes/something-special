@@ -1,4 +1,5 @@
 [].forEach.call(document.getElementsByClassName('tags-input'), function (el) {
+    
     let hiddenInput = document.createElement('input'),
         mainInput = document.createElement('input');
     tags = [];
@@ -14,7 +15,7 @@
             enteredTags.forEach(function (t) {
                 let filteredTag = filterTag(t);
                 if (filteredTag.length > 0)
-                    addTag(filteredTag);
+                    createTag(filteredTag);
             });
             // clears input field 
             mainInput.value = '';
@@ -31,8 +32,8 @@
             enteredTags.forEach (function (t) {
                 let filteredTag = filterTag(t);
                 if (filteredTag.length > 0)
-                    addTag(filteredTag);
-            }
+                    createTag(filteredTag);
+                }
             );
             // clears input field
             mainInput.value = '';
@@ -57,12 +58,13 @@
     //test tag
     // addTag('hello!');
 
-    function addTag(text) {
+    function addTag(id, text) {
         let tag = {
             text: text,
             element: document.createElement('span'),
         };
         tag.element.classList.add('tag');
+        tag.element.setAttribute('data-tag-id', id)
         tag.element.textContent = tag.text;
 
         let closeBtn = document.createElement('span');
@@ -99,25 +101,28 @@
         return tag.replace(/[^\w -]/g, '').trim().replace(/\W+/g, '-');
     }
 
-});
-
-async function createTagPost(event) {
-    event.preventDefault();
-
-    const tag = document.getElementsByClassName('tag');
-    const arr =Array.from(tag); 
-    const tags = arr.map(item =>item.textContent)
-
-    const response = await fetch(`/api/posts/${id}`, {
-        method: 'put',
-        body: JSON.stringify({
-            tag:tags
-        }),
-        headers: { 'Content-Type' : 'application/json' }
-    });
-    if (response.ok) {
-        document.location.replace('/dashboard');
-    } else {
-        alert(response.statusText);
+    function createTag(tag) {
+        console.log(tag)
+        // const tag = document.getElementsByClassName('tag');
+        // const arr = Array.from(tag); 
+        // const tags = arr.map(item =>item.textContent)
+    
+        fetch(`/api/tags`, {
+            method: 'POST',
+            body: JSON.stringify({
+                tag_name: tag
+            }),
+            headers: { 'Content-Type' : 'application/json' }
+        })
+        .then(response => {
+            if (response.ok) {
+                response.json()
+                .then(data => {
+                    console.log(data)
+                    
+                    addTag(data[0].id, data[0].tag_name);
+                })
+            }
+        })
     };
-};
+});

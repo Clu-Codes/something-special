@@ -43,7 +43,7 @@ Post.init(
                 model: 'category',
                 key: 'id'
             }
-        },
+        }
     },
     {
         sequelize,
