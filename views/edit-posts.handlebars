@@ -55,10 +55,12 @@
                         {{/each}}
                      </select>
                   </div>
-                  <button type="submit" id="post-create" class="styled-btn mb-4">Update Post</button>
+                  <div class="row center">
+                     <button type="submit" id="post-create" class="styled-btn mb-4 w-100">Update Post</button>
+                     <button type="button" data-id="{{post.id}}" class="w-100 btn btn-dark delete-post-btn">Delete Post</button>
+                  </div>
                </form>
             </div>
-            <button type="button" data-id="{{post.id}}" class="w-100 btn btn-dark delete-post-btn">Delete Post</button>
          </div>
       </div>
    </div>
