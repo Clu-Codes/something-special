@@ -284,7 +284,6 @@ main {
 }
 
 .styled-btn {
-    border-radius: 15px;
     background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
     padding: 8px;
     width: 8rem;
