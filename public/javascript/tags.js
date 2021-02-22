@@ -102,7 +102,6 @@
     }
 
     function createTag(tag) {
-        console.log(tag)
         // const tag = document.getElementsByClassName('tag');
         // const arr = Array.from(tag); 
         // const tags = arr.map(item =>item.textContent)
@@ -117,9 +116,7 @@
         .then(response => {
             if (response.ok) {
                 response.json()
-                .then(data => {
-                    console.log(data)
-                    
+                .then(data => {                
                     addTag(data[0].id, data[0].tag_name);
                 })
             }

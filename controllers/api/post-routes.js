@@ -102,7 +102,13 @@ router.post('/', (req, res) => {
         user_id: req.session.user_id,
         image_url: req.body.image,
     })
-    .then(postData => res.json(postData))
+    .then(postData => {
+        Post.addTag(
+            { post_id: postData.dataValues.id, tagArr: req.body.tagIds },
+            { PostTag }
+        )
+    })
+    .then(taggedPostData => res.json(taggedPostData))
     .catch(err => {
         console.log(err);
         return res.status(500).json(err);

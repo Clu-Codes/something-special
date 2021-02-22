@@ -1,4 +1,5 @@
 async function newFormHandler(event) {
+    debugger;
     event.preventDefault();
 
     const title = document.querySelector('input[name="post-title"]').value;
@@ -7,13 +8,9 @@ async function newFormHandler(event) {
     const image = document.querySelector('#create-image').src;
     const category_id = document.getElementById('edit-post-category').value;
     const tag = document.getElementsByClassName('tag');
-    const arr =Array.from(tag); 
-    const tags = arr.map(item =>item.textContent)
+    const arr = Array.from(tag); 
+    const tagIds = arr.map(tag => tag.getAttribute('data-tag-id'))
 
-    console.log(tags);
-    
-    // fetch tag find or create
-  
     const newPost = await fetch(`/api/posts`, {
         method: 'POST',
         body: JSON.stringify({
@@ -22,15 +19,13 @@ async function newFormHandler(event) {
             description,
             category_id,
             image,
-            tag:tags
+            tagIds
         }),
         headers: {
             'Content-Type': 'application/json'  
         }
     });
 
-    const allTags = document.querySelectorAll('tag');
-    const tagIdsArr = allTags.forEach(tag => tag.getAttribute('data-tag-id'));
 
     if(newPost.ok) {  
         newPost.json().then(data => data)

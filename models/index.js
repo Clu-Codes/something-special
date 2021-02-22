@@ -42,13 +42,13 @@ Message.belongsTo(User, {
 
 // Post and Tag Associations
 Tag.belongsToMany(Post, {
-    through: 'PostTag',
+    through: PostTag,
     as: 'posts',
     foreignKey: 'tag_id'
 });
 
 Post.belongsToMany(Tag, {
-    through: 'PostTag',
+    through: PostTag,
     as: 'tags',
     foreignKey: 'post_id'
 });
