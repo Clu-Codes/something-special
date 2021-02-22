@@ -22,9 +22,9 @@
                         </div>
 
                         {{!-- tags --}}
-                        <div class="row center tags-input" data-name="tags-input">
+                        {{!-- <div class="row center tags-input" data-name="tags-input">
                             <label for="post-tags" class="pretty-label">Tags:</label>
-                        </div>
+                        </div> --}}
 
                         {{!-- description --}}
                         <div class="row center">
@@ -51,7 +51,9 @@
                             </select>
                         </div>
 
-                        <button type="submit" id="post-create" class="styled-btn mb-4">Create</button>
+                        <div class="row center">
+                            <button type="submit" id="post-create" class="styled-btn mb-4 w-100 rounded">Create</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -145,8 +147,6 @@
 {{#if chats}}
 <script src="/javascript/delete-chat.js"></script>
 {{/if}}
-{{!-- <input type="checkbox" id={{category.id}} name="category{{category.id}}" value={{category.name}}>
-<label for="category{{category.id}}">{{category.name}}</label> --}}
 
 {{> firebase}}
 {{!-- upload logic must be defined under firebase initialization --}}
