@@ -93,15 +93,14 @@ router.get('/:id', (req, res) => {
 });
 
 // create new post
-router.post('/', withAuth, (req, res) => {
-    console.log(req.body);
+router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
         price: req.body.price,
         description: req.body.description,
         category_id: req.body.category_id,
         user_id: req.session.user_id,
-        image_url: req.body.image
+        image_url: req.body.image,
     })
     .then(postData => res.json(postData))
     .catch(err => {
@@ -139,7 +138,7 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 // delete post
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id', (req, res) => {
     Post.destroy({
         where: {
             id: req.params.id

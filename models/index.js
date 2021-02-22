@@ -6,6 +6,7 @@ const Tag = require('./Tag');
 const PostTag = require('./PostTag');
 const Chat = require('./Chat');
 const Text = require('./Text');
+const { post } = require('../controllers');
 
 User.hasMany(Post, {
     foreignKey: 'user_id'
@@ -39,14 +40,15 @@ Message.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
+// Post and Tag Associations
 Tag.belongsToMany(Post, {
-    through: PostTag,
+    through: 'PostTag',
     as: 'posts',
     foreignKey: 'tag_id'
 });
 
 Post.belongsToMany(Tag, {
-    through: PostTag,
+    through: 'PostTag',
     as: 'tags',
     foreignKey: 'post_id'
 });
